@@ -11,6 +11,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest){
         OAuth2User oAuth2User = super.loadUser(oAuth2UserRequest);
+        System.out.println("카카오 사용자 정보: " + oAuth2User.getAttributes());
         return new CustomUser(oAuth2User.getAttributes());
     }
 }
