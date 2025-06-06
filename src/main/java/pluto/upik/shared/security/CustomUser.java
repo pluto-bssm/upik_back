@@ -9,9 +9,11 @@ import java.util.Map;
 public class CustomUser implements OAuth2User {
 
     private Map<String, Object> attributes;
+    private Collection<? extends GrantedAuthority> authorities;
 
-    public CustomUser(Map<String, Object> attributes) {
+    public CustomUser(Map<String, Object> attributes, Collection<? extends GrantedAuthority> authorities) {
         this.attributes = attributes;
+        this.authorities = authorities;
     }
 
     @Override
@@ -21,7 +23,7 @@ public class CustomUser implements OAuth2User {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
     @Override
