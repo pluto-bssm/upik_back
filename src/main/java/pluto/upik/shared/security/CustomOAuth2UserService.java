@@ -1,4 +1,4 @@
-package pluto.upik.domain.example.service;
+package pluto.upik.shared.security;
 
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.stereotype.Service;
