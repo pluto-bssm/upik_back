@@ -42,4 +42,13 @@ public class CustomUser implements OAuth2User {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "CustomUser{" +
+                "id=" + getName() +
+                ", nickname='" + getNickname() + '\'' +
+                ", authorities=" + getAuthorities() +
+                '}';
+    }
 }
