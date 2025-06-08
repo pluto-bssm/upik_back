@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class CustomOAuth2UserService extends DefaultOAuth2UserService {
+public class KakaoOAuth2UserService extends DefaultOAuth2UserService {
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest){
