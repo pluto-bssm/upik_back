@@ -1,6 +1,5 @@
 package pluto.upik.shared.config;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,16 +11,22 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import pluto.upik.shared.jwt.JwtAuthenticationFilter;
 import pluto.upik.shared.jwt.JwtProvider;
+import pluto.upik.shared.jwt.KakaoJwtProperties;
 import pluto.upik.shared.jwt.OAuth2AuthenticationSuccessHandler;
 import pluto.upik.shared.security.KakaoOAuth2UserService;
 
 @Configuration
-@RequiredArgsConstructor
 public class SecurityConfig {
 
     private final KakaoOAuth2UserService kakaoOAuth2UserService;
     private final JwtProvider jwtProvider;
     private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
+
+    public SecurityConfig(KakaoOAuth2UserService kakaoOAuth2UserService, OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler, KakaoJwtProperties kakaoJwtProperties) {
+        this.kakaoOAuth2UserService = kakaoOAuth2UserService;
+        this.oAuth2AuthenticationSuccessHandler = oAuth2AuthenticationSuccessHandler;
+        this.jwtProvider = new JwtProvider(kakaoJwtProperties);
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
