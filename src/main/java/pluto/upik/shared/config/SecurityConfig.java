@@ -24,8 +24,8 @@ public class SecurityConfig {
 
     public SecurityConfig(KakaoOAuth2UserService kakaoOAuth2UserService, OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler, KakaoJwtProperties kakaoJwtProperties) {
         this.kakaoOAuth2UserService = kakaoOAuth2UserService;
-        this.oAuth2AuthenticationSuccessHandler = oAuth2AuthenticationSuccessHandler;
         this.jwtProvider = new JwtProvider(kakaoJwtProperties);
+        this.oAuth2AuthenticationSuccessHandler = new OAuth2AuthenticationSuccessHandler(new JwtProvider(kakaoJwtProperties));
     }
 
     @Bean
