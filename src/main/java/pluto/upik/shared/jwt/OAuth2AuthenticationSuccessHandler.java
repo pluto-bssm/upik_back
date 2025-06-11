@@ -19,11 +19,13 @@ public class OAuth2AuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         CustomUser user = (CustomUser) authentication.getPrincipal();
-
         String token = jwtProvider.generateToken(user.getName(), "ROLE_NOBSM");
 
         response.addHeader("Authorization", "Bearer " + token);
+        response.setContentType("application/json");
+        response.getWriter().write("{\"token\":\"" + token + "\"}");
 
-        // response.sendRedirect("http://yourfrontend.com?token=" + token);
+//         response.sendRedirect("https://www.youtube.com/watch?v=eVg3tj8voyE");
     }
+
 }
