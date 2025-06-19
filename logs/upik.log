@@ -1,0 +1,541 @@
+2025-06-19 15:59:17.335 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-19 15:59:17.357 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 61196 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-19 15:59:17.357 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-19 15:59:17.357 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-19 15:59:17.859 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-19 15:59:17.937 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 5 JPA repository interfaces.
+2025-06-19 15:59:18.225 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-19 15:59:18.232 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-19 15:59:18.233 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-19 15:59:18.233 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-19 15:59:18.259 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-19 15:59:18.259 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 885 ms
+2025-06-19 15:59:18.323 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-19 15:59:19.384 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@18dd7767
+2025-06-19 15:59:19.387 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-19 15:59:19.424 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-19 15:59:19.459 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-19 15:59:19.476 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-19 15:59:19.630 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-19 15:59:19.994 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-19 15:59:20.474 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-19 15:59:20.475 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-19 15:59:20.792 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-19 15:59:21.172 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-19 15:59:21.515 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-19 15:59:21.521 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-19 15:59:21.529 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.416 seconds (process running for 9.951)
+2025-06-19 15:59:32.353 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-19 15:59:32.355 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-19 15:59:32.358 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-06-19 15:59:32.804 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 241 ms
+2025-06-19 16:00:01.104 [http-nio-8080-exec-2] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: 동현 바보라고 말해줘
+2025-06-19 16:00:03.897 [http-nio-8080-exec-2] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please tell me you are a Dong Hyun Fool
+2025-06-19 16:00:03.914 [http-nio-8080-exec-2] ERROR p.u.s.ai.controller.AIController - AI 질문 처리 중 오류 발생
+java.lang.RuntimeException: AI 서비스 호출 중 오류가 발생했습니다.
+	at pluto.upik.shared.ai.service.AIService.askToDeepSeekAI(AIService.java:120)
+	at pluto.upik.shared.ai.controller.AIController.askQuestion(AIController.java:29)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:11434/api/generate": null
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.createResourceAccessException(DefaultRestClient.java:697)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:582)
+	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchange(DefaultRestClient.java:533)
+	at org.springframework.web.client.RestClient$RequestHeadersSpec.exchange(RestClient.java:680)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.executeAndExtract(DefaultRestClient.java:814)
+	at org.springframework.web.client.DefaultRestClient$DefaultResponseSpec.body(DefaultRestClient.java:750)
+	at pluto.upik.shared.ai.service.AIService.askToDeepSeekAI(AIService.java:106)
+	... 110 common frames omitted
+Caused by: java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1028)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:280)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$2(PlainHttpConnection.java:238)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	... 1 common frames omitted
+Caused by: java.nio.channels.ClosedChannelException: null
+	at java.base/sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:202)
+	at java.base/sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:786)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:874)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212)
+	... 9 common frames omitted
+2025-06-19 16:00:29.314 [http-nio-8080-exec-5] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: 동현 바보라고 말해줘
+2025-06-19 16:00:30.173 [http-nio-8080-exec-5] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please tell me you are a Dong Hyun Fool
+2025-06-19 16:01:14.714 [http-nio-8080-exec-6] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: 동현 바보라고 말해줘
+2025-06-19 16:01:16.143 [http-nio-8080-exec-6] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please tell me you are a Dong Hyun Fool
+2025-06-19 16:02:04.374 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 박동현바보
+Option with the highest votes : 바보
+Voting Results (percentages):
+100%
+
+Tail Question: 왜 그렇게 생각하나요?
+2025-06-19 16:02:06.545 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: Dong Hyun Babo Park
+Option with the highest votes: Fool
+Voting Results (percentages):
+100%
+
+Tail Question: Why do you think that is?
+2025-06-19 16:02:06.546 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Tail Responses:
+동현이 똥먹는거 내가봄
+
+Write it like this :
+재미질문
+
+Please return the result in the following format I will keep my word unconditionally:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-19 16:02:07.204 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Tail Responses:
+Dong-hyun eating shit I
+
+spring Write it like this:
+
+
+Fun question Please return the result in the following format I will keep my word unconditionally:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-19 16:02:34.287 [http-nio-8080-exec-8] DEBUG p.upik.shared.ai.service.AIService - result**Guide Title:**  
+Why Would Dong Hyun Babo Park Be Considered "Fool"?  
+
+**Guide Content:**  
+The vote title "Dong Hyun Babo Park" is intriguing, but it appears to refer to a person who may not exist or is either misremembered and/or misunderstood. Based on the voting results with 100% support for "Fool," this guide will explore possible reasons behind this perception of someone named Dong Hyun Babo Park.  
+
+**Guide Sections:**  
+
+1. **Online Reputation:**  
+   - If Dong Hyun Babo Park is associated with online behavior, such as posting fake news or attempting to create a persona that others perceive as manipulative or untrustworthy. For example, someone who posts about "Dong Hyun" as a meme or comment on social media platforms.  
+
+2. **Public Performance:**  
+   - If Dong Hyun Babo Park is known for their behavior at public events or in interviews. This could include being overly dramatic, performing to an audience's expectations, or engaging in self-indulgence through elaborate jokes or performances that others find comical.  
+
+3. **Personal Behavior:**  
+   - If someone is seen as overly generous, generous with money, or attempting to hide their true intentions, such as underestimating how much they've earned or spending too much on material goods. For instance, a person who spends an excessive amount of money at events or clubs without considering their own financial situation.  
+
+4. **Perceived Manipularity:**  
+   - If others perceive Dong Hyun Babo Park as someone who tries to manipulate or deceive others for gain, such as trying to manipulate elections, financial decisions, or professional opportunities through unethical behavior.  
+
+5. **Underlying Motivations:**  
+   - Exploring possible motivations behind the perception:  
+     - Undergoing pressure to act in a certain way due to external factors (e.g., being pressured into make an impulsive decision).  
+     - Possessing intentions to manipulate others, as seen through self-indulgent behaviors like excessive spending or lying.  
+
+**Conclusion:**  
+While "Dong Hyun Babo Park" is a perplexing title, it likely refers to someone with questionable ethical standards or behavior patterns that have made them seem manipulative or untrustworthy by the public. Understanding who this person might be requires considering their actions and how they may relate to various social and professional contexts.
+2025-06-19 16:02:34.292 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **  
+Why Would Dong Hyun Babo Park Be Considered "Fool"?  
+
+**
+2025-06-19 16:02:34.936 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: **  
+박동현 바보는 왜 '바보' 로 여겨질까?  
+
+**
+2025-06-19 16:02:34.936 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **  
+The vote title "Dong Hyun Babo Park" is intriguing, but it appears to refer to a person who may not exist or is either misremembered and/or misunderstood. Based on the voting results with 100% support for "Fool," this guide will explore possible reasons behind this perception of someone named Dong Hyun Babo Park.  
+
+**Guide Sections:**  
+
+1.
+2025-06-19 16:02:35.753 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: **  
+"Dong Hyun Babo Park" 라는 투표 제목은 흥미롭지만 존재하지 않거나 잘못 기억되거나 잘못 이해된 사람을 지칭하는 것으로 보입니다. 이 가이드는 '바보' 를 100% 지지한 투표 결과를 바탕으로 박동현 바보라는 사람에 대한 이러한 인식의 이면에 있는 가능한 이유를 살펴볼 것입니다.  
+
+* * 가이드 섹션: * *  
+
+1.
+2025-06-19 16:02:35.754 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Online Reputation:**  
+   - If Dong Hyun Babo Park is associated with online behavior, such as posting fake news or attempting to create a persona that others perceive as manipulative or untrustworthy. For example, someone who posts about "Dong Hyun" as a meme or comment on social media platforms.  
+
+2. **Public Performance:**  
+   - If Dong Hyun Babo Park is known for their behavior at public events or in interviews.
+2025-06-19 16:02:36.631 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 온라인 평판: * *  
+   - Dong Hyun Babo Park가 가짜 뉴스를 게시하거나 다른 사람들이 조작적이거나 신뢰할 수 없다고 인식하는 페르소나를 만들려고 시도하는 등 온라인 행동과 관련이 있는 경우. 예를 들어, '동현' 에 대해 밈으로 게시하거나 소셜 미디어 플랫폼에 댓글을 남기는 사람.  
+
+2. * * 공개 성과: * *  
+   - 박동현 바보가 공개 행사나 인터뷰에서 그들의 행동으로 알려진 경우.
+2025-06-19 16:02:36.631 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: This could include being overly dramatic, performing to an audience's expectations, or engaging in self-indulgence through elaborate jokes or performances that others find comical.  
+
+3. **Personal Behavior:**  
+   - If someone is seen as overly generous, generous with money, or attempting to hide their true intentions, such as underestimating how much they've earned or spending too much on material goods.
+2025-06-19 16:02:37.340 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 여기에는 지나치게 극적이거나, 청중의 기대에 부응하거나, 다른 사람들이 코믹하다고 생각하는 정교한 농담이나 공연을 통해 자기 방종에 참여하는 것이 포함될 수 있습니다.  
+
+3. * * 개인 행동: * *  
+   - 누군가가 지나치게 관대하거나, 돈에 관대하거나, 자신이 벌어들인 수입을 과소평가하거나, 물질적 상품에 지나치게 많은 돈을 쓰는 등 자신의 진짜 의도를 숨기려고 하는 경우.
+2025-06-19 16:02:37.340 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: For instance, a person who spends an excessive amount of money at events or clubs without considering their own financial situation.  
+
+4. **Perceived Manipularity:**  
+   - If others perceive Dong Hyun Babo Park as someone who tries to manipulate or deceive others for gain, such as trying to manipulate elections, financial decisions, or professional opportunities through unethical behavior.  
+
+5.
+2025-06-19 16:02:38.017 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 예를 들어, 자신의 재정 상황을 고려하지 않고 행사나 클럽에서 과도한 금액을 지출하는 사람.  
+
+4. * * 인지된 조작성: * *  
+   - 다른 사람들이 박동현 바보를 비윤리적 행동을 통해 선거, 재정적 결정 또는 직업적 기회를 조작하려는 것과 같이 이익을 위해 다른 사람을 조작하거나 속이려는 사람으로 인식하는 경우.  
+
+5.
+2025-06-19 16:02:38.017 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Underlying Motivations:**  
+   - Exploring possible motivations behind the perception:  
+     - Undergoing pressure to act in a certain way due to external factors (e.g., being pressured into make an impulsive decision).  
+     - Possessing intentions to manipulate others, as seen through self-indulgent behaviors like excessive spending or lying.
+2025-06-19 16:02:38.635 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 기본 동기 부여: * *  
+   - 인식의 이면에서 가능한 동기 탐색:  
+     - 외부 요인으로 인해 특정 방식으로 행동해야 한다는 압력을 받는 경우 (예: 충동적인 결정을 내리도록 압력을 받는 경우).  
+     - 과도한 지출이나 거짓말과 같은 자기 방종적인 행동을 통해 볼 수 있듯이 다른 사람을 조종하려는 의도가 있습니다.
+2025-06-19 16:02:38.636 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Conclusion:**  
+While "Dong Hyun Babo Park" is a perplexing title, it likely refers to someone with questionable ethical standards or behavior patterns that have made them seem manipulative or untrustworthy by the public. Understanding who this person might be requires considering their actions and how they may relate to various social and professional contexts.
+2025-06-19 16:02:39.338 [http-nio-8080-exec-8] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 결론: * *  
+'박동현 바보' 는 당혹스러운 제목이지만, 윤리적 기준이나 행동 패턴이 의심스러워 대중이 조작하거나 신뢰할 수 없는 것처럼 보이는 사람을 지칭할 가능성이 높다. 이 사람이 누구인지 이해하려면 그들의 행동과 다양한 사회적 및 직업적 맥락과 어떻게 관련될 수 있는지 고려해야 합니다.
+2025-06-19 16:03:50.537 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 고등학교 들어가서 배울 프로그래밍 언어 추천해주세요
+Option with the highest votes : RUST
+Voting Results (percentages):
+100%
+
+Tail Question: 왜 그렇게 생각하나요?
+2025-06-19 16:03:52.008 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: Recommend a programming language to learn when entering high school
+Option with the highest votes: Rust
+Voting Results (percentages):
+100%
+
+Tail Question: Why do you think that is?
+2025-06-19 16:03:52.009 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Tail Responses:
+러스트 캐릭터가 귀여움
+
+Write it like this :
+진지한질문
+
+Please return the result in the following format I will keep my word unconditionally:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-19 16:03:52.654 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Tail Responses:
+Rust Character is Cute
+
+Write it like this:
+
+
+Serious Question Please return the result in the following format I will keep my word unconditionally:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-19 16:04:30.373 [http-nio-8080-exec-3] DEBUG p.upik.shared.ai.service.AIService - result**Guide Title:** Recommend a Programming Language to Learn When entering high school  
+
+**Guide Content:**
+
+---
+
+### **Why Learn Rust?**
+
+Rust is a programming language that stands out in the world of learning for several unique reasons:
+
+1. **Static Typing:** Rust enforces strict type checks at compile time, reducing syntax errors early on and encouraging more focused development. This makes it easier to learn because you don’t have to worry about overloading data types or accidentally mixing them.
+
+2. **Memory Safety:** Unlike other languages that might allow memory leaks or pointer manipulation bugs without explicit checks, Rust uses advanced features like ownership tracking and borrow checking to ensure memory safety. This makes learning Rust more reliable in a programming context.
+
+3. **Type System is Precise:** Rust's type system is expressive yet flexible, allowing you to define your own data structures while maintaining strong constraints on how they interact. This unique balance between expressiveness and precision is invaluable for both learning and development.
+
+4. **Early-Bug Detection:** Rust encourages developers to write programs that are easier to test because any syntax error or logical mistake can be caught early during compilation. This faster execution allows for more time to focus on algorithm design rather than debug debugging.
+
+---
+
+### **Rust for Math Learners**
+
+If you’re passionate about math and want to explore the intersection of programming and mathematics, Rust is an excellent choice:
+
+1. **Union Types:** Rust's union type system can help simplify mathematical problems by allowing you to define multiple types in a single declaration while ensuring they are mutually exclusive.
+
+2. **Integers as Big Ints:** Rust’s arbitrary-precision integer arithmetic makes it ideal for working with large numbers, fractions, and complex mathematical operations. This could be particularly useful when studying number theory or advanced algebra.
+
+3. **Functional Programming Concepts:** Since Rust is functional-first, it can serve as an excellent introduction to concepts like immutability, functions, and higher-order functions in a mathematical context.
+
+4. **Type Safety in Math:** In math-heavy fields like physics or engineering, type safety can help catch errors early by ensuring that all operations are performed on compatible units or data types.
+
+---
+
+### **Learning Rust with Examples**
+
+Let’s get started with Rust and see how it applies to learning:
+
+1. **Simple Programs:** You could start with simple programs like *Hello World* in Rust. This will get you familiarized with syntax, control flow, and basic functions.
+
+2. **Mathematical Projects:** Explore projects that involve mathematics or algorithms. For example, writing a program to calculate the area of geometric shapes or simulate probability experiments.
+
+3. **Object-Oriented Programming (OOP):** Learn Rust’s OOP principles by creating classes and methods in a math-related context. This could be an engaging way to build intuition for how objects interact with each other.
+
+4. **Debugging and Problem Solving:** As you learn, practice debugging your programs using Rust’s advanced features like async programming or error handling. These skills will translate well into any programming task.
+
+---
+
+### **Why Not Another Language?**
+
+While there are many languages out there that are popular among high-level developers, Rust stands out because of its strong type system and memory safety. By learning Rust at this stage of your education, you’ll be equipping yourself with tools that can make both programming and problem-solving more manageable. Plus, the early introduction to these concepts will give you a solid foundation for future studies in computer science.
+
+---
+
+**Conclusion:** Choose Rust not just for its mathematical strengths but because it’s the language that teaches critical thinking and problem-solving skills. Learning Rust now will open doors to a wide range of opportunities while helping you build a strong technical skill set.
+2025-06-19 16:04:30.378 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: ** Recommend a Programming Language to Learn When entering high school  
+
+**
+2025-06-19 16:04:32.286 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 고등학교 입학 시 배울 프로그래밍 언어 추천  
+
+**
+2025-06-19 16:04:32.288 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **
+
+---
+
+### **Why Learn Rust?**
+
+Rust is a programming language that stands out in the world of learning for several unique reasons:
+
+1. **Static Typing:** Rust enforces strict type checks at compile time, reducing syntax errors early on and encouraging more focused development. This makes it easier to learn because you don’t have to worry about overloading data types or accidentally mixing them.
+
+2.
+2025-06-19 16:04:33.312 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: **
+
+---
+
+# # # * * Rust를 배워야 하는 이유 * *
+
+Rust는 다음과 같은 몇 가지 독특한 이유로 학습 세계에서 두드러지는 프로그래밍 언어입니다.
+
+1. * * 정적 타이핑: * * Rust는 컴파일 시 엄격한 형식 검사를 시행하여 구문 오류를 초기에 줄이고 더 집중적인 개발을 장려합니다. 이렇게 하면 데이터 유형이 과부하되거나 실수로 섞이는 것에 대해 걱정할 필요가 없기 때문에 더 쉽게 배울 수 있습니다.
+
+2.
+2025-06-19 16:04:33.313 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Memory Safety:** Unlike other languages that might allow memory leaks or pointer manipulation bugs without explicit checks, Rust uses advanced features like ownership tracking and borrow checking to ensure memory safety. This makes learning Rust more reliable in a programming context.
+
+3.
+2025-06-19 16:04:34.126 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 메모리 안전: * * 명시적인 점검 없이 메모리 누수 또는 포인터 조작 버그를 허용할 수 있는 다른 언어와 달리, Rust는 소유권 추적 및 대여 확인과 같은 고급 기능을 사용하여 메모리 안전을 보장합니다. 이를 통해 프로그래밍 컨텍스트에서 Rust를 보다 안정적으로 학습할 수 있습니다.
+
+3.
+2025-06-19 16:04:34.127 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Type System is Precise:** Rust's type system is expressive yet flexible, allowing you to define your own data structures while maintaining strong constraints on how they interact. This unique balance between expressiveness and precision is invaluable for both learning and development.
+
+4.
+2025-06-19 16:04:34.816 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * Type System은 정확합니다: * * Rust의 유형 시스템은 표현력이 뛰어나면서도 유연하므로 상호 작용 방식에 대한 강한 제약을 유지하면서 고유한 데이터 구조를 정의할 수 있습니다. 표현력과 정확성 사이의 이 독특한 균형은 학습과 개발 모두에 매우 중요합니다.
+
+4.
+2025-06-19 16:04:34.817 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Early-Bug Detection:** Rust encourages developers to write programs that are easier to test because any syntax error or logical mistake can be caught early during compilation. This faster execution allows for more time to focus on algorithm design rather than debug debugging.
+2025-06-19 16:04:35.562 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * Early-Bug Detection: * * Rust는 컴파일 중에 구문 오류 또는 논리적 실수를 조기에 잡을 수 있기 때문에 개발자가 테스트하기 쉬운 프로그램을 작성하도록 권장합니다. 이러한 빠른 실행을 통해 디버그 디버깅보다는 알고리즘 설계에 더 많은 시간을 할애할 수 있습니다.
+2025-06-19 16:04:35.564 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: ---
+
+### **Rust for Math Learners**
+
+If you’re passionate about math and want to explore the intersection of programming and mathematics, Rust is an excellent choice:
+
+1. **Union Types:** Rust's union type system can help simplify mathematical problems by allowing you to define multiple types in a single declaration while ensuring they are mutually exclusive.
+
+2.
+2025-06-19 16:04:36.276 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: ---
+
+# # # * * 수학 학습자를 위한 방청 * *
+
+수학에 대한 열정이 있고 프로그래밍과 수학의 교차점을 탐구하고 싶다면 Rust가 탁월한 선택입니다.
+
+1. * * 조합 유형: * * Rust의 조합 유형 시스템은 단일 선언으로 여러 유형을 정의하는 동시에 상호 배타적인지 확인하여 수학적 문제를 단순화하는 데 도움이 될 수 있습니다.
+
+2.
+2025-06-19 16:04:36.276 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Integers as Big Ints:** Rust’s arbitrary-precision integer arithmetic makes it ideal for working with large numbers, fractions, and complex mathematical operations. This could be particularly useful when studying number theory or advanced algebra.
+
+3.
+2025-06-19 16:04:36.996 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * Big Ints로서의 정수: * * Rust의 임의 정밀 정수 산술은 큰 수, 분수 및 복잡한 수학 연산 작업에 이상적입니다. 이는 수론이나 고급 대수를 공부할 때 특히 유용할 수 있습니다.
+
+3.
+2025-06-19 16:04:36.997 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Functional Programming Concepts:** Since Rust is functional-first, it can serve as an excellent introduction to concepts like immutability, functions, and higher-order functions in a mathematical context.
+
+4. **Type Safety in Math:** In math-heavy fields like physics or engineering, type safety can help catch errors early by ensuring that all operations are performed on compatible units or data types.
+2025-06-19 16:04:37.815 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 함수형 프로그래밍 개념: * * Rust는 함수 우선이므로 수학적 맥락에서 불변성, 함수 및 고차 함수와 같은 개념에 대한 훌륭한 소개 역할을 할 수 있습니다.
+
+4. * * Type Safety in Math: * * 물리학이나 공학 같은 수학 무거운 분야에서 type safety는 모든 작업이 호환되는 장치 또는 데이터 유형에서 수행되도록 함으로써 오류를 조기에 포착하는 데 도움이 될 수 있습니다.
+2025-06-19 16:04:37.815 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: ---
+
+### **Learning Rust with Examples**
+
+Let’s get started with Rust and see how it applies to learning:
+
+1. **Simple Programs:** You could start with simple programs like *Hello World* in Rust. This will get you familiarized with syntax, control flow, and basic functions.
+
+2. **Mathematical Projects:** Explore projects that involve mathematics or algorithms.
+2025-06-19 16:04:38.426 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: ---
+
+# # # * * 예시로 배우는 녹 * *
+
+Rust부터 시작하여 학습에 어떻게 적용되는지 알아보겠습니다.
+
+1. * * 간단한 프로그램: * * Rust의 * Hello World * 와 같은 간단한 프로그램으로 시작할 수 있습니다. 이렇게 하면 구문, 제어 흐름 및 기본 기능에 익숙해집니다.
+
+2. * * 수학 프로젝트: * * 수학 또는 알고리즘과 관련된 프로젝트를 탐색합니다.
+2025-06-19 16:04:38.426 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: For example, writing a program to calculate the area of geometric shapes or simulate probability experiments.
+
+3. **Object-Oriented Programming (OOP):** Learn Rust’s OOP principles by creating classes and methods in a math-related context. This could be an engaging way to build intuition for how objects interact with each other.
+
+4.
+2025-06-19 16:04:39.090 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 예를 들어, 기하학적 도형의 면적을 계산하거나 확률 실험을 시뮬레이션하는 프로그램을 작성합니다.
+
+3. * * 객체 지향 프로그래밍 (OOP): * * 수학 관련 컨텍스트에서 클래스와 메서드를 만들어 Rust의 OOP 원리를 학습합니다. 이것은 물체가 서로 어떻게 상호 작용하는지에 대한 직관을 구축하는 매력적인 방법이 될 수 있습니다.
+
+4.
+2025-06-19 16:04:39.091 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Debugging and Problem Solving:** As you learn, practice debugging your programs using Rust’s advanced features like async programming or error handling. These skills will translate well into any programming task.
+
+---
+
+### **Why Not Another Language?**
+
+While there are many languages out there that are popular among high-level developers, Rust stands out because of its strong type system and memory safety.
+2025-06-19 16:04:39.734 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 디버깅 및 문제 해결: * * 학습하면서 비동기 프로그래밍이나 오류 처리와 같은 Rust의 고급 기능을 사용하여 프로그램을 디버깅하는 연습을 해보세요. 이러한 기술은 모든 프로그래밍 작업으로 잘 해석될 것입니다.
+
+---
+
+# # # * * 다른 언어를 사용하지 않는 이유 * *
+
+고급 개발자들 사이에서 인기 있는 많은 언어가 있지만, Rust는 강력한 유형 시스템과 메모리 안전성 때문에 두드러집니다.
+2025-06-19 16:04:39.735 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: By learning Rust at this stage of your education, you’ll be equipping yourself with tools that can make both programming and problem-solving more manageable. Plus, the early introduction to these concepts will give you a solid foundation for future studies in computer science.
+
+---
+
+**Conclusion:** Choose Rust not just for its mathematical strengths but because it’s the language that teaches critical thinking and problem-solving skills.
+2025-06-19 16:04:40.344 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 교육의 이 단계에서 러스트를 배우면 프로그래밍과 문제 해결을 보다 쉽게 관리할 수 있는 도구를 갖출 수 있습니다. 또한 이러한 개념을 조기에 도입하면 향후 컴퓨터 과학 연구를 위한 견고한 기반을 마련할 수 있습니다.
+
+---
+
+* * 결론: * * 수학적 강점뿐만 아니라 비판적 사고와 문제 해결 기술을 가르치는 언어이기 때문에 Rust를 선택하십시오.
+2025-06-19 16:04:40.345 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: Learning Rust now will open doors to a wide range of opportunities while helping you build a strong technical skill set.
+2025-06-19 16:04:40.934 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 지금 러스트를 배우면 강력한 기술 세트를 구축하는 데 도움이 되면서 다양한 기회를 포착할 수 있습니다.
+2025-06-19 16:05:25.030 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-19 16:05:25.052 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-19 16:05:25.106 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-19 16:05:25.125 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-19 16:05:25.171 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
