@@ -1,44 +1,56 @@
 package pluto.upik.shared.config;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import pluto.upik.shared.jwt.JwtAuthenticationFilter;
+import pluto.upik.shared.jwt.JwtProvider;
+import pluto.upik.shared.jwt.KakaoJwtProperties;
+import pluto.upik.shared.jwt.OAuth2AuthenticationSuccessHandler;
 import pluto.upik.shared.security.KakaoOAuth2UserService;
 
-/**
- * 보안 설정 클래스
- * 애플리케이션의 보안 설정을 정의합니다.
- */
 @Configuration
-@RequiredArgsConstructor
 public class SecurityConfig {
 
     private final KakaoOAuth2UserService kakaoOAuth2UserService;
+    private final JwtProvider jwtProvider;
+    private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
 
-    /**
-     * 보안 필터 체인 설정
-     * 
-     * @param http HttpSecurity 객체
-     * @return 구성된 SecurityFilterChain
-     * @throws Exception 보안 설정 중 발생할 수 있는 예외
-     */
+    public SecurityConfig(KakaoOAuth2UserService kakaoOAuth2UserService, OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler, KakaoJwtProperties kakaoJwtProperties) {
+        this.kakaoOAuth2UserService = kakaoOAuth2UserService;
+        this.jwtProvider = new JwtProvider(kakaoJwtProperties);
+        this.oAuth2AuthenticationSuccessHandler = new OAuth2AuthenticationSuccessHandler(new JwtProvider(kakaoJwtProperties));
+    }
+
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable) // API 서버이므로 CSRF 비활성화
-                .cors(AbstractHttpConfigurer::disable) // CORS 비활성화
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll() // 모든 요청 허용
+                        .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(kakaoOAuth2UserService)
                         )
-                );
+                        .successHandler(oAuth2AuthenticationSuccessHandler)
+                )
+
+                .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
+            throws Exception {
+        return config.getAuthenticationManager();
     }
 }
