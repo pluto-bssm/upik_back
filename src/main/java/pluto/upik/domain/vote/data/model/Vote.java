@@ -46,9 +46,7 @@ public class Vote {
     /**
      * 투표 카테고리
      */
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "enum ('A', 'B', 'C')")
-    private Category category;
+    private String category;
 
     /**
      * 투표 상태
@@ -80,12 +78,6 @@ public class Vote {
     @Transient
     private boolean guideGenerated;
 
-    /**
-     * 투표 카테고리 열거형
-     */
-    public enum Category {
-        A, B, C
-    }
 
     /**
      * 투표 상태 열거형

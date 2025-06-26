@@ -3,6 +3,7 @@ package pluto.upik.domain.tail.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import pluto.upik.domain.tail.data.model.Tail;
 import pluto.upik.domain.tail.data.model.TailResponse;
 
 import java.util.List;
@@ -47,4 +48,8 @@ public interface TailResponseRepository extends JpaRepository<TailResponse, UUID
      * @return 응답 수
      */
     long countByTailId(UUID tailId);
+
+
+    // Tail 별 TailResponse 리스트 조회
+    List<TailResponse> findByTail(Tail tail);
 }

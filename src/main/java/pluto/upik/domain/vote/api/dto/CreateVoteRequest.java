@@ -32,7 +32,7 @@ public class CreateVoteRequest {
      */
     @NotNull(message = "카테고리는 필수 입력값입니다")
     @Schema(description = "투표 카테고리", example = "A")
-    private Vote.Category category;
+    private String category;
 
     /**
      * 투표 종료 일자

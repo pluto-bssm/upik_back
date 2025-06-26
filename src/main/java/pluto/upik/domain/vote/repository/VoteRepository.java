@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pluto.upik.domain.vote.data.model.Vote;
+import pluto.upik.domain.voteResponse.data.model.VoteResponse;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -41,4 +42,7 @@ public interface VoteRepository extends JpaRepository<Vote, UUID> {
      */
     @Query("SELECT v FROM Vote v WHERE v.finishedAt > :currentDate")
     List<Vote> findActiveVotes(LocalDate currentDate);
+
+
+    List<Vote> findByFinishedAtBefore(LocalDate date);
 }

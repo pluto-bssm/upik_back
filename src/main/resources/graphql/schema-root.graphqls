@@ -1,0 +1,8 @@
+type Query {
+    guide: GuideQuery!
+    keywordGuide: KeywordGuideQuery!
+}
+
+type Mutation {
+    guide: GuideMutation!
+}

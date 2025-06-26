@@ -37,7 +37,7 @@ public class VoteResponse {
      * 투표 카테고리
      */
     @Schema(description = "투표 카테고리")
-    private Vote.Category category;
+    private String category;
 
     /**
      * 투표 상태

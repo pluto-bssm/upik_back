@@ -28,6 +28,7 @@ public class Guide {
      */
     @Id
     @Column(columnDefinition = "uuid")
+    @GeneratedValue
     private UUID id;
 
     /**
@@ -58,16 +59,14 @@ public class Guide {
     /**
      * 카테고리
      */
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "enum ('A', 'B', 'C')")
-    private Vote.Category category;
+
+    private String category;
 
     /**
      * 가이드 타입
      */
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "enum ('TEXT', 'VIDEO')")
-    private GuideType guideType;
+
+    private String guideType;
 
     /**
      * 재투표 수
@@ -81,18 +80,7 @@ public class Guide {
     @Column(name = "`like`")
     private Long like;
 
-    /**
-     * 가이드 타입 열거형
-     */
-    public enum GuideType {
-        TEXT, VIDEO
-    }
 
-    /**
-     * 수정 일시
-     */
-    @Transient
-    private LocalDateTime updatedAt;
 
     /**
      * 엔티티 생성 전 호출되는 메서드

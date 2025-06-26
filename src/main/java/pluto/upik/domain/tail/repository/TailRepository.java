@@ -4,8 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pluto.upik.domain.tail.data.model.Tail;
+import pluto.upik.domain.vote.data.model.Vote;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -22,4 +24,7 @@ public interface TailRepository extends JpaRepository<Tail, UUID> {
      * @return 투표에 속한 테일 목록
      */
     List<Tail> findByVoteId(UUID voteId);
+
+    // Vote 별로 첫 번째 Tail 조회
+    Optional<Tail> findFirstByVote(Vote vote);
 }
