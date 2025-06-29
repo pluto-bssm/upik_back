@@ -1,8 +1,10 @@
 type Query {
     guide: GuideQuery!
     keywordGuide: KeywordGuideQuery!
+    report: ReportQuery!
 }
 
 type Mutation {
     guide: GuideMutation!
+    report: ReportMutation!
 }
