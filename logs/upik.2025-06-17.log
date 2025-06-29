@@ -229,7 +229,7 @@ In summary, Korean food is a great choice when you're seeking something hearty a
 2025-06-17 11:11:31.967 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: AI 응답 포맷이 예상과 다릅니다.] with root cause
 java.lang.RuntimeException: AI 응답 포맷이 예상과 다릅니다.
 	at pluto.upik.shared.ai.service.AIService.generateGuide(AIService.java:156)
-	at pluto.upik.shared.ai.controller.AIController.generateGuide(AIController.java:41)
+	at pluto.upik.shared.ai.resolver.AIController.generateGuide(AIController.java:41)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
@@ -472,7 +472,7 @@ Guide Content:
 2025-06-17 11:15:08.004 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: AI 응답 포맷이 예상과 다릅니다.] with root cause
 java.lang.RuntimeException: AI 응답 포맷이 예상과 다릅니다.
 	at pluto.upik.shared.ai.service.AIService.generateGuide(AIService.java:157)
-	at pluto.upik.shared.ai.controller.AIController.generateGuide(AIController.java:41)
+	at pluto.upik.shared.ai.resolver.AIController.generateGuide(AIController.java:41)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)

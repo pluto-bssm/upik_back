@@ -1,9 +1,8 @@
-package pluto.upik.shared.ai.controller;
+package pluto.upik.shared.ai.resolver;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import pluto.upik.domain.vote.api.dto.VoteResponse;
 import pluto.upik.domain.vote.data.model.Vote;
 import pluto.upik.domain.vote.repository.VoteRepository;
 import pluto.upik.shared.ai.service.AIService;

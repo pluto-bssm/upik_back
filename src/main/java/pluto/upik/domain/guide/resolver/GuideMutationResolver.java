@@ -1,8 +1,7 @@
-package pluto.upik.domain.guide.api;
+package pluto.upik.domain.guide.resolver;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 import pluto.upik.domain.guide.data.DTO.GuideMutation;

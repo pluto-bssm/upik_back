@@ -1,4 +1,4 @@
-package pluto.upik.domain.guide.api;
+package pluto.upik.domain.guide.resolver;
 
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;

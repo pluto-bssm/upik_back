@@ -1,4 +1,4 @@
-package pluto.upik.domain.vote.api.dto;
+package pluto.upik.domain.vote.resolver.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import pluto.upik.domain.vote.data.model.Vote;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**

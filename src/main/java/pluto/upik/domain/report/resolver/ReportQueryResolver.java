@@ -1,4 +1,4 @@
-package pluto.upik.domain.report.api;
+package pluto.upik.domain.report.resolver;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

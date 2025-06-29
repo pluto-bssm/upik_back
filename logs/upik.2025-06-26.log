@@ -786,7 +786,7 @@ Caused by: graphql.schema.idl.errors.SchemaProblem: errors=['Query' type [@1:1] 
 2025-06-26 17:53:05.987 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2025-06-26 17:53:05.988 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
 2025-06-26 17:53:15.738 [http-nio-8080-exec-5] ERROR o.s.g.e.ExceptionResolversExceptionHandler - Unresolved IllegalStateException for executionId 81909272-c550-fc40-6b9d-a1d5b8335ef4
-java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.domain.guide.api.GuideMutationResolver.incrementLike(pluto.upik.domain.guide.data.DTO.GuideMutation,java.lang.String): does not match the source Object type 'class pluto.upik.domain.guide.data.DTO.GuideMutation'.
+java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementLike(pluto.upik.domain.guide.data.DTO.GuideMutation,java.lang.String): does not match the source Object type 'class pluto.upik.domain.guide.data.DTO.GuideMutation'.
 	at org.springframework.graphql.data.method.annotation.support.SourceMethodArgumentResolver.resolveArgument(SourceMethodArgumentResolver.java:75)
 	at org.springframework.graphql.data.method.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:83)
 	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethodSupport.getMethodArgumentValues(DataFetcherHandlerMethodSupport.java:92)
@@ -945,7 +945,7 @@ java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.doma
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
 2025-06-26 17:53:15.745 [http-nio-8080-exec-5] ERROR o.s.g.e.ExceptionResolversExceptionHandler - Unresolved IllegalStateException for executionId 81909272-c550-fc40-6b9d-a1d5b8335ef4
-java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.domain.guide.api.GuideMutationResolver.incrementRevote(pluto.upik.domain.guide.data.DTO.GuideMutation,java.lang.String): does not match the source Object type 'class pluto.upik.domain.guide.data.DTO.GuideMutation'.
+java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementRevote(pluto.upik.domain.guide.data.DTO.GuideMutation,java.lang.String): does not match the source Object type 'class pluto.upik.domain.guide.data.DTO.GuideMutation'.
 	at org.springframework.graphql.data.method.annotation.support.SourceMethodArgumentResolver.resolveArgument(SourceMethodArgumentResolver.java:75)
 	at org.springframework.graphql.data.method.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:83)
 	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethodSupport.getMethodArgumentValues(DataFetcherHandlerMethodSupport.java:92)
@@ -1104,7 +1104,7 @@ java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.doma
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
 2025-06-26 17:53:29.035 [http-nio-8080-exec-7] ERROR o.s.g.e.ExceptionResolversExceptionHandler - Unresolved IllegalStateException for executionId 22dc7e3d-6170-fd8b-a318-948518a81baa
-java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.domain.guide.api.GuideMutationResolver.incrementLike(pluto.upik.domain.guide.data.DTO.GuideMutation,java.lang.String): does not match the source Object type 'class pluto.upik.domain.guide.data.DTO.GuideMutation'.
+java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementLike(pluto.upik.domain.guide.data.DTO.GuideMutation,java.lang.String): does not match the source Object type 'class pluto.upik.domain.guide.data.DTO.GuideMutation'.
 	at org.springframework.graphql.data.method.annotation.support.SourceMethodArgumentResolver.resolveArgument(SourceMethodArgumentResolver.java:75)
 	at org.springframework.graphql.data.method.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:83)
 	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethodSupport.getMethodArgumentValues(DataFetcherHandlerMethodSupport.java:92)
@@ -1312,7 +1312,7 @@ java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.doma
 2025-06-26 17:54:43.627 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2025-06-26 17:54:43.640 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 13 ms
 2025-06-26 17:54:43.800 [http-nio-8080-exec-1] ERROR o.s.g.e.ExceptionResolversExceptionHandler - Unresolved IllegalStateException for executionId 332e1da4-d278-baec-b1ce-86a0fcafca06
-java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.domain.guide.api.GuideMutationResolver.incrementLike(pluto.upik.domain.guide.data.DTO.GuideMutation,java.lang.String): does not match the source Object type 'class pluto.upik.domain.guide.data.DTO.GuideMutation'.
+java.lang.IllegalStateException: Parameter [1] in public boolean pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementLike(pluto.upik.domain.guide.data.DTO.GuideMutation,java.lang.String): does not match the source Object type 'class pluto.upik.domain.guide.data.DTO.GuideMutation'.
 	at org.springframework.graphql.data.method.annotation.support.SourceMethodArgumentResolver.resolveArgument(SourceMethodArgumentResolver.java:75)
 	at org.springframework.graphql.data.method.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:83)
 	at org.springframework.graphql.data.method.annotation.support.DataFetcherHandlerMethodSupport.getMethodArgumentValues(DataFetcherHandlerMethodSupport.java:92)
@@ -1740,7 +1740,7 @@ org.springframework.dao.DataIntegrityViolationException: could not execute state
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy146.save(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.reportAndRevote(GuideInteractionService.java:40)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideRevote(GuideMutationResolver.java:32)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideRevote(GuideMutationResolver.java:32)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -2586,7 +2586,7 @@ org.springframework.dao.InvalidDataAccessResourceUsageException: could not execu
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy152.save(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.likeGuide(GuideInteractionService.java:42)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -2809,7 +2809,7 @@ org.springframework.dao.InvalidDataAccessResourceUsageException: could not execu
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy152.save(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.likeGuide(GuideInteractionService.java:42)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -3081,7 +3081,7 @@ org.springframework.dao.InvalidDataAccessResourceUsageException: could not execu
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy152.save(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.toggleLikeGuide(GuideInteractionService.java:45)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -3304,7 +3304,7 @@ org.springframework.dao.InvalidDataAccessResourceUsageException: could not execu
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy152.save(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.toggleLikeGuide(GuideInteractionService.java:45)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -3527,7 +3527,7 @@ org.springframework.dao.InvalidDataAccessResourceUsageException: could not execu
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy152.save(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.toggleLikeGuide(GuideInteractionService.java:45)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -3847,7 +3847,7 @@ org.springframework.dao.InvalidDataAccessResourceUsageException: could not execu
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy152.save(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.toggleLikeGuide(GuideInteractionService.java:45)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -4119,7 +4119,7 @@ org.springframework.dao.InvalidDataAccessResourceUsageException: could not execu
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy152.save(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.toggleLikeGuide(GuideInteractionService.java:45)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -4490,7 +4490,7 @@ org.springframework.dao.InvalidDataAccessApiUsageException: Executing an update/
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy149.decrementLikeCount(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.toggleLikeGuide(GuideInteractionService.java:38)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -4732,7 +4732,7 @@ org.springframework.dao.InvalidDataAccessApiUsageException: Executing an update/
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy149.decrementLikeCount(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.toggleLikeGuide(GuideInteractionService.java:47)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)
@@ -4925,7 +4925,7 @@ org.springframework.dao.InvalidDataAccessApiUsageException: Executing an update/
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy2/jdk.proxy2.$Proxy149.decrementLikeCount(Unknown Source)
 	at pluto.upik.domain.guide.service.GuideInteractionService.toggleLikeGuide(GuideInteractionService.java:47)
-	at pluto.upik.domain.guide.api.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
+	at pluto.upik.domain.guide.resolver.GuideMutationResolver.incrementGuideLike(GuideMutationResolver.java:22)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.graphql.data.method.InvocableHandlerMethodSupport.doInvoke(InvocableHandlerMethodSupport.java:117)

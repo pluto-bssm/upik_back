@@ -1,4 +1,4 @@
-package pluto.upik.domain.report.api;
+package pluto.upik.domain.report.resolver;
 
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;

@@ -146,7 +146,7 @@ java.sql.SQLSyntaxErrorException: (conn=4167) Unknown column 'v1_0.created_at' i
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
 	at pluto.upik.domain.vote.service.VoteService$$SpringCGLIB$$0.getAllVotes(<generated>)
-	at pluto.upik.domain.vote.api.VoteController.getAllVotes(VoteController.java:68)
+	at pluto.upik.domain.vote.resolver.VoteController.getAllVotes(VoteController.java:68)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
@@ -322,7 +322,7 @@ java.sql.SQLSyntaxErrorException: (conn=4167) Unknown column 'v1_0.created_at' i
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
 	at pluto.upik.domain.vote.service.VoteService$$SpringCGLIB$$0.getAllVotes(<generated>)
-	at pluto.upik.domain.vote.api.VoteController.getAllVotes(VoteController.java:68)
+	at pluto.upik.domain.vote.resolver.VoteController.getAllVotes(VoteController.java:68)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
@@ -541,7 +541,7 @@ java.sql.SQLSyntaxErrorException: (conn=4178) Unknown column 'v1_0.updated_at' i
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
 	at pluto.upik.domain.vote.service.VoteService$$SpringCGLIB$$0.getAllVotes(<generated>)
-	at pluto.upik.domain.vote.api.VoteController.getAllVotes(VoteController.java:68)
+	at pluto.upik.domain.vote.resolver.VoteController.getAllVotes(VoteController.java:68)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
@@ -782,7 +782,7 @@ java.sql.SQLSyntaxErrorException: (conn=4178) Unknown column 'v1_0.updated_at' i
 2025-06-12 13:14:51.893 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 223 ms
 2025-06-12 13:16:22.258 [http-nio-8080-exec-8] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "pluto.upik.shared.security.CustomUser.getName()" because "customUser" is null] with root cause
 java.lang.NullPointerException: Cannot invoke "pluto.upik.shared.security.CustomUser.getName()" because "customUser" is null
-	at pluto.upik.domain.vote.api.VoteController.createVote(VoteController.java:47)
+	at pluto.upik.domain.vote.resolver.VoteController.createVote(VoteController.java:47)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)

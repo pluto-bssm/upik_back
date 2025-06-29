@@ -12,6 +12,8 @@ import pluto.upik.domain.guide.repository.GuideRepository;
 import pluto.upik.domain.report.data.model.Report;
 import pluto.upik.domain.report.repository.ReportRepository;
 import pluto.upik.domain.user.repository.UserRepository;
+import pluto.upik.shared.exception.BusinessException;
+import pluto.upik.shared.exception.ResourceNotFoundException;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -34,35 +36,29 @@ public class GuideInteractionService {
      */
     public boolean toggleLikeGuide(UUID userId, UUID guideId) {
         if (!userRepository.existsById(userId)) {
-            log.warn("User ID {} does not exist", userId);
-            return false;
+            throw new ResourceNotFoundException("User not found: " + userId);
         }
         if (!guideRepository.existsById(guideId)) {
-            log.warn("Guide ID {} does not exist", guideId);
-            return false;
+            throw new ResourceNotFoundException("Guide not found: " + guideId);
         }
 
         GuideAndUserId id = new GuideAndUserId(userId, guideId);
         try {
             if (guideAndUserRepository.existsById(id)) {
                 guideAndUserRepository.deleteById(id);
-                int updatedRows = guideRepository.decrementLikeCount(guideId);
-                log.info("User {} canceled like on Guide {}", userId, guideId);
+                guideRepository.decrementLikeCount(guideId);
                 return false;
             } else {
                 GuideAndUser entity = new GuideAndUser();
                 entity.setId(id);
                 guideAndUserRepository.save(entity);
-                int updatedRows = guideRepository.incrementLikeCount(guideId);
-                log.info("User {} liked Guide {}", userId, guideId);
+                guideRepository.incrementLikeCount(guideId);
                 return true;
             }
         } catch (DataIntegrityViolationException e) {
-            log.error("Data integrity violation when user {} toggles like on guide {}: {}", userId, guideId, e.getMessage());
-            return false;
+            throw new BusinessException("Data integrity violation: " + e.getMessage());
         } catch (Exception e) {
-            log.error("Unexpected error when user {} toggles like on guide {}: {}", userId, guideId, e.getMessage(), e);
-            return false;
+            throw new BusinessException("Unexpected error: " + e.getMessage());
         }
     }
 
@@ -73,14 +69,20 @@ public class GuideInteractionService {
      * 신고 안되어 있으면 저장 후 revote count 증가
      */
     public boolean toggleReportAndRevote(UUID guideId, UUID userId, String reason) {
-        GuideAndUserId id = new GuideAndUserId(userId, guideId);
+        // 유저/가이드 존재 체크
+        if (!userRepository.existsById(userId)) {
+            throw new ResourceNotFoundException("User not found: " + userId);
+        }
+        if (!guideRepository.existsById(guideId)) {
+            throw new ResourceNotFoundException("Guide not found: " + guideId);
+        }
 
         try {
             boolean exists = reportRepository.existsByUserIdAndTargetId(userId, guideId);
             if (exists) {
                 // 신고 취소
                 reportRepository.deleteByUserIdAndTargetId(userId, guideId);
-                int updatedRows = guideRepository.decrementRevoteCount(guideId);
+                guideRepository.decrementRevoteCount(guideId);
                 log.info("User {} canceled report on Guide {}", userId, guideId);
                 return false;
             } else {
@@ -92,13 +94,17 @@ public class GuideInteractionService {
                         .createdAt(LocalDate.now())
                         .build());
 
-                int updatedRows = guideRepository.incrementRevoteCount(guideId);
+                guideRepository.incrementRevoteCount(guideId);
                 log.info("User {} reported Guide {}", userId, guideId);
                 return true;
             }
+        } catch (DataIntegrityViolationException e) {
+            log.error("Data integrity violation during toggleReportAndRevote: userId={}, guideId={}, reason={}", userId, guideId, reason, e);
+            throw new BusinessException("데이터 무결성 위반: " + e.getMessage());
         } catch (Exception e) {
             log.error("Unexpected error during toggleReportAndRevote: userId={}, guideId={}, reason={}", userId, guideId, reason, e);
-            return false;
+            throw new BusinessException("알 수 없는 오류가 발생했습니다.");
         }
     }
+
 }

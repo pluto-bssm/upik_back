@@ -1,4 +1,4 @@
-package pluto.upik.domain.report.api;
+package pluto.upik.domain.report.resolver;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,11 +7,7 @@ import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 import pluto.upik.domain.report.application.ReportApplication;
 import pluto.upik.domain.report.data.DTO.RejectReportPayload;
-import pluto.upik.domain.report.data.DTO.ReportResponse;
-import pluto.upik.domain.report.data.DTO.SubmitReportInput;
 
-import java.util.Collections; // 빈 배열 반환을 위한 유틸리티
-import java.util.List;
 import java.util.UUID;
 
 @Slf4j
