@@ -4,6 +4,7 @@ type Query {
     report: ReportQuery!
     guidesByCategory(category: String!): [Guide!]!
     voteResponse: VoteResponseQuery!
+    vote: VoteQuery!
 }
 
 type Mutation {
