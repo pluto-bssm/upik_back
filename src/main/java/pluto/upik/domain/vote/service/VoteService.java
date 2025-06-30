@@ -21,8 +21,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
-
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -69,7 +67,26 @@ public class VoteService {
 
         for (Vote vote : votes) {
             List<Option> options = optionRepository.findByVoteId(vote.getId());
-            votePayloads.add(VotePayload.fromEntity(vote, options));
+            Long totalResponses = voteResponseRepository.countByVoteId(vote.getId());
+        List<OptionWithStatsPayload> optionStats = new ArrayList<>();
+        for (Option option : options) {
+            Long optionCount = voteResponseRepository.countByOptionId(option.getId());
+            float percentage = totalResponses > 0 ? (float) optionCount * 100 / totalResponses : 0;
+
+            optionStats.add(new OptionWithStatsPayload(
+                option.getId(),
+                option.getContent(),
+                optionCount.intValue(),
+                percentage
+            ));
+        }
+
+            votePayloads.add(VotePayload.fromEntityWithStats(
+                vote,
+                options,
+                optionStats,
+                totalResponses.intValue()
+            ));
         }
 
         return votePayloads;
@@ -101,7 +118,6 @@ public class VoteService {
             User creator = userRepository.findById(vote.getUser().getId())
                     .orElse(null);
             if (creator != null) {
-                // getNickname()을 getUsername()으로 변경
                 creatorName = creator.getUsername();
             }
         }

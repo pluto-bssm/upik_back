@@ -9,7 +9,6 @@ import pluto.upik.domain.vote.data.model.Vote;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
@@ -20,26 +19,33 @@ public class VotePayload {
     private String title;  // 스키마와 일치하도록 question -> title로 변경
     private String category;
     private String status;
-    private List<OptionPayload> options;
+    private int totalResponses;
+    private List<OptionWithStatsPayload> options;
 
-    // 정적 팩토리 메서드
+    // 정적 팩토리 메서드 (옵션 통계 없이)
     public static VotePayload fromEntity(Vote vote, List<Option> options) {
         return VotePayload.builder()
                 .id(vote.getId())
                 .title(vote.getQuestion())  // question 필드를 title로 매핑
                 .category(vote.getCategory())
                 .status(vote.getStatus().name())
+                .totalResponses(0) // 기본값
                 .options(options.stream()
-                        .map(option -> new OptionPayload(option.getId(), option.getContent()))
-                        .collect(Collectors.toList()))
+                        .map(option -> new OptionWithStatsPayload(option.getId(), option.getContent(), 0, 0))
+                        .toList())
                 .build();
     }
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class OptionPayload {
-        private UUID id;
-        private String content;
+    // 정적 팩토리 메서드 (옵션 통계 포함)
+    public static VotePayload fromEntityWithStats(Vote vote, List<Option> options,
+                                                 List<OptionWithStatsPayload> optionStats, int totalResponses) {
+        return VotePayload.builder()
+                .id(vote.getId())
+                .title(vote.getQuestion())
+                .category(vote.getCategory())
+                .status(vote.getStatus().name())
+                .totalResponses(totalResponses)
+                .options(optionStats)
+                .build();
     }
 }
