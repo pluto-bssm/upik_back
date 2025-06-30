@@ -17,9 +17,6 @@ type ReportMutation {
     # 특정 신고를 거부 (userId 명시적으로 지정 가능, 미지정시 내부적으로 처리)
     rejectReport(targetId: ID!, userId: ID): RejectReportPayload!
 
-    # 신고를 접수
-    submitReport(input: SubmitReportInput!): SubmitReportPayload!
-
     # 가이드 신고를 수락하고 질문을 다시 생성 (userId 명시적으로 지정 가능, 미지정시 내부적으로 처리)
     acceptGuideReport(guideId: ID!, userId: ID): AcceptGuideReportPayload!
 
@@ -38,6 +35,7 @@ type Report {
     userId: ID!       # 신고자 ID
     targetId: ID!     # 신고 대상 ID
     reason: String!   # 신고 이유
+    targetType:String!
     createdAt: String! # 신고 생성 날짜 (ISO 8601 형식)
 }
 
@@ -45,14 +43,6 @@ type Report {
 type RejectReportPayload {
     message: String!
 }
-
-# 신고 접수 요청 타입
-input SubmitReportInput {
-    userId: ID!       # 신고자 ID
-    targetId: ID!     # 신고 대상 ID
-    reason: String!   # 신고 이유
-}
-
 # 신고 접수 응답 타입
 type SubmitReportPayload {
     success: Boolean! # 신고 접수 성공 여부

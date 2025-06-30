@@ -30,6 +30,8 @@ public class ReportResponse {
      * 신고 사유
      */
     private String reason;
+
+    private String targetType;
     
     /**
      * 신고 생성 일자

@@ -119,6 +119,15 @@ public class ReportService implements ReportServiceInterface {
                     .map(this::mapToReportResponse)
                     .collect(Collectors.toList());
 
+            for (ReportResponse report : reports) {
+                if(!guideRepository.existsById(report.getTargetId())) {
+                    report.setTargetType("vote");
+                }
+                else{
+                    report.setTargetType("guide");
+                }
+            }
+
             log.info("신고 대상 목록 조회 완료 - targetId: {}, 결과 개수: {}", targetId, reports.size());
             return reports;
         } catch (Exception e) {
@@ -145,6 +154,15 @@ public class ReportService implements ReportServiceInterface {
             List<ReportResponse> reports = reportList.stream()
                     .map(this::mapToReportResponse)
                     .collect(Collectors.toList());
+
+            for (ReportResponse report : reports) {
+                if(!guideRepository.existsById(report.getTargetId())) {
+                    report.setTargetType("vote");
+                }
+                else{
+                    report.setTargetType("guide");
+                }
+            }
 
             log.info("모든 신고 목록 조회 완료 - 결과 개수: {}", reports.size());
             return reports;
@@ -394,6 +412,7 @@ public class ReportService implements ReportServiceInterface {
                 report.getUserId(),
                 report.getTargetId(),
                 report.getReason(),
+                "",
                 report.getCreatedAt()
         );
 
