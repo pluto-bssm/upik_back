@@ -5,6 +5,7 @@ type Query {
     guidesByCategory(category: String!): [Guide!]!
     voteResponse: VoteResponseQuery!
     vote: VoteQuery!
+    tail: TailQuery!
 }
 
 type Mutation {
@@ -12,4 +13,5 @@ type Mutation {
     report: ReportMutation!
     vote: VoteMutation!
     voteResponse: VoteResponseMutation!
+    tail: TailMutation!
 }
