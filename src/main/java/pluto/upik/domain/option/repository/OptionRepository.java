@@ -1,6 +1,9 @@
 package pluto.upik.domain.option.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import pluto.upik.domain.option.data.model.Option;
 import pluto.upik.domain.vote.data.model.Vote;
 
@@ -14,4 +17,9 @@ public interface OptionRepository extends JpaRepository<Option, Long> {
 
     // voteId로 옵션 리스트 가져오기
     List<Option> findByVoteId(UUID voteId);
+
+    // voteId로 옵션 삭제하기
+    @Modifying
+    @Query("DELETE FROM Option o WHERE o.vote.id = :voteId")
+    void deleteByVoteId(@Param("voteId") UUID voteId);
 }

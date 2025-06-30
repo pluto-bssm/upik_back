@@ -2,6 +2,7 @@ type Query {
     guide: GuideQuery!
     keywordGuide: KeywordGuideQuery!
     report: ReportQuery!
+    guidesByCategory(category: String!): [Guide!]!
 }
 
 type Mutation {

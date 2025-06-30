@@ -1,5 +1,6 @@
 type GuideQuery {
     guidesByCategory(category: String!): [Guide!]!
+    guideById(id: ID!): GuideDetail
 }
 
 type GuideMutation {
@@ -13,4 +14,16 @@ type Guide {
     content: String!
     createdAt: String!
     like: Int!
+}
+
+type GuideDetail {
+    id: ID!
+    title: String!
+    content: String!
+    createdAt: String!
+    category: String
+    guideType: String
+    likeCount: Int!
+    revoteCount: Int!
+    voteId: ID
 }

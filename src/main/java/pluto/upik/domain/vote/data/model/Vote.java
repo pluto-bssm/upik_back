@@ -70,6 +70,15 @@ public class Vote {
      */
     @Column
     private LocalDate finishedAt;
+    
+    /**
+     * 투표 종료 일시를 설정합니다.
+     * 
+     * @param finishedAt 설정할 종료 일시
+     */
+    public void setFinishedAt(LocalDate finishedAt) {
+        this.finishedAt = finishedAt;
+    }
 
     /**
      * 가이드 생성 여부

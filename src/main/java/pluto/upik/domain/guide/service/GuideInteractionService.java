@@ -18,11 +18,14 @@ import pluto.upik.shared.exception.ResourceNotFoundException;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ * 가이드 상호작용(좋아요, 신고 등) 관련 비즈니스 로직을 처리하는 서비스 구현체
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class GuideInteractionService {
+public class GuideInteractionService implements GuideInteractionServiceInterface {
 
     private final GuideRepository guideRepository;
     private final ReportRepository reportRepository;
@@ -30,81 +33,100 @@ public class GuideInteractionService {
     private final UserRepository userRepository;
 
     /**
-     * 특정 유저가 특정 가이드에 좋아요 토글 기능.
-     * 이미 좋아요 되어있으면 좋아요 취소(삭제) 후 카운트 감소
-     * 좋아요 없으면 저장 후 카운트 증가
+     * {@inheritDoc}
      */
+    @Override
     public boolean toggleLikeGuide(UUID userId, UUID guideId) {
+        log.info("가이드 좋아요 토글 요청 시작 - userId: {}, guideId: {}", userId, guideId);
+        
+        // 사용자 존재 확인
         if (!userRepository.existsById(userId)) {
+            log.warn("가이드 좋아요 토글 실패 - 사용자 없음 (userId: {})", userId);
             throw new ResourceNotFoundException("User not found: " + userId);
         }
+        
+        // 가이드 존재 확인
         if (!guideRepository.existsById(guideId)) {
+            log.warn("가이드 좋아요 토글 실패 - 가이드 없음 (guideId: {})", guideId);
             throw new ResourceNotFoundException("Guide not found: " + guideId);
         }
 
         GuideAndUserId id = new GuideAndUserId(userId, guideId);
         try {
+            // 이미 좋아요 했는지 확인
             if (guideAndUserRepository.existsById(id)) {
+                // 좋아요 취소
                 guideAndUserRepository.deleteById(id);
                 guideRepository.decrementLikeCount(guideId);
+                log.info("가이드 좋아요 취소 완료 - userId: {}, guideId: {}", userId, guideId);
                 return false;
             } else {
+                // 좋아요 추가
                 GuideAndUser entity = new GuideAndUser();
                 entity.setId(id);
                 guideAndUserRepository.save(entity);
                 guideRepository.incrementLikeCount(guideId);
+                log.info("가이드 좋아요 추가 완료 - userId: {}, guideId: {}", userId, guideId);
                 return true;
             }
         } catch (DataIntegrityViolationException e) {
+            log.error("가이드 좋아요 토글 중 데이터 무결성 위반 - userId: {}, guideId: {}, error: {}", userId, guideId, e.getMessage(), e);
             throw new BusinessException("Data integrity violation: " + e.getMessage());
         } catch (Exception e) {
+            log.error("가이드 좋아요 토글 중 알 수 없는 오류 - userId: {}, guideId: {}, error: {}", userId, guideId, e.getMessage(), e);
             throw new BusinessException("Unexpected error: " + e.getMessage());
         }
     }
 
-
     /**
-     * 특정 유저가 특정 가이드에 대해 재투표 신고 토글 기능.
-     * 이미 신고 되어있으면 신고 취소(삭제) 후 revote count 감소
-     * 신고 안되어 있으면 저장 후 revote count 증가
+     * {@inheritDoc}
      */
+    @Override
     public boolean toggleReportAndRevote(UUID guideId, UUID userId, String reason) {
-        // 유저/가이드 존재 체크
+        log.info("가이드 재투표 신고 토글 요청 시작 - userId: {}, guideId: {}, reason: {}", userId, guideId, reason);
+        
+        // 사용자 존재 확인
         if (!userRepository.existsById(userId)) {
+            log.warn("가이드 재투표 신고 토글 실패 - 사용자 없음 (userId: {})", userId);
             throw new ResourceNotFoundException("User not found: " + userId);
         }
+        
+        // 가이드 존재 확인
         if (!guideRepository.existsById(guideId)) {
+            log.warn("가이드 재투표 신고 토글 실패 - 가이드 없음 (guideId: {})", guideId);
             throw new ResourceNotFoundException("Guide not found: " + guideId);
         }
 
         try {
+            // 이미 신고했는지 확인
             boolean exists = reportRepository.existsByUserIdAndTargetId(userId, guideId);
             if (exists) {
                 // 신고 취소
                 reportRepository.deleteByUserIdAndTargetId(userId, guideId);
                 guideRepository.decrementRevoteCount(guideId);
-                log.info("User {} canceled report on Guide {}", userId, guideId);
+                log.info("가이드 재투표 신고 취소 완료 - userId: {}, guideId: {}", userId, guideId);
                 return false;
             } else {
                 // 신고 추가
-                reportRepository.save(Report.builder()
+                Report report = Report.builder()
                         .userId(userId)
                         .targetId(guideId)
                         .reason(reason)
                         .createdAt(LocalDate.now())
-                        .build());
-
+                        .build();
+                reportRepository.save(report);
                 guideRepository.incrementRevoteCount(guideId);
-                log.info("User {} reported Guide {}", userId, guideId);
+                log.info("가이드 재투표 신고 추가 완료 - userId: {}, guideId: {}, reason: {}", userId, guideId, reason);
                 return true;
             }
         } catch (DataIntegrityViolationException e) {
-            log.error("Data integrity violation during toggleReportAndRevote: userId={}, guideId={}, reason={}", userId, guideId, reason, e);
+            log.error("가이드 재투표 신고 토글 중 데이터 무결성 위반 - userId: {}, guideId: {}, reason: {}, error: {}", 
+                    userId, guideId, reason, e.getMessage(), e);
             throw new BusinessException("데이터 무결성 위반: " + e.getMessage());
         } catch (Exception e) {
-            log.error("Unexpected error during toggleReportAndRevote: userId={}, guideId={}, reason={}", userId, guideId, reason, e);
+            log.error("가이드 재투표 신고 토글 중 알 수 없는 오류 - userId: {}, guideId: {}, reason: {}, error: {}", 
+                    userId, guideId, reason, e.getMessage(), e);
             throw new BusinessException("알 수 없는 오류가 발생했습니다.");
         }
     }
-
 }
