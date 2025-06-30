@@ -9,6 +9,8 @@ import pluto.upik.domain.user.data.model.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -55,6 +57,7 @@ public class Vote {
     @Column(columnDefinition = "enum ('OPEN', 'CLOSED')")
     private Status status;
 
+
     /**
      * 투표 상태를 설정합니다.
      * 
@@ -87,16 +90,12 @@ public class Vote {
     @Transient
     private boolean guideGenerated;
 
-
     /**
      * 투표 상태 열거형
      */
     public enum Status {
         OPEN, CLOSED
     }
-
-
-
 
     /**
      * 가이드 생성 완료 표시
@@ -115,4 +114,5 @@ public class Vote {
     public boolean isFinished(LocalDate currentDate) {
         return currentDate.isAfter(finishedAt);
     }
+
 }

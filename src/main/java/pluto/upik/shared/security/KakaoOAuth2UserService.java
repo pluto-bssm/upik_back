@@ -88,7 +88,7 @@ public class KakaoOAuth2UserService extends DefaultOAuth2UserService {
                 .id(UUID.randomUUID())
                 .username(kakaoId)
                 .name(nickname)
-                .role(User.Role.USER)
+                .role(User.Role.ROLE_NOBSM)
                 .build();
 
         return userRepository.save(user);

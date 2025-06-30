@@ -3,9 +3,12 @@ type Query {
     keywordGuide: KeywordGuideQuery!
     report: ReportQuery!
     guidesByCategory(category: String!): [Guide!]!
+    voteResponse: VoteResponseQuery!
 }
 
 type Mutation {
     guide: GuideMutation!
     report: ReportMutation!
+    vote: VoteMutation!
+    voteResponse: VoteResponseMutation!
 }

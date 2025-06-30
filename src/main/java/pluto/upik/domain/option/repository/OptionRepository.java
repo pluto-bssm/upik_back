@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface OptionRepository extends JpaRepository<Option, Long> {
+public interface OptionRepository extends JpaRepository<Option, UUID> {
     // vote로 가장 첫번째 Option 가져오기 (정렬 기준에 따라 변경 가능)
     Optional<Option> findTopByVoteOrderByIdAsc(Vote vote);
 

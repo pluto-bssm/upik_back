@@ -83,17 +83,12 @@ public class User {
     @Column
     private LocalDate recentDate;
 
-    /**
-     * 신고 횟수
-     */
-    @Column
-    private Long reportCount;
 
     /**
      * 사용자 역할 열거형
      */
     public enum Role {
-        ADMIN, USER
+        ROLE_NOBSM, ROLE_BSM,ROLE_ADMIN
     }
 
     /**
@@ -104,7 +99,7 @@ public class User {
     public void prePersist() {
         this.createdAt = LocalDate.now();
         if (this.role == null) {
-            this.role = Role.USER;
+            this.role = Role.ROLE_NOBSM;
         }
         if (this.dollar == null) {
             this.dollar = 0.0;
@@ -114,9 +109,6 @@ public class User {
         }
         if (this.streakCount == null) {
             this.streakCount = 0L;
-        }
-        if (this.reportCount == null) {
-            this.reportCount = 0L;
         }
         this.recentDate = LocalDate.now();
     }

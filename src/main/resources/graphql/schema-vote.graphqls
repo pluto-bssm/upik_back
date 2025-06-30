@@ -1,0 +1,22 @@
+type VoteMutation {
+  createVote(input: CreateVoteInput!): VotePayload!
+}
+
+input CreateVoteInput {
+  title: String!
+  category: String!
+  options: [String!]!
+}
+
+type VotePayload {
+  id: ID!
+  title: String!
+  category: String!
+  status: String!
+  options: [Option!]!
+}
+
+type Option {
+  id: ID!
+  content: String!
+}
