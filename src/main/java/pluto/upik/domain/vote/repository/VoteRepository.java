@@ -4,8 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pluto.upik.domain.vote.data.model.Vote;
-import pluto.upik.domain.voteResponse.data.model.VoteResponse;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -45,4 +43,12 @@ public interface VoteRepository extends JpaRepository<Vote, UUID> {
 
 
     List<Vote> findByFinishedAtBefore(LocalDate date);
+
+    /**
+     * 특정 상태의 투표 목록을 조회합니다.
+     *
+     * @param status 투표 상태
+     * @return 해당 상태의 투표 목록
+     */
+    List<Vote> findByStatus(Vote.Status status);
 }

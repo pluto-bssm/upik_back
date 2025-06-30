@@ -26,4 +26,14 @@ public class VoteQueryResolver {
     public VoteDetailPayload getVoteById(@Argument String id) {
         return voteService.getVoteById(UUID.fromString(id));
     }
+
+    @SchemaMapping(typeName = "VoteQuery", field = "getMostPopularOpenVote")
+    public VotePayload getMostPopularOpenVote() {
+        return voteService.getMostPopularOpenVote();
+    }
+
+    @SchemaMapping(typeName = "VoteQuery", field = "getLeastPopularOpenVote")
+    public VotePayload getLeastPopularOpenVote() {
+        return voteService.getLeastPopularOpenVote();
+    }
 }
