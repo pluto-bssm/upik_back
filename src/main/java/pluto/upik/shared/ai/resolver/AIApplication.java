@@ -19,8 +19,8 @@ public class AIApplication {
     // 매일 밤 12시에 실행
     @Scheduled(cron = "0 0 0 * * *")
     public void runEveryMidnight() {
-        // 오늘 이전에 끝난 투표만 조회
-        List<Vote> expiredVotes = voteRepository.findByFinishedAtBefore(LocalDate.now());
+        // 오늘 이전에 끝났고 상태가 OPEN인 투표만 조회
+        List<Vote> expiredVotes = voteRepository.findFinishedVotesWithoutGuide(LocalDate.now());
 
         for (Vote vote : expiredVotes) {
             aiService.generateAndSaveGuide(vote.getId(), vote.getCategory()); // 필요시 타입 지정

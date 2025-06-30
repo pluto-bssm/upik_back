@@ -99,6 +99,8 @@ public class AIService {
             Vote vote = voteRepository.findById(voteId)
                     .orElseThrow(() -> new ResourceNotFoundException("투표를 찾을 수 없습니다."));
 
+            vote.setStatus(Vote.Status.valueOf("CLOSED"));
+
             String voteTitle = vote.getQuestion();
             String voteDescription = optionRepository.findTopByVoteOrderByIdAsc(vote)
                     .map(Option::getContent)
@@ -137,14 +139,12 @@ public class AIService {
                     .map(tr -> tr.getAnswer())
                     .toList();
 
-            if (tailAnswers.isEmpty()) {
-                throw new ResourceNotFoundException("Tail 답변이 존재하지 않습니다.");
-            }
 
             String tailResponses = String.join("\n", tailAnswers);
 
             String prompt = String.format(
                     "Please generate a guide title and guide content for the following vote and responses. " +
+                            "<content> Don't wrap it up like this"+
                             "The guide should be clear, informative, and in-depth.\n\n" +
                             "Vote Title: %s\n" +
                             "Option with the highest votes : %s\n" +
