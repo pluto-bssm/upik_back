@@ -1,0 +1,65 @@
+package pluto.upik.domain.example.service;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
+import pluto.upik.domain.example.data.dto.CustomOAuth2User;
+import pluto.upik.domain.example.data.dto.GoogleResponse;
+import pluto.upik.domain.example.data.dto.OAuth2Response;
+import pluto.upik.domain.example.repository.UserRepository;
+import pluto.upik.shared.entity.User;
+
+@Service
+@RequiredArgsConstructor
+public class CustomOAuth2UserService extends DefaultOAuth2UserService {
+
+    private final UserRepository userRepository;
+
+    public String getDomain(String email){
+        return email.split("@")[1];
+    }
+
+    public String getRole(String email){
+        String domain = getDomain(email);
+        if (domain.equals("bssm.hs.kr")) {
+            System.out.println("bsm");
+            return "ROLE_BSM";
+        }
+        System.out.println("nobsm");
+        return "ROLE_NOBSM";
+    }
+
+    @Override
+    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+
+        OAuth2User oAuth2User = super.loadUser(userRequest);
+        System.out.println(oAuth2User.getAttributes());
+
+        String registrationId = userRequest.getClientRegistration().getRegistrationId();
+        OAuth2Response oAuth2Response = null;
+        String role = "";
+        String email = "";
+        if (registrationId.equals("google")) {
+            oAuth2Response = new GoogleResponse(oAuth2User.getAttributes());
+            email = oAuth2Response.getEmail();
+            role = getRole(email);
+        }else {
+            return null;
+        }
+
+        String name = oAuth2Response.getName();
+        User existData = userRepository.findByEmail(email);
+        if (existData == null) {
+            User user = new User(role, name, name, email);
+            userRepository.save(user);
+        }else{
+            existData.updateRecentDate();
+        }
+
+        return new CustomOAuth2User(oAuth2Response, role);
+    }
+}
+
