@@ -1,0 +1,22 @@
+# 옵션 생성 관련 쿼리
+type OptionGeneratorQuery {
+    # AI를 사용하여 제목에 맞는 선택지 생성
+    generateOptions(title: String!, count: Int!): GenerateOptionsResponse!
+}
+
+# 생성된 옵션 응답
+type GenerateOptionsResponse {
+    # 성공 여부
+    success: Boolean!
+    
+    # 응답 메시지
+    message: String
+    
+    # 생성된 선택지 목록
+    options: [String!]
+}
+
+# 루트 쿼리에 추가
+extend type Query {
+    optionGenerator: OptionGeneratorQuery!
+}
