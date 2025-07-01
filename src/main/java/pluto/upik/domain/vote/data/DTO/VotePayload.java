@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import pluto.upik.domain.option.data.model.Option;
 import pluto.upik.domain.vote.data.model.Vote;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +20,7 @@ public class VotePayload {
     private UUID id;
     private String title;  // 스키마와 일치하도록 question -> title로 변경
     private String category;
+    private String finishedAt;
     private String status;
     private int totalResponses;
     private List<OptionWithStatsPayload> options;
@@ -28,6 +31,7 @@ public class VotePayload {
                 .id(vote.getId())
                 .title(vote.getQuestion())  // question 필드를 title로 매핑
                 .category(vote.getCategory())
+                .finishedAt(vote.getFinishedAt().format(DateTimeFormatter.ISO_LOCAL_DATE))
                 .status(vote.getStatus().name())
                 .totalResponses(0) // 기본값
                 .options(options.stream()
@@ -43,6 +47,7 @@ public class VotePayload {
                 .id(vote.getId())
                 .title(vote.getQuestion())
                 .category(vote.getCategory())
+                .finishedAt(vote.getFinishedAt().format(DateTimeFormatter.ISO_LOCAL_DATE))
                 .status(vote.getStatus().name())
                 .totalResponses(totalResponses)
                 .options(optionStats)

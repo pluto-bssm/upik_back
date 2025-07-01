@@ -112,4 +112,20 @@ public class User {
         }
         this.recentDate = LocalDate.now();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", role=" + role +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", createdAt=" + createdAt +
+                ", dollar=" + dollar +
+                ", won=" + won +
+                ", streakCount=" + streakCount +
+                ", recentDate=" + recentDate +
+                '}';
+    }
 }

@@ -14,6 +14,7 @@ type VotePayload {
   category: String!
   status: String!
   totalResponses: Int!
+  finishedAt: String!
   options: [OptionWithStats!]!
 }
 

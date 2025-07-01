@@ -45,4 +45,12 @@ public class Option {
         this.content = content;
     }
 
+    @Override
+    public String toString() {
+        return "Option{" +
+                "id=" + id +
+                ", vote=" + vote +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

@@ -1,6 +1,9 @@
 package pluto.upik.domain.voteResponse.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pluto.upik.domain.option.data.model.Option;
@@ -21,6 +24,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class VoteResponseService {
 
     private final VoteResponseRepository voteResponseRepository;
@@ -32,6 +36,7 @@ public class VoteResponseService {
     public boolean hasUserVoted(UUID userId, UUID voteId) {
         return voteResponseRepository.findByUserIdAndVoteId(userId, voteId).isPresent();
     }
+
 
     public VoteResponsePayload createVoteResponse(CreateVoteResponseInput input, UUID userId) {
         // 1. 사용자 조회
@@ -46,6 +51,9 @@ public class VoteResponseService {
         Option option = optionRepository.findById(input.getOptionId())
                 .orElseThrow(() -> new IllegalArgumentException("옵션을 찾을 수 없습니다: " + input.getOptionId()));
 
+        log.info(user.toString());
+        log.info(vote.toString());
+        log.info(option.toString());
         // 4. 투표 상태 확인
         if (vote.getStatus() != Vote.Status.OPEN) {
             throw new IllegalStateException("투표가 종료되었습니다.");
@@ -63,10 +71,8 @@ public class VoteResponseService {
         if (existingResponse.isPresent()) {
             throw new IllegalStateException("이미 이 투표에 참여하셨습니다.");
         }
-
         // 7. VoteResponse 생성 및 저장
         VoteResponse voteResponse = VoteResponse.builder()
-                .id(UUID.randomUUID())
                 .user(user)
                 .vote(vote)
                 .selectedOption(option)

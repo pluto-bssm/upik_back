@@ -115,4 +115,16 @@ public class Vote {
         return currentDate.isAfter(finishedAt);
     }
 
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "id=" + id +
+                ", user=" + user +
+                ", question='" + question + '\'' +
+                ", category='" + category + '\'' +
+                ", status=" + status +
+                ", finishedAt=" + finishedAt +
+                ", guideGenerated=" + guideGenerated +
+                '}';
+    }
 }
