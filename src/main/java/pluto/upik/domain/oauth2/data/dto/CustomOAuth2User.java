@@ -42,9 +42,4 @@ public class CustomOAuth2User implements OAuth2User {
     public String getEmail() {
         return oAuth2Response.getEmail();
     }
-
-    // 컨트롤러 등에서 역할을 바로 확인할 수 있도록 getter 추가 (선택사항)
-    public String getRole() {
-        return this.role;
-    }
 }

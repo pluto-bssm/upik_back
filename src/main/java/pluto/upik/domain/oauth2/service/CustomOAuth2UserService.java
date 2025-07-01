@@ -18,12 +18,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     private final UserRepository userRepository;
 
-    public String getDomain(String email){
-        return email.split("@")[1];
-    }
-
     public String getRole(String email){
-        String domain = getDomain(email);
+        String domain = email.split("@")[1];
         if (domain.equals("bssm.hs.kr")) {
             System.out.println("bsm");
             return "ROLE_BSM";
