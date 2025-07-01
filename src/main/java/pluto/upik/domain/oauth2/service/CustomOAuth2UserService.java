@@ -50,9 +50,11 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         User existData = userRepository.findByEmail(email);
         if (existData == null) {
             User user = new User(role, name, name, email);
+            System.out.println("new user");
             userRepository.save(user);
         }else{
-            existData.updateRecentDate();
+            userRepository.updateRecentDate(email);
+            System.out.println("login");
         }
 
         return new CustomOAuth2User(oAuth2Response, role);
