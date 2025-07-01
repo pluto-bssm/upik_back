@@ -8,23 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import pluto.upik.domain.oauth2.data.dto.CustomOAuth2User;
 import pluto.upik.domain.oauth2.repository.UserRepository;
 import pluto.upik.domain.oauth2.data.model.User;
+import pluto.upik.shared.security.annotation.BSM;
+import pluto.upik.shared.security.annotation.NOBSM;
 
 @Controller
 @RequiredArgsConstructor
+@NOBSM
+@BSM
 public class MyController {
 
     private final UserRepository userRepository;
 
     @GetMapping("/my")
-    public String myPage(@AuthenticationPrincipal CustomOAuth2User customOAuth2User, Model model) {
-
-        System.out.println(customOAuth2User.getEmail());
-        User user = userRepository.findByEmail(customOAuth2User.getEmail());
-        System.out.println(user.getName());
-        System.out.println(user.getEmail());
-        System.out.println(user.getRole());
-
-        model.addAttribute("user", user);
+    public String myPage() {
 
         return "my";
     }

@@ -8,6 +8,6 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@PreAuthorize("hasAnyRole('ROLE_BSM', 'ROLE_ADMIN')")
+@PreAuthorize("hasAnyRole('BSM', 'ADMIN')")
 public @interface BSM {
 }
