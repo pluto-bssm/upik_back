@@ -1,6 +1,7 @@
 package pluto.upik.domain.vote.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pluto.upik.domain.option.data.model.Option;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class VoteService {
 
     private final VoteRepository voteRepository;
@@ -46,12 +48,10 @@ public class VoteService {
         // 3. Option들 생성
         List<Option> options = input.getOptions().stream().map(content ->
                 Option.builder()
-                        .id(UUID.randomUUID())
                         .vote(savedVote)
                         .content(content)
                         .build()
         ).toList();
-
         // 4. Option들 저장
         List<Option> savedOptions = optionRepository.saveAll(options);
 
