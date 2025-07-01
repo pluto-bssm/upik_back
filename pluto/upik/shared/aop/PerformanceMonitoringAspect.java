@@ -5,8 +5,12 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * 성능 모니터링을 위한 AOP 측면
@@ -16,6 +20,15 @@ import org.springframework.util.StopWatch;
 @Component
 @Slf4j
 public class PerformanceMonitoringAspect {
+
+    @Value("${performance.threshold.warn:100}")
+    private long warnThresholdMillis;
+
+    @Value("${performance.threshold.error:500}")
+    private long errorThresholdMillis;
+
+    @Value("${performance.logging.includeParameters:false}")
+    private boolean includeParameters;
 
     /**
      * 서비스 계층 메서드의 실행 시간을 측정합니다.
@@ -66,20 +79,29 @@ public class PerformanceMonitoringAspect {
         String className = methodSignature.getDeclaringType().getSimpleName();
         String methodName = methodSignature.getName();
         
+        String methodParams = "";
+        if (includeParameters) {
+            methodParams = Arrays.stream(joinPoint.getArgs())
+                .map(arg -> arg != null ? arg.toString() : "null")
+                .collect(Collectors.joining(", ", "(", ")"));
+        }
+
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        
         try {
             return joinPoint.proceed();
         } finally {
             stopWatch.stop();
             long executionTime = stopWatch.getTotalTimeMillis();
-            
-            // 실행 시간이 100ms를 초과하는 경우에만 경고 로그 출력
-            if (executionTime > 100) {
-                log.warn("[성능 측정] {}.{}.{} - 실행 시간: {}ms", layerName, className, methodName, executionTime);
+
+            String message = String.format("[성능 측정] %s.%s.%s%s - 실행 시간: %dms",
+                    layerName, className, methodName, methodParams, executionTime);
+            if (executionTime > errorThresholdMillis) {
+                log.error(message);
+            } else if (executionTime > warnThresholdMillis) {
+                log.warn(message);
             } else {
-                log.debug("[성능 측정] {}.{}.{} - 실행 시간: {}ms", layerName, className, methodName, executionTime);
+                log.debug(message);
             }
         }
     }

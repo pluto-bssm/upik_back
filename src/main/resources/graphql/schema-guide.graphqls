@@ -1,5 +1,4 @@
 type GuideQuery {
-    guidesByCategory(category: String!): [Guide!]!
     guideById(id: ID!): GuideDetail
 }
 

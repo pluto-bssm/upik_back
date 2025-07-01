@@ -143,7 +143,7 @@ public class AIService {
             String tailResponses = String.join("\n", tailAnswers);
 
             String prompt = String.format(
-                    "Please generate a guide title and guide content for the following vote and responses. " +
+                    "Please generate a guide title and guide content for the following vote and responses. For each choice, don't put anything like \\ and just give it as plain text." +
                             "<content> Don't wrap it up like this"+
                             "The guide should be clear, informative, and in-depth.\n\n" +
                             "Vote Title: %s\n" +
@@ -154,7 +154,7 @@ public class AIService {
                             "Write it like this :\n%s\n\n" +
                             "Please return the result in the following format I will keep my word unconditionally:\n" +
                             "Guide Title:\n<<title>>\n\n" +
-                            "Guide Content:\n<<content>>\n",
+                            "Guide Content:\n<<content>>\n ",
                     voteTitle, voteDescription, optionsWithPercents,
                     tail.getQuestion(), tailResponses, type
             );
