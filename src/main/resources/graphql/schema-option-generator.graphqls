@@ -2,18 +2,49 @@
 type OptionGeneratorQuery {
     # AI를 사용하여 제목에 맞는 선택지 생성
     generateOptions(title: String!, count: Int!): GenerateOptionsResponse!
+
+    # 제목과 유사한 가이드 검색
+    findSimilarGuides(title: String!): SimilarGuidesResponse!
+
+    # 제목과 유사한 가이드를 검색하는 추가 메서드
+    findSimilarGuidesByTitle(title: String!): SimilarGuidesResponse!
 }
 
-# 생성된 옵션 응답
+# 선택지 생성 응답
 type GenerateOptionsResponse {
     # 성공 여부
     success: Boolean!
-    
+
     # 응답 메시지
     message: String
-    
+
     # 생성된 선택지 목록
     options: [String!]
+}
+
+# 유사 가이드 검색 응답
+type SimilarGuidesResponse {
+    # 성공 여부
+    success: Boolean!
+
+    # 응답 메시지
+    message: String
+    # 찾은 가이드 목록
+    guides: [GuideSimpleInfo!]
+
+    # 검색된 가이드 수
+    count: Int!
+}
+
+# 간단한 가이드 정보
+type GuideSimpleInfo {
+    # 가이드 ID
+    id: ID!
+    # 가이드 제목
+    title: String!
+
+    # 가이드 요약 내용
+    summary: String
 }
 
 # 루트 쿼리에 추가

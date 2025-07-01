@@ -7,8 +7,11 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 import pluto.upik.domain.option.data.DTO.GenerateOptionsResponse;
+import pluto.upik.domain.option.data.DTO.SimilarGuidesResponse;
 import pluto.upik.domain.option.service.OptionGeneratorServiceInterface;
 import pluto.upik.shared.exception.BusinessException;
+
+import java.util.ArrayList;
 
 /**
  * 선택지 생성 GraphQL 쿼리 리졸버
@@ -80,6 +83,55 @@ public class OptionGeneratorQueryResolver {
             return GenerateOptionsResponse.builder()
                 .success(false)
                 .message("선택지 생성 중 오류가 발생했습니다.")
+                .build();
+        }
+    }
+
+    /**
+     * 제목과 유사한 가이드를 검색하는 메서드
+     *
+     * @param parent 부모 객체
+     * @param title 검색할 제목
+     * @return 유사 가이드 검색 결과
+     */
+    @SchemaMapping(typeName = "OptionGeneratorQuery", field = "findSimilarGuides")
+    public SimilarGuidesResponse findSimilarGuides(Object parent, @Argument String title) {
+        log.info("GraphQL 쿼리 - 유사 가이드 검색 요청: 제목={}", title);
+
+        try {
+            // 입력값 검증
+            if (title == null || title.trim().isEmpty()) {
+                log.warn("GraphQL 쿼리 - 유사 가이드 검색 실패: 제목이 비어있음");
+                return SimilarGuidesResponse.builder()
+                    .success(false)
+                    .message("제목을 입력해주세요.")
+                    .guides(new ArrayList<>())
+                    .count(0)
+                    .build();
+}
+
+            // 서비스 호출
+            SimilarGuidesResponse response = optionGeneratorService.findSimilarGuides(title);
+            log.info("GraphQL 쿼리 - 유사 가이드 검색 완료: 제목={}, 찾은 가이드 수={}",
+                    title, response.getCount());
+            return response;
+        } catch (BusinessException e) {
+            log.warn("GraphQL 쿼리 - 유사 가이드 검색 중 비즈니스 오류: 제목={}, 사유={}",
+                    title, e.getMessage());
+            return SimilarGuidesResponse.builder()
+                .success(false)
+                .message(e.getMessage())
+                .guides(new ArrayList<>())
+                .count(0)
+                .build();
+        } catch (Exception e) {
+            log.error("GraphQL 쿼리 - 유사 가이드 검색 중 예상치 못한 오류: 제목={}, 오류={}",
+                    title, e.getMessage(), e);
+            return SimilarGuidesResponse.builder()
+                .success(false)
+                .message("가이드 검색 중 오류가 발생했습니다.")
+                .guides(new ArrayList<>())
+                .count(0)
                 .build();
         }
     }

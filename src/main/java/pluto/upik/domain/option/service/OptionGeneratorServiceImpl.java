@@ -4,9 +4,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import pluto.upik.domain.guide.data.DTO.KeywordGuideResponse;
+import pluto.upik.domain.guide.service.KeywordGuideServiceInterface;
 import pluto.upik.domain.option.data.DTO.GenerateOptionsResponse;
+import pluto.upik.domain.option.data.DTO.GuideSimpleInfo;
+import pluto.upik.domain.option.data.DTO.SimilarGuidesResponse;
 import pluto.upik.shared.ai.config.ChatAiService;
 import pluto.upik.shared.exception.BusinessException;
+import pluto.upik.shared.exception.ResourceNotFoundException;
 import pluto.upik.shared.translation.service.TranslationService;
 
 import java.util.ArrayList;
@@ -29,8 +34,10 @@ public class OptionGeneratorServiceImpl implements OptionGeneratorServiceInterfa
 
     private final ChatAiService chatAiService;
     private final TranslationService translationService;
-    
+    private final KeywordGuideServiceInterface keywordGuideService;
+
     private static final int AI_RESPONSE_TIMEOUT_SECONDS = 30;
+    private static final int MAX_SUMMARY_LENGTH = 100;
 
     /**
      * 제목에 맞는 선택지를 생성합니다.
@@ -188,5 +195,85 @@ public class OptionGeneratorServiceImpl implements OptionGeneratorServiceInterfa
             .message(message)
             .options(new ArrayList<>())
             .build();
+    }
+
+    /**
+     * 제목과 유사한 가이드를 검색합니다.
+     *
+     * @param title 검색할 제목
+     * @return 유사 가이드 검색 결과
+     */
+    @Override
+    public SimilarGuidesResponse findSimilarGuides(String title) {
+        log.info("유사 가이드 검색 시작 - 제목: {}", title);
+
+        if (title == null || title.trim().isEmpty()) {
+            log.warn("유사 가이드 검색 실패 - 제목이 비어있음");
+            return SimilarGuidesResponse.builder()
+                .success(false)
+                .message("제목을 입력해주세요.")
+                .guides(new ArrayList<>())
+                .count(0)
+                .build();
+}
+
+        try {
+            // 키워드 서비스를 통해 유사한 가이드 검색
+            List<KeywordGuideResponse> keywordGuides = keywordGuideService.searchGuidesByKeyword(title);
+
+            // GuideSimpleInfo로 변환
+            List<GuideSimpleInfo> guideInfos = keywordGuides.stream()
+                .map(guide -> GuideSimpleInfo.builder()
+                    .id(guide.getId())
+                    .title(guide.getTitle())
+                    .summary(createSummary(guide.getContent()))
+                    .build())
+                .collect(Collectors.toList());
+
+            log.info("유사 가이드 검색 완료 - 제목: {}, 찾은 가이드 수: {}", title, guideInfos.size());
+
+            return SimilarGuidesResponse.builder()
+                .success(true)
+                .message("유사한 가이드를 찾았습니다.")
+                .guides(guideInfos)
+                .count(guideInfos.size())
+                .build();
+
+        } catch (ResourceNotFoundException e) {
+            log.info("유사 가이드 검색 결과 없음 - 제목: {}, 사유: {}", title, e.getMessage());
+            return SimilarGuidesResponse.builder()
+                .success(true)
+                .message("유사한 가이드가 없습니다.")
+                .guides(new ArrayList<>())
+                .count(0)
+                .build();
+        } catch (Exception e) {
+            log.error("유사 가이드 검색 중 오류 발생 - 제목: {}", title, e);
+            return SimilarGuidesResponse.builder()
+                .success(false)
+                .message("가이드 검색 중 오류가 발생했습니다: " + e.getMessage())
+                .guides(new ArrayList<>())
+                .count(0)
+                .build();
+        }
+    }
+
+    /**
+     * 가이드 내용에서 요약을 생성합니다.
+     *
+     * @param content 가이드 내용
+     * @return 요약된 내용
+     */
+    private String createSummary(String content) {
+        if (content == null || content.isEmpty()) {
+            return "";
+        }
+
+        // 내용이 최대 길이보다 길면 잘라서 "..." 추가
+        if (content.length() > MAX_SUMMARY_LENGTH) {
+            return content.substring(0, MAX_SUMMARY_LENGTH) + "...";
+        }
+
+        return content;
     }
 }
