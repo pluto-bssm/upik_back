@@ -61,9 +61,10 @@ public class GuideInteractionService implements GuideInteractionServiceInterface
                 log.info("가이드 좋아요 취소 완료 - userId: {}, guideId: {}", userId, guideId);
                 return false;
             } else {
-                // 좋아요 추가
-                GuideAndUser entity = new GuideAndUser();
-                entity.setId(id);
+                // 좋아요 추가 - Builder 패턴 사용
+                GuideAndUser entity = GuideAndUser.builder()
+                    .id(id)
+                        .build();
                 guideAndUserRepository.save(entity);
                 guideRepository.incrementLikeCount(guideId);
                 log.info("가이드 좋아요 추가 완료 - userId: {}, guideId: {}", userId, guideId);
@@ -84,13 +85,13 @@ public class GuideInteractionService implements GuideInteractionServiceInterface
     @Override
     public boolean toggleReportAndRevote(UUID guideId, UUID userId, String reason) {
         log.info("가이드 재투표 신고 토글 요청 시작 - userId: {}, guideId: {}, reason: {}", userId, guideId, reason);
-        
+
         // 사용자 존재 확인
         if (!userRepository.existsById(userId)) {
             log.warn("가이드 재투표 신고 토글 실패 - 사용자 없음 (userId: {})", userId);
             throw new ResourceNotFoundException("User not found: " + userId);
-        }
-        
+}
+
         // 가이드 존재 확인
         if (!guideRepository.existsById(guideId)) {
             log.warn("가이드 재투표 신고 토글 실패 - 가이드 없음 (guideId: {})", guideId);
@@ -107,7 +108,7 @@ public class GuideInteractionService implements GuideInteractionServiceInterface
                 log.info("가이드 재투표 신고 취소 완료 - userId: {}, guideId: {}", userId, guideId);
                 return false;
             } else {
-                // 신고 추가
+                // 신고 추가 - Builder 패턴 사용
                 Report report = Report.builder()
                         .userId(userId)
                         .targetId(guideId)
@@ -120,11 +121,11 @@ public class GuideInteractionService implements GuideInteractionServiceInterface
                 return true;
             }
         } catch (DataIntegrityViolationException e) {
-            log.error("가이드 재투표 신고 토글 중 데이터 무결성 위반 - userId: {}, guideId: {}, reason: {}, error: {}", 
+            log.error("가이드 재투표 신고 토글 중 데이터 무결성 위반 - userId: {}, guideId: {}, reason: {}, error: {}",
                     userId, guideId, reason, e.getMessage(), e);
             throw new BusinessException("데이터 무결성 위반: " + e.getMessage());
         } catch (Exception e) {
-            log.error("가이드 재투표 신고 토글 중 알 수 없는 오류 - userId: {}, guideId: {}, reason: {}, error: {}", 
+            log.error("가이드 재투표 신고 토글 중 알 수 없는 오류 - userId: {}, guideId: {}, reason: {}, error: {}",
                     userId, guideId, reason, e.getMessage(), e);
             throw new BusinessException("알 수 없는 오류가 발생했습니다.");
         }

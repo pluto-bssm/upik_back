@@ -30,6 +30,6 @@ public interface VoteResponseRepository extends JpaRepository<VoteResponse, Long
     Long countByVoteId(@Param("voteId") UUID voteId);
 
     // 특정 옵션의 응답 수
-    @Query("SELECT COUNT(vr) FROM VoteResponse vr WHERE vr.option.id = :optionId")
+    @Query("SELECT COUNT(vr) FROM VoteResponse vr WHERE vr.selectedOption.id = :optionId")
     Long countByOptionId(@Param("optionId") UUID optionId);
 }

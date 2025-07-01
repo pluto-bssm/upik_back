@@ -28,8 +28,8 @@ public class VoteResponsePayload {
                 .id(voteResponse.getId())
                 .userId(voteResponse.getUser().getId())
                 .voteId(voteResponse.getVote().getId())
-                .optionId(voteResponse.getOption().getId())
-                .optionContent(voteResponse.getOption().getContent())
+                .optionId(voteResponse.getSelectedOption().getId())
+                .optionContent(voteResponse.getSelectedOption().getContent())
                 .voteTitle(voteResponse.getVote().getQuestion())
                 .createdAt(voteResponse.getCreatedAt())
                 .build();

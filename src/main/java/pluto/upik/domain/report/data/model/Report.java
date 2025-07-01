@@ -1,20 +1,23 @@
 package pluto.upik.domain.report.data.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 /**
- * 신고 정보를 저장하는 엔티티 클래스
- * 사용자가 특정 대상(가이드 등)에 대해 신고한 내용을 관리합니다.
+ * 신고 엔티티
+ * 사용자가 제출한 신고 정보를 저장합니다.
  */
 @Entity
 @Table(name = "report")
 @IdClass(ReportId.class)
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -22,28 +25,28 @@ import java.util.UUID;
 public class Report {
 
     /**
-     * 신고한 사용자의 ID (복합 기본키의 일부)
+     * 신고자 ID (복합 키)
      */
     @Id
-    @Column(name = "user_id", nullable = false)
+    @Column(columnDefinition = "uuid")
     private UUID userId;
 
     /**
-     * 신고 대상의 ID (복합 기본키의 일부)
+     * 신고 대상 ID (복합 키)
      */
     @Id
-    @Column(name = "target_id", nullable = false)
+    @Column(columnDefinition = "uuid")
     private UUID targetId;
 
     /**
      * 신고 사유
      */
-    @Column(name = "reason", length = 500)
+    @Column(columnDefinition = "TEXT")
     private String reason;
 
     /**
-     * 신고 생성 일자
+     * 생성 일시
      */
-    @Column(name = "created_at", nullable = false)
+    @Column
     private LocalDate createdAt;
 }

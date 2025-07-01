@@ -69,7 +69,7 @@ public class VoteResponseService {
                 .id(UUID.randomUUID())
                 .user(user)
                 .vote(vote)
-                .option(option)
+                .selectedOption(option)
                 .createdAt(LocalDate.now())
                 .build();
 

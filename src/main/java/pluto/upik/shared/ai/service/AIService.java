@@ -117,7 +117,7 @@ public class AIService {
             long totalVotes = voteResponses.size();
 
             for (VoteResponse vr : voteResponses) {
-                voteCounts.merge(vr.getOption().getId(), 1L, Long::sum);
+                voteCounts.merge(vr.getSelectedOption().getId(), 1L, Long::sum);
             }
 
             StringBuilder optionPercentsBuilder = new StringBuilder();

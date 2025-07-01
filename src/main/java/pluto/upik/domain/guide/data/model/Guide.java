@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 import pluto.upik.domain.vote.data.model.Vote;
 
@@ -19,7 +18,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "guide")
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -99,5 +97,59 @@ public class Guide {
         if (this.like == null) {
             this.like = 0L;
         }
+    }
+
+    /**
+     * 재투표 수 증가
+     */
+    public void incrementRevoteCount() {
+        this.revoteCount++;
+}
+
+    /**
+     * 재투표 수 감소
+     */
+    public void decrementRevoteCount() {
+        if (this.revoteCount > 0) {
+            this.revoteCount--;
+        }
+    }
+
+    /**
+     * 좋아요 수 증가
+     */
+    public void incrementLikeCount() {
+        this.like++;
+    }
+
+    /**
+     * 좋아요 수 감소
+     */
+    public void decrementLikeCount() {
+        if (this.like > 0) {
+            this.like--;
+        }
+    }
+
+    /**
+     * 카테고리 업데이트
+     */
+    public void updateCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     * 가이드 타입 업데이트
+     */
+    public void updateGuideType(String guideType) {
+        this.guideType = guideType;
+    }
+
+    /**
+     * 가이드 제목 및 내용 업데이트
+     */
+    public void updateContent(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
