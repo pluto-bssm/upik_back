@@ -1,14 +1,13 @@
-package pluto.upik.domain.example.api;
+package pluto.upik.domain.oauth2.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import pluto.upik.domain.example.data.dto.CustomOAuth2User;
-import pluto.upik.domain.example.data.dto.GoogleResponse;
-import pluto.upik.domain.example.repository.UserRepository;
-import pluto.upik.shared.entity.User;
+import pluto.upik.domain.oauth2.data.dto.CustomOAuth2User;
+import pluto.upik.domain.oauth2.repository.UserRepository;
+import pluto.upik.domain.oauth2.data.model.User;
 
 @Controller
 @RequiredArgsConstructor

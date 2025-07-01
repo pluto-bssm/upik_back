@@ -1,4 +1,4 @@
-package pluto.upik.shared.entity;
+package pluto.upik.domain.oauth2.data.model;
 
 import jakarta.persistence.*;
 import lombok.Builder;

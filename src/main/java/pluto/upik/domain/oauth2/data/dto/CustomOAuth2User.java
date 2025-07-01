@@ -1,4 +1,4 @@
-package pluto.upik.domain.example.data.dto;
+package pluto.upik.domain.oauth2.data.dto;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

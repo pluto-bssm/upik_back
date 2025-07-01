@@ -1,7 +1,7 @@
-package pluto.upik.domain.example.repository;
+package pluto.upik.domain.oauth2.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pluto.upik.shared.entity.User;
+import pluto.upik.domain.oauth2.data.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 

@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
-import pluto.upik.domain.example.service.CustomOAuth2UserService;
+import pluto.upik.domain.oauth2.service.CustomOAuth2UserService;
 
 @Configuration
 @EnableWebSecurity

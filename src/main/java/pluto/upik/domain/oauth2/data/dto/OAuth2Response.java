@@ -1,4 +1,4 @@
-package pluto.upik.domain.example.data.dto;
+package pluto.upik.domain.oauth2.data.dto;
 
 public interface OAuth2Response {
     String getProvider();

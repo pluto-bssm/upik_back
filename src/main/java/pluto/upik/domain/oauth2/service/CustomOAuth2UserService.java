@@ -1,4 +1,4 @@
-package pluto.upik.domain.example.service;
+package pluto.upik.domain.oauth2.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -6,11 +6,11 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-import pluto.upik.domain.example.data.dto.CustomOAuth2User;
-import pluto.upik.domain.example.data.dto.GoogleResponse;
-import pluto.upik.domain.example.data.dto.OAuth2Response;
-import pluto.upik.domain.example.repository.UserRepository;
-import pluto.upik.shared.entity.User;
+import pluto.upik.domain.oauth2.data.dto.CustomOAuth2User;
+import pluto.upik.domain.oauth2.data.dto.GoogleResponse;
+import pluto.upik.domain.oauth2.data.dto.OAuth2Response;
+import pluto.upik.domain.oauth2.repository.UserRepository;
+import pluto.upik.domain.oauth2.data.model.User;
 
 @Service
 @RequiredArgsConstructor
