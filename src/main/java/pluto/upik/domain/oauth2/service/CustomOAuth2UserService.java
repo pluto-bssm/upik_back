@@ -21,10 +21,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     public String getRole(String email){
         String domain = email.split("@")[1];
         if (domain.equals("bssm.hs.kr")) {
-            System.out.println("bsm");
             return "ROLE_BSM";
         }
-        System.out.println("nobsm");
         return "ROLE_NOBSM";
     }
 
@@ -48,13 +46,13 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         String name = oAuth2Response.getName();
         User existData = userRepository.findByEmail(email);
+        System.out.println(existData);
         if (existData == null) {
             User user = new User(role, name, name, email);
-            System.out.println("new user");
             userRepository.save(user);
         }else{
+            System.out.println("dlrkjdho");
             userRepository.updateRecentDate(email);
-            System.out.println("login");
         }
 
         return new CustomOAuth2User(oAuth2Response, role);
