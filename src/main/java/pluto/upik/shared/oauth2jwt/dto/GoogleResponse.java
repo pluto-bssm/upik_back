@@ -1,15 +1,13 @@
 package pluto.upik.shared.oauth2jwt.dto;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.Map;
 
+@RequiredArgsConstructor
 public class GoogleResponse implements OAuth2Response{
 
     private final Map<String, Object> attribute;
-
-    public GoogleResponse(Map<String, Object> attribute) {
-
-        this.attribute = attribute;
-    }
 
     @Override
     public String getProvider() {
