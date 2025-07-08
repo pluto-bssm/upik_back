@@ -36,7 +36,6 @@ public class RefreshToken {
 
     @Builder
     public RefreshToken(User user, String token, String role, Date expiryDate) {
-        System.out.println(user.getRole());
         this.id = user.getId();
         this.user = user;
         this.token = token;

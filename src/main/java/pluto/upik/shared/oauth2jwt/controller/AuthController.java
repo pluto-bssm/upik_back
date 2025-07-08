@@ -64,7 +64,7 @@ public class AuthController {
         }
 
         // 2. 클라이언트의 모든 관련 쿠키들을 만료시킴
-        response.addHeader("Set-Cookie", createExpiredCookie("Authorization"));
+        response.addHeader("Set-Cookie", createExpiredCookie("access"));
         response.addHeader("Set-Cookie", createExpiredCookie("refreshToken"));
 
         // 3. ★★★ 서버 세션 무효화 ★★★

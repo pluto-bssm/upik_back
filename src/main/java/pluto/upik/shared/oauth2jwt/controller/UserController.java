@@ -17,7 +17,6 @@ public class UserController {
     public ResponseEntity<?> getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        // 인증 정보가 없거나, 사용자가 익명('anonymousUser')인 경우
         if (authentication == null || !authentication.isAuthenticated() || "anonymousUser".equals(authentication.getPrincipal())) {
             return ResponseEntity.status(401).body("Not Authenticated");
         }

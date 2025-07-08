@@ -14,6 +14,8 @@ import pluto.upik.shared.oauth2jwt.dto.UserDTO;
 import pluto.upik.shared.oauth2jwt.entity.User;
 import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
@@ -42,15 +44,18 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         String username = oAuth2Response.getProvider() + "_" + oAuth2Response.getProviderId();
 
-        // 1. username으로 DB에서 유저를 조회합니다. 결과는 User 객체 또는 null입니다.
-        User user = userRepository.findByUsername(username);
+        // 1. username으로 DB에서 유저를 조회합니다. 결과는 Optional<User> 객체입니다.
+        Optional<User> userOptional = userRepository.findByUsername(username);
 
-        // 2. if-else 문을 사용해 유저의 존재 여부를 확인합니다.
-        if (user != null) {
-            // 유저가 이미 존재하면, 이름과 이메일 정보를 업데이트합니다.
-            // @Transactional에 의해 메소드 종료 시 자동으로 DB에 UPDATE 쿼리가 실행됩니다.
+        User user; // User 객체를 담을 변수 선언
+
+        // 2. Optional의 isPresent() 메소드를 사용해 유저의 존재 여부를 확인합니다.
+        if (userOptional.isPresent()) {
+            // 유저가 이미 존재하면, Optional에서 User 객체를 가져와서 이름과 이메일 정보를 업데이트합니다.
+            user = userOptional.get();
             user.setName(oAuth2Response.getName());
             user.setEmail(oAuth2Response.getEmail());
+            // @Transactional에 의해 메소드 종료 시 자동으로 DB에 UPDATE 쿼리가 실행됩니다.
         } else {
             // 유저가 존재하지 않으면, 새로 생성합니다.
             User newUser = User.builder()
