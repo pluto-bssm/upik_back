@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import pluto.upik.shared.oauth2jwt.dto.CustomOAuth2User;
 import pluto.upik.shared.oauth2jwt.dto.UserDTO;
+import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 
 import java.io.IOException;
 
@@ -21,6 +22,7 @@ import java.io.IOException;
 public class JWTFilter extends OncePerRequestFilter {
 
     private final JWTUtil jwtUtil;
+    private final UserRepository userRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -60,7 +62,7 @@ public class JWTFilter extends OncePerRequestFilter {
         userDTO.setUsername(username);
         userDTO.setRole(role);
 
-        CustomOAuth2User customOAuth2User = new CustomOAuth2User(userDTO);
+        CustomOAuth2User customOAuth2User = new CustomOAuth2User(userDTO, userRepository);
         Authentication authToken = new UsernamePasswordAuthenticationToken(customOAuth2User, null, customOAuth2User.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authToken);
 

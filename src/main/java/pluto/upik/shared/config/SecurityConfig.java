@@ -1,6 +1,8 @@
 package pluto.upik.shared.config;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +17,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import pluto.upik.shared.oauth2jwt.jwt.JWTFilter;
 import pluto.upik.shared.oauth2jwt.jwt.JWTUtil;
 import pluto.upik.shared.oauth2jwt.oauth2.CustomSuccessHandler;
+import pluto.upik.shared.oauth2jwt.repository.UserRepository;
+import pluto.upik.shared.oauth2jwt.service.AuthService;
 import pluto.upik.shared.oauth2jwt.service.CustomOAuth2UserService;
 
 import java.util.Collections;
@@ -27,53 +31,69 @@ public class SecurityConfig {
     private final CustomOAuth2UserService customOAuth2UserService;
     private final CustomSuccessHandler customSuccessHandler;
     private final JWTUtil jwtUtil;
+    private final AuthService authService;
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, UserRepository userRepository) throws Exception {
 
-        // ★★★ 1. CORS 설정 추가 (가장 먼저!) ★★★
-        // 프론트엔드(http://localhost:5173)에서 오는 요청을 허용하기 위한 설정입니다.
+        // 1. CORS 설정
         http.cors(corsCustomizer -> corsCustomizer.configurationSource(new CorsConfigurationSource() {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration configuration = new CorsConfiguration();
-                // "http://localhost:5173" 주소의 요청을 허용합니다.
                 configuration.setAllowedOrigins(Collections.singletonList("http://localhost:5173"));
-                // 모든 HTTP 메서드(GET, POST, 등)를 허용합니다.
                 configuration.setAllowedMethods(Collections.singletonList("*"));
-                // 쿠키를 포함한 요청을 허용합니다 (매우 중요!).
                 configuration.setAllowCredentials(true);
-                // 모든 헤더를 허용합니다.
                 configuration.setAllowedHeaders(Collections.singletonList("*"));
-                configuration.setMaxAge(3600L); // Pre-flight 요청 캐시 시간
+                configuration.setMaxAge(3600L);
                 return configuration;
             }
         }));
 
-
-        // 기존 설정들
+        // 2. 기본 설정 비활성화 (CSRF, Form Login, HTTP Basic)
         http.csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        // 기본 로그아웃 핸들러 비활성화
-        http.logout(logout -> logout.disable());
+        // 3. 로그아웃 설정
+        http.logout(logout -> logout
+                .logoutUrl("/auth/logout")
+                .addLogoutHandler((request, response, authentication) -> {
+                    Cookie[] cookies = request.getCookies();
+                    if (cookies != null) {
+                        for (Cookie cookie : cookies) {
+                            if ("refreshToken".equals(cookie.getName())) {
+                                authService.deleteRefreshTokenByToken(cookie.getValue());
+                                break;
+                            }
+                        }
+                    }
+                })
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    response.setStatus(HttpServletResponse.SC_OK);
+                    response.getWriter().write("Logout successful");
+                })
+                .deleteCookies("refreshToken", "Authorization", "accessToken")
+        );
 
-
-        // OAuth2 로그인 설정
+        // 4. OAuth2 로그인 설정
         http.oauth2Login(oauth2 -> oauth2
                 .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig.userService(customOAuth2UserService))
                 .successHandler(customSuccessHandler));
 
-        // 경로별 접근 권한 설정
+        // ★★★ 5. 경로별 접근 권한 설정
         http.authorizeHttpRequests(auth -> auth
-                // ★★★ 2. "http://localhost:5173"를 제거하고 올바른 경로만 남깁니다. ★★★
+                // 프론트엔드 앱 로딩 및 인증 관련 경로는 누구나 접근 가능
                 .requestMatchers("/", "/oauth2/**", "/login/**", "/auth/reissue", "/auth/logout").permitAll()
-                .anyRequest().authenticated());
+                // '/api/'로 시작하는 모든 요청은 반드시 인증이 필요함
+                .requestMatchers("/api/**").authenticated()
+                // 그 외 나머지 요청은 일단 허용 (프론트엔드 라우팅을 위해)
+                .anyRequest().permitAll()
+        );
 
-        // JWT 필터 추가
-        http.addFilterBefore(new JWTFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
+        // 6. JWT 필터 추가
+        http.addFilterBefore(new JWTFilter(jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
