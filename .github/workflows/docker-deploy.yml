@@ -12,13 +12,21 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
       - name: Log in to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - name: Build Docker image
-        run: docker build -t plutodesu/spring-app:latest .
-
-      - name: Push Docker image
-        run: docker push plutodesu/spring-app:latest
-
-
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            plutodesu/spring-app:latest
+            plutodesu/spring-app:${{ github.sha }}
+          platforms: linux/amd64,linux/arm64
