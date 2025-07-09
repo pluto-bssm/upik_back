@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -21,11 +22,13 @@ import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 import pluto.upik.shared.oauth2jwt.service.AuthService;
 import pluto.upik.shared.oauth2jwt.service.CustomOAuth2UserService;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
@@ -36,21 +39,28 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, UserRepository userRepository) throws Exception {
 
-        // 1. CORS 설정
+        // 1. ★★★ CORS 설정 (프론트엔드 도메인 허용) ★★★
         http.cors(corsCustomizer -> corsCustomizer.configurationSource(new CorsConfigurationSource() {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration configuration = new CorsConfiguration();
-                configuration.setAllowedOrigins(Collections.singletonList("http://localhost:5173"));
-                configuration.setAllowedMethods(Collections.singletonList("*"));
+                // ★★★ 프론트엔드 URL들 추가 ★★★
+                configuration.setAllowedOrigins(Arrays.asList(
+                        "<http://localhost:3000>",    // React 기본 포트
+                        "<http://localhost:5173>",    // Vite React 포트
+                        "<http://localhost:8080>",    // Vue.js 기본 포트
+                        "<https://yourdomain.com>"    // 실제 배포 도메인
+                ));
+                configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
                 configuration.setAllowCredentials(true);
                 configuration.setAllowedHeaders(Collections.singletonList("*"));
+                configuration.setExposedHeaders(Arrays.asList("Authorization", "Set-Cookie"));
                 configuration.setMaxAge(3600L);
                 return configuration;
             }
         }));
 
-        // 2. 기본 설정 비활성화 (CSRF, Form Login, HTTP Basic)
+        // 2. 기본 설정 비활성화
         http.csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
@@ -72,7 +82,8 @@ public class SecurityConfig {
                 })
                 .logoutSuccessHandler((request, response, authentication) -> {
                     response.setStatus(HttpServletResponse.SC_OK);
-                    response.getWriter().write("Logout successful");
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.getWriter().write("{\\'message\\':\\'로그아웃 성공\\'}");
                 })
                 .deleteCookies("refreshToken", "Authorization", "accessToken")
         );
@@ -82,17 +93,44 @@ public class SecurityConfig {
                 .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig.userService(customOAuth2UserService))
                 .successHandler(customSuccessHandler));
 
-        // 5. 경로별 접근 권한 설정
+        // 5. ★★★ API 중심 접근 권한 설정 ★★★
         http.authorizeHttpRequests(auth -> auth
-                // 프론트엔드 앱 로딩 및 인증 관련 경로는 누구나 접근 가능
-                .requestMatchers( "/oauth2/**", "/login/**", "/auth/reissue", "/auth/logout").permitAll()
-                // '/api/'로 시작하는 모든 요청은 반드시 인증이 필요함
+                // ★★★ 인증 관련 API ★★★
+                .requestMatchers("/oauth2/**", "/login/**", "/auth/**").permitAll()
+
+                // ★★★ 공개 API ★★★
+                .requestMatchers("/api/auth/status").permitAll()           // 인증 상태 확인
+                .requestMatchers("/api/my").permitAll()                    // My 페이지 데이터
+
+                // ★★★ 인증 필요 API ★★★
+                .requestMatchers("/api/main").authenticated()              // 메인 페이지 데이터
+
+                // ★★★ 권한별 API ★★★
+                .requestMatchers("/api/bsm").hasRole("BSM")               // BSM 전용 API
+                .requestMatchers("/api/nobsm").hasRole("NOBSM")           // NOBSM 전용 API
+
+                // ★★★ 나머지 API는 인증 필요 ★★★
                 .requestMatchers("/api/**").authenticated()
-                // 그 외 나머지 요청은 일단 허용 (프론트엔드 라우팅을 위해)
-                .anyRequest().authenticated()
+
+                // ★★★ 그 외 모든 요청 허용 (정적 리소스, 헬스체크 등) ★★★
+                .anyRequest().permitAll()
         );
 
-        // 6. JWT 필터 추가
+        // 6. ★★★ 예외 처리 (JSON 응답만) ★★★
+        http.exceptionHandling(exceptions -> exceptions
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.getWriter().write("{\\'error\\':\\'접근 권한이 없습니다\\',\\'code\\':\\'ACCESS_DENIED\\'}");
+                })
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.getWriter().write("{\\'error\\':\\'로그인이 필요합니다\\',\\'code\\':\\'UNAUTHORIZED\\'}");
+                })
+        );
+
+        // 7. JWT 필터 추가
         http.addFilterBefore(new JWTFilter(jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

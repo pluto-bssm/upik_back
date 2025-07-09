@@ -48,6 +48,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         Optional<User> userOptional = userRepository.findByUsername(username);
 
         User user; // User 객체를 담을 변수 선언
+        System.out.println("userOptional.isPresent() " + userOptional.isPresent());
 
         // 2. Optional의 isPresent() 메소드를 사용해 유저의 존재 여부를 확인합니다.
         if (userOptional.isPresent()) {

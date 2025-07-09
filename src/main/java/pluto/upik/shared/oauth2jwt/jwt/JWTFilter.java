@@ -6,6 +6,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +18,7 @@ import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 
 import java.io.IOException;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class JWTFilter extends OncePerRequestFilter {
@@ -26,46 +28,135 @@ public class JWTFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String accessToken = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if ("access".equals(cookie.getName())) {
-                    accessToken = cookie.getValue();
-                    break;
-                }
-            }
-        }
 
-        if (accessToken == null) {
+        // ★★★ 1. OAuth2 및 정적 리소스 경로는 JWT 검증 스킵 ★★★
+        String requestURI = request.getRequestURI();
+        if (shouldSkipFilter(requestURI)) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        try {
-            // 변경된 부분: 만료 및 카테고리 검증
-            if (jwtUtil.isExpired(accessToken) || !"access".equals(jwtUtil.getCategory(accessToken))) {
-                filterChain.doFilter(request, response);
-                return;
-            }
-        } catch (Exception e) {
-            // 토큰 파싱 중 예외 발생 시 요청 거부
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid Token");
+        // ★★★ 2. Authorization 헤더에서 토큰 추출 (우선순위) ★★★
+        String accessToken = extractTokenFromHeader(request);
+
+        // ★★★ 3. 헤더에 없으면 쿠키에서 추출 ★★★
+        if (accessToken == null) {
+            accessToken = extractTokenFromCookie(request);
+        }
+
+        // ★★★ 4. 토큰이 없으면 다음 필터로 ★★★
+        if (accessToken == null) {
+            log.debug("No access token found in request to: {}", requestURI);
+            filterChain.doFilter(request, response);
             return;
         }
 
-        // 변경된 부분: JWTUtil을 통해 사용자 정보 추출
-        String username = jwtUtil.getUsername(accessToken);
-        String role = jwtUtil.getRole(accessToken);
-
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUsername(username);
-        userDTO.setRole(role);
-
-        CustomOAuth2User customOAuth2User = new CustomOAuth2User(userDTO, userRepository);
-        Authentication authToken = new UsernamePasswordAuthenticationToken(customOAuth2User, null, customOAuth2User.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authToken);
+        // ★★★ 5. 토큰 검증 및 인증 설정 ★★★
+        try {
+            if (validateAndSetAuthentication(accessToken)) {
+                log.debug("Authentication set successfully for request: {}", requestURI);
+            } else {
+                log.debug("Token validation failed for request: {}", requestURI);
+            }
+        } catch (Exception e) {
+            log.warn("JWT processing error for request {}: {}", requestURI, e.getMessage());
+            // 에러가 발생해도 다음 필터로 진행 (인증 실패로 처리됨)
+        }
 
         filterChain.doFilter(request, response);
+    }
+
+    /**
+     * ★★★ JWT 검증을 스킵할 경로들 ★★★
+     */
+    private boolean shouldSkipFilter(String requestURI) {
+        return requestURI.startsWith("/oauth2/") ||
+                requestURI.startsWith("/login/") ||
+                requestURI.equals("/auth/reissue") ||
+                requestURI.equals("/auth/logout") ||
+                requestURI.startsWith("/static/") ||
+                requestURI.startsWith("/css/") ||
+                requestURI.startsWith("/js/") ||
+                requestURI.startsWith("/images/") ||
+                requestURI.equals("/favicon.ico") ||
+                requestURI.equals("/error");
+    }
+
+    /**
+     * ★★★ Authorization 헤더에서 Bearer 토큰 추출 ★★★
+     */
+    private String extractTokenFromHeader(HttpServletRequest request) {
+        String authorizationHeader = request.getHeader("Authorization");
+
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            return authorizationHeader.substring(7); // "Bearer " 제거
+        }
+
+        return null;
+    }
+
+    /**
+     * ★★★ 쿠키에서 accessToken 추출 ★★★
+     */
+    private String extractTokenFromCookie(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("accessToken".equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * ★★★ 토큰 검증 및 인증 설정 ★★★
+     */
+    private boolean validateAndSetAuthentication(String accessToken) {
+        try {
+            // 토큰 만료 및 카테고리 검증
+            if (jwtUtil.isExpired(accessToken)) {
+                log.debug("Access token is expired");
+                return false;
+            }
+
+            if (!"access".equals(jwtUtil.getCategory(accessToken))) {
+                log.debug("Token is not an access token");
+                return false;
+            }
+
+            // 토큰에서 사용자 정보 추출
+            String username = jwtUtil.getUsername(accessToken);
+            String role = jwtUtil.getRole(accessToken);
+
+            if (username == null || role == null) {
+                log.debug("Username or role or name is null in token");
+                return false;
+            }
+
+            // UserDTO 생성 및 인증 객체 설정
+            UserDTO userDTO = new UserDTO();
+            userDTO.setUsername(username);
+            userDTO.setRole(role);
+
+            CustomOAuth2User customOAuth2User = new CustomOAuth2User(userDTO, userRepository);
+            Authentication authToken = new UsernamePasswordAuthenticationToken(
+                    customOAuth2User,
+                    null,
+                    customOAuth2User.getAuthorities()
+            );
+
+            SecurityContextHolder.getContext().setAuthentication(authToken);
+
+            log.debug("Authentication set for user: {} with role: {}", username, role);
+            return true;
+
+        } catch (Exception e) {
+            log.warn("Token validation error: {}", e.getMessage());
+            return false;
+        }
     }
 }
