@@ -1,6 +1,7 @@
 package pluto.upik.shared.oauth2jwt.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -16,6 +17,7 @@ import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
@@ -39,40 +41,86 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         if (registrationId.equals("google")) {
             oAuth2Response = new GoogleResponse(oAuth2User.getAttributes());
         } else {
-            return null; // 또는 예외 처리
+            throw new OAuth2AuthenticationException("지원하지 않는 OAuth2 제공자입니다: " + registrationId);
         }
 
         String username = oAuth2Response.getProvider() + "_" + oAuth2Response.getProviderId();
 
-        // 1. username으로 DB에서 유저를 조회합니다. 결과는 Optional<User> 객체입니다.
-        Optional<User> userOptional = userRepository.findByUsername(username);
+        // ★★★ 1. 삭제된 사용자 포함 모든 사용자 조회 ★★★
+        Optional<User> existingUser = userRepository.findByUsernameIncludingDeleted(username);
 
-        User user; // User 객체를 담을 변수 선언
-        System.out.println("userOptional.isPresent() " + userOptional.isPresent());
+        User user;
 
-        // 2. Optional의 isPresent() 메소드를 사용해 유저의 존재 여부를 확인합니다.
-        if (userOptional.isPresent()) {
-            // 유저가 이미 존재하면, Optional에서 User 객체를 가져와서 이름과 이메일 정보를 업데이트합니다.
-            user = userOptional.get();
-            user.setName(oAuth2Response.getName());
-            user.setEmail(oAuth2Response.getEmail());
-            // @Transactional에 의해 메소드 종료 시 자동으로 DB에 UPDATE 쿼리가 실행됩니다.
+        if (existingUser.isPresent()) {
+            // ★★★ 2. 기존 사용자 처리 ★★★
+            user = handleExistingUser(existingUser.get(), oAuth2Response);
+            log.info("기존 사용자 처리 완료 - username: {}, role: {}", username, user.getRole());
         } else {
-            // 유저가 존재하지 않으면, 새로 생성합니다.
-            User newUser = User.builder()
-                    .username(username)
-                    .email(oAuth2Response.getEmail())
-                    .name(oAuth2Response.getName())
-                    .role(getRole(oAuth2Response.getEmail()))
-                    .build();
-            // 새로 생성한 유저를 DB에 저장하고, user 변수에 할당합니다.
-            user = userRepository.save(newUser);
+            // ★★★ 3. 완전히 새로운 사용자 생성 ★★★
+            user = createNewUser(username, oAuth2Response);
+            log.info("신규 사용자 생성 - username: {}, role: {}", username, user.getRole());
         }
 
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUsername(username);
-        userDTO.setRole(user.getRole());
-        userDTO.setName(user.getName());
+        // UserDTO 생성 및 반환
+        UserDTO userDTO = UserDTO.builder()
+                .username(username)
+                .role(user.getRole())
+                .name(user.getName())
+                .build();
+
         return new CustomOAuth2User(userDTO, userRepository);
+    }
+
+    /**
+     * ★★★ 기존 사용자 처리 로직 ★★★
+     */
+    private User handleExistingUser(User existingUser, OAuth2Response oAuth2Response) {
+
+        if ("ROLE_DELETED".equals(existingUser.getRole())) {
+            // ★★★ 탈퇴한 사용자 복구 ★★★
+            return reactivateDeletedUser(existingUser, oAuth2Response);
+        } else {
+            // ★★★ 활성 사용자 정보 업데이트 ★★★
+            existingUser.setName(oAuth2Response.getName());
+            existingUser.setEmail(oAuth2Response.getEmail());
+
+            log.info("활성 사용자 정보 업데이트 - username: {}", existingUser.getUsername());
+            return existingUser;
+        }
+    }
+
+    /**
+     * ★★★ 탈퇴한 사용자 복구 ★★★
+     */
+    private User reactivateDeletedUser(User deletedUser, OAuth2Response oAuth2Response) {
+        log.info("탈퇴한 계정 복구 시작 - ID: {}, username: {}",
+                deletedUser.getId(), deletedUser.getUsername());
+
+        // 1. 역할 복구 (이메일 기반으로 재설정)
+        String newRole = getRole(oAuth2Response.getEmail());
+        deletedUser.setRole(newRole);
+
+        // 2. 사용자 정보 업데이트
+        deletedUser.setName(oAuth2Response.getName());
+        deletedUser.setEmail(oAuth2Response.getEmail());
+
+        log.info("계정 복구 완료 - ID: {}, username: {}, 새로운 역할: {}",
+                deletedUser.getId(), deletedUser.getUsername(), newRole);
+
+        return deletedUser; // @Transactional에 의해 자동 저장
+    }
+
+    /**
+     * ★★★ 신규 사용자 생성 ★★★
+     */
+    private User createNewUser(String username, OAuth2Response oAuth2Response) {
+        User newUser = User.builder()
+                .username(username)
+                .email(oAuth2Response.getEmail())
+                .name(oAuth2Response.getName())
+                .role(getRole(oAuth2Response.getEmail()))
+                .build();
+
+        return userRepository.save(newUser);
     }
 }

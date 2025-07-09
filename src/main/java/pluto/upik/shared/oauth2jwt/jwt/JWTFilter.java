@@ -195,10 +195,11 @@ public class JWTFilter extends OncePerRequestFilter {
                 log.warn("Failed to fetch name from DB: {}", e.getMessage());
             }
 
-            UserDTO userDTO = new UserDTO();
-            userDTO.setUsername(username);
-            userDTO.setRole(role);
-            userDTO.setName(name);
+            UserDTO userDTO = UserDTO.builder()
+                    .username(username)
+                    .name(name)
+                    .role(role)
+                    .build();
 
             CustomOAuth2User customOAuth2User = new CustomOAuth2User(userDTO, userRepository);
             Authentication authToken = new UsernamePasswordAuthenticationToken(

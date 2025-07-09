@@ -20,6 +20,7 @@ import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -30,7 +31,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
 
-    @Value("${oauth2.success.redirect-url}")  // ★★★ $ 추가 ★★★
+    @Value("${oauth2.success.redirect-url}")
     private String redirectUrl;
 
     @Value("${jwt.refresh-token-expiration-time}")
@@ -47,19 +48,16 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
             log.info("OAuth2 login success: username={}, role={}", username, role);
 
-            // ★★★ 삭제된 사용자인지 확인 ★★★
-            User user = userRepository.findByUsernameIncludingDeleted(username).orElse(null);
-            if (user != null && "ROLE_DELETED".equals(user.getRole())) {
-                log.warn("Deleted user attempted to login: {}", username);
-                response.sendRedirect("/login?error=account_deleted");
-                return;
-            }
+            // ★★★ 활성 사용자만 조회 (ROLE_DELETED 제외) ★★★
+            Optional<User> activeUser = userRepository.findByUsername(username);
 
-            if (user == null) {
-                log.error("User not found after OAuth2 authentication: {}", username);
+            if (activeUser.isEmpty()) {
+                log.error("Active user not found after OAuth2 authentication: {}", username);
                 response.sendRedirect("/login?error=user_not_found");
                 return;
             }
+
+            User user = activeUser.get();
 
             // ★★★ Access Token과 Refresh Token 모두 생성 ★★★
             String accessToken = jwtUtil.createAccessToken(username, role);

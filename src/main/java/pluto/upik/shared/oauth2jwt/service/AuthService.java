@@ -54,7 +54,6 @@ public class AuthService {
 
             // ★★★ 요구사항에 따라 사용자 정보 변경 ★★★
             user.setRole("ROLE_DELETED");
-            user.setUsername("deleted account");
             user.setName("deleted account");
             user.setEmail(null);
             user.setCreatedAt(null);
