@@ -14,7 +14,7 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Stri
 
     boolean existsByToken(String token);
 
-    @Modifying // 2. 이 어노테이션을 반드시 추가!
+    @Modifying
     @Transactional
     void deleteByToken(String token);
 

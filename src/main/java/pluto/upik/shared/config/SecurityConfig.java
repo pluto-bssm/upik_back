@@ -50,14 +50,13 @@ public class SecurityConfig {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration configuration = new CorsConfiguration();
-                // ★★★ 프론트엔드 URL 추가 ★★★
                 configuration.setAllowedOrigins(Arrays.asList(
-                        "<"+frontUrl+">",
-                        "<http://localhost:8080>"
+                        "http://localhost:8080",
+                        "http://localhost:5137"
                 ));
                 configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
                 configuration.setAllowCredentials(true);
-                configuration.setAllowedHeaders(Collections.singletonList("*"));
+                configuration.setAllowedHeaders(Collections.singletonList("http://localhost:5137"));
                 configuration.setExposedHeaders(Arrays.asList("Authorization", "Set-Cookie"));
                 configuration.setMaxAge(3600L);
                 return configuration;
@@ -103,11 +102,11 @@ public class SecurityConfig {
                 .requestMatchers("/oauth2/**", "/login/**", "/auth/**").permitAll()
 
                 // ★★★ 공개 API ★★★
-                .requestMatchers("/api/auth/status").permitAll()           // 인증 상태 확인
                 .requestMatchers("/api/my").permitAll()                    // My 페이지 데이터
 
                 // ★★★ 인증 필요 API ★★★
                 .requestMatchers("/api/main").authenticated()              // 메인 페이지 데이터
+                .requestMatchers("/api/auth/status").authenticated()       // ★★★ 인증 상태는 로그인 필요 ★★★
 
                 // ★★★ 권한별 API ★★★
                 .requestMatchers("/api/bsm").hasRole("BSM")               // BSM 전용 API
@@ -116,7 +115,7 @@ public class SecurityConfig {
                 // ★★★ 나머지 API는 인증 필요 ★★★
                 .requestMatchers("/api/**").authenticated()
 
-                // ★★★ 그 외 모든 요청 허용 (정적 리소스, 헬스체크 등) ★★★
+                // ★★★ 그 외 모든 요청 허용 ★★★
                 .anyRequest().permitAll()
         );
 

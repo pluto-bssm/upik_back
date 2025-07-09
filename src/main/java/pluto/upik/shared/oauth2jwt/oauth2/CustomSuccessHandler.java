@@ -1,7 +1,5 @@
 package pluto.upik.shared.oauth2jwt.oauth2;
 
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,8 +20,6 @@ import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.Map;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -34,7 +30,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
 
-    @Value("oauth2.success.redirect-url")
+    @Value("${oauth2.success.redirect-url}")  // ★★★ $ 추가 ★★★
     private String redirectUrl;
 
     @Value("${jwt.refresh-token-expiration-time}")
@@ -44,19 +40,39 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     @Transactional
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-        CustomOAuth2User customOAuth2User = (CustomOAuth2User) authentication.getPrincipal();
-        String username = customOAuth2User.getUsername();
-        String role = customOAuth2User.getRole();
+        try {
+            CustomOAuth2User customOAuth2User = (CustomOAuth2User) authentication.getPrincipal();
+            String username = customOAuth2User.getUsername();
+            String role = customOAuth2User.getRole();
 
-        // ★★★ Access Token과 Refresh Token 모두 생성 ★★★
-        String accessToken = jwtUtil.createAccessToken(username, role);
-        String refreshToken = jwtUtil.createRefreshToken(username, role);
+            log.info("OAuth2 login success: username={}, role={}", username, role);
 
-        // ★★★ DB에 Refresh Token 저장 ★★★
-        User user = userRepository.findByUsername(username).orElse(null);
-        if (user != null) {
+            // ★★★ 삭제된 사용자인지 확인 ★★★
+            User user = userRepository.findByUsernameIncludingDeleted(username).orElse(null);
+            if (user != null && "ROLE_DELETED".equals(user.getRole())) {
+                log.warn("Deleted user attempted to login: {}", username);
+                response.sendRedirect("/login?error=account_deleted");
+                return;
+            }
+
+            if (user == null) {
+                log.error("User not found after OAuth2 authentication: {}", username);
+                response.sendRedirect("/login?error=user_not_found");
+                return;
+            }
+
+            // ★★★ Access Token과 Refresh Token 모두 생성 ★★★
+            String accessToken = jwtUtil.createAccessToken(username, role);
+            String refreshToken = jwtUtil.createRefreshToken(username, role);
+
+            log.debug("Tokens created successfully for user: {}", username);
+
+            // ★★★ DB에 Refresh Token 저장 ★★★
             // 기존 Refresh Token 삭제
-            refreshTokenRepository.findByUser(user).ifPresent(refreshTokenRepository::delete);
+            refreshTokenRepository.findByUser(user).ifPresent(existingToken -> {
+                log.debug("Deleting existing refresh token for user: {}", username);
+                refreshTokenRepository.delete(existingToken);
+            });
 
             // 새 Refresh Token 저장
             RefreshToken refreshTokenEntity = RefreshToken.builder()
@@ -66,13 +82,21 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
                     .expiryDate(new Date(System.currentTimeMillis() + refreshTokenExpirationTime))
                     .build();
             refreshTokenRepository.save(refreshTokenEntity);
+
+            log.debug("New refresh token saved for user: {}", username);
+
+            // ★★★ 두 토큰 모두 쿠키에 저장 ★★★
+            response.addCookie(createCookie("Authorization", accessToken));
+            response.addCookie(createRefreshCookie("refreshToken", refreshToken));
+
+            log.info("OAuth2 login completed successfully: {}", username);
+
+            response.sendRedirect(redirectUrl);
+
+        } catch (Exception e) {
+            log.error("OAuth2 login success handler failed: {}", e.getMessage(), e);
+            response.sendRedirect("/login?error=handler_error");
         }
-
-        // ★★★ 두 토큰 모두 쿠키에 저장 ★★★
-        response.addCookie(createCookie("Authorization", accessToken));
-        response.addCookie(createRefreshCookie("refreshToken", refreshToken));
-
-        response.sendRedirect(redirectUrl);
     }
 
     private Cookie createRefreshCookie(String key, String value) {
@@ -80,27 +104,10 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         cookie.setMaxAge(60 * 60 * 24 * 7); // 7일
         cookie.setSecure(false);
         cookie.setPath("/");
-        cookie.setHttpOnly(true);
+        cookie.setHttpOnly(false);
         return cookie;
     }
 
-
-    /**
-     * ★★★ 이메일 안전하게 추출 ★★★
-     */
-    private String getEmailFromAttributes(Map<String, Object> attributes) {
-        try {
-            Object email = attributes.get("email");
-            return email != null ? email.toString() : "";
-        } catch (Exception e) {
-            log.warn("이메일 추출 실패: {}", e.getMessage());
-            return "";
-        }
-    }
-
-    /**
-     * ★★★ 쿠키 생성 ★★★
-     */
     private Cookie createCookie(String key, String value) {
         Cookie cookie = new Cookie(key, value);
         cookie.setMaxAge(60 * 60 * 24); // 24시간

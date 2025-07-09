@@ -121,6 +121,7 @@ public class JWTFilter extends OncePerRequestFilter {
                 requestURI.startsWith("/login/") ||
                 requestURI.equals("/auth/reissue") ||
                 requestURI.equals("/auth/logout") ||
+                requestURI.equals("/auth/withdraw") ||  // ★★★ 추가 ★★★
                 requestURI.startsWith("/static/") ||
                 requestURI.startsWith("/css/") ||
                 requestURI.startsWith("/js/") ||
@@ -206,6 +207,12 @@ public class JWTFilter extends OncePerRequestFilter {
 
             if (username == null || role == null) {
                 log.debug("Username or role is null in token");
+                return false;
+            }
+
+            // ★★★ 삭제된 사용자인지 확인 ★★★
+            if ("ROLE_DELETED".equals(role)) {
+                log.warn("Deleted user attempted to access with token: {}", username);
                 return false;
             }
 
