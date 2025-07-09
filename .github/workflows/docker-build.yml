@@ -1,0 +1,34 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - master  # main 브랜치에 푸시될 때 트리거
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 소스 코드 체크아웃
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      # 2. DockerHub 로그인
+      - name: Log in to DockerHub
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      # 3. Docker 이미지 빌드
+      - name: Build Docker image
+        run: |
+          docker build -t plutodesu/spring-app:latest .
+
+      # 4. Docker 이미지 푸시
+      - name: Push Docker image
+        run: |
+          docker push plutodesu/spring-app:latest
+
+      # 5. 완료 메시지
+      - name: Notify Completion
+        run: echo "Docker image has been built and pushed successfully!"

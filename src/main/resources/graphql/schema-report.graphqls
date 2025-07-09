@@ -1,0 +1,64 @@
+type ReportQuery {
+    # 현재 사용자가 신고한 목록 조회 (토큰에서 userId 추출)
+    getMyReports: [Report!]! # Non-Nullable 배열
+
+    # 특정 사용자가 신고한 목록 조회
+    getReportsByUser(userId: ID!): [Report!]! # Non-Nullable 배열
+
+    # 특정 신고 대상의 신고 목록 조회
+    getReportsByTarget(targetId: ID!): [Report!]! # Non-Nullable 배열
+
+    # 모든 신고 목록 조회
+    getAllReports: [Report!]! # Non-Nullable 배열
+}
+
+# 신고 관련 Mutation 묶음
+type ReportMutation {
+    # 특정 신고를 거부 (userId 명시적으로 지정 가능, 미지정시 내부적으로 처리)
+    rejectReport(targetId: ID!, userId: ID): RejectReportPayload!
+
+    # 가이드 신고를 수락하고 질문을 다시 생성 (userId 명시적으로 지정 가능, 미지정시 내부적으로 처리)
+    acceptGuideReport(guideId: ID!, userId: ID): AcceptGuideReportPayload!
+
+    # 질문 신고 접수 (userId 명시적으로 지정 가능, 미지정시 내부적으로 처리)
+    reportQuestion(questionId: ID!, reason: String!, userId: ID): QuestionReportPayload!
+
+    # 질문 신고 거부 (userId 명시적으로 지정 가능, 미지정시 내부적으로 처리)
+    rejectQuestionReport(questionId: ID!, userId: ID): QuestionReportPayload!
+
+    # 질문 신고 수락 (질문 삭제) (userId 명시적으로 지정 가능, 미지정시 내부적으로 처리)
+    acceptQuestionReport(questionId: ID!, userId: ID): QuestionReportPayload!
+}
+
+# 신고 데이터 타입
+type Report {
+    userId: ID!       # 신고자 ID
+    targetId: ID!     # 신고 대상 ID
+    reason: String!   # 신고 이유
+    targetType:String!
+    createdAt: String! # 신고 생성 날짜 (ISO 8601 형식)
+}
+
+# 신고 거부 응답 타입
+type RejectReportPayload {
+    message: String!
+}
+# 신고 접수 응답 타입
+type SubmitReportPayload {
+    success: Boolean! # 신고 접수 성공 여부
+    message: String!  # 처리 결과 메시지
+    report: Report    # 생성된 신고 데이터 (성공 시)
+}
+
+# 가이드 신고 수락 응답 타입
+type AcceptGuideReportPayload {
+    message: String!         # 처리 결과 메시지
+    newQuestionId: ID        # 새로 생성된 질문 ID (있는 경우)
+    success: Boolean!        # 처리 성공 여부
+}
+
+# 질문 신고 응답 타입
+type QuestionReportPayload {
+    message: String!         # 처리 결과 메시지
+    success: Boolean!        # 처리 성공 여부
+}

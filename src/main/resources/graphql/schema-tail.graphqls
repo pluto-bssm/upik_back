@@ -1,0 +1,44 @@
+# Tail 관련 쿼리
+type TailQuery {
+    # 특정 투표에 속한 테일 목록 조회
+    getTailsByVoteId(voteId: ID!): [TailPayload!]!
+
+    # 특정 테일에 대한 응답 목록 조회
+    getTailResponsesByTailId(tailId: ID!): [TailResponsePayload!]!
+}
+
+# Tail 관련 뮤테이션
+type TailMutation {
+    # 테일 생성
+    createTail(voteId: ID!, question: String!): TailPayload!
+
+    # 테일 응답 생성
+    createTailResponse(tailId: ID!, userId: ID!, answer: String!): TailResponsePayload!
+}
+
+# 테일 정보 응답 타입
+type TailPayload {
+    # 테일 ID
+    id: ID!
+
+    # 테일이 속한 투표 ID
+    voteId: ID!
+
+    # 테일 질문
+    question: String!
+}
+
+# 테일 응답 정보 응답 타입
+type TailResponsePayload {
+    # 테일 응답 ID
+    id: ID!
+
+    # 응답한 테일 ID
+    tailId: ID!
+
+    # 응답한 사용자 ID
+    userId: ID!
+
+    # 응답 내용
+    answer: String!
+}

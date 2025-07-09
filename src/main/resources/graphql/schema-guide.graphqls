@@ -1,0 +1,28 @@
+type GuideQuery {
+    guideById(id: ID!): GuideDetail
+}
+
+type GuideMutation {
+    incrementGuideLike(id: ID!): Boolean!
+    incrementGuideRevote(id: ID!, reason: String!): Boolean!
+}
+
+type Guide {
+    id: ID!
+    title: String!
+    content: String!
+    createdAt: String!
+    like: Int!
+}
+
+type GuideDetail {
+    id: ID!
+    title: String!
+    content: String!
+    createdAt: String!
+    category: String
+    guideType: String
+    likeCount: Int!
+    revoteCount: Int!
+    voteId: ID
+}

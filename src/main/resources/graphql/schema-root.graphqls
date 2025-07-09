@@ -1,0 +1,17 @@
+type Query {
+    guide: GuideQuery!
+    keywordGuide: KeywordGuideQuery!
+    report: ReportQuery!
+    guidesByCategory(category: String!): [Guide!]!
+    voteResponse: VoteResponseQuery!
+    vote: VoteQuery!
+    tail: TailQuery!
+}
+
+type Mutation {
+    guide: GuideMutation!
+    report: ReportMutation!
+    vote: VoteMutation!
+    voteResponse: VoteResponseMutation!
+    tail: TailMutation!
+}

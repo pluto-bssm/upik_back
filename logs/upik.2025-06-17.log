@@ -1,0 +1,1278 @@
+2025-06-17 10:58:15.350 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 10:58:15.372 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30281 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 10:58:15.372 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 10:58:15.372 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 10:58:15.901 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 10:58:15.981 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+2025-06-17 10:58:16.335 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 10:58:16.345 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 10:58:16.346 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 10:58:16.346 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 10:58:16.383 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 10:58:16.384 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 994 ms
+2025-06-17 10:58:16.503 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 10:58:17.723 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@191f4d65
+2025-06-17 10:58:17.724 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 10:58:17.746 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 10:58:17.779 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 10:58:17.797 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 10:58:17.955 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 10:58:18.379 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 10:58:18.845 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 10:58:18.846 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 10:58:19.018 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 10:58:19.480 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 10:58:19.928 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 10:58:19.934 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 10:58:19.943 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.803 seconds (process running for 10.404)
+2025-06-17 10:58:30.577 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 10:58:30.577 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 10:58:30.580 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-06-17 10:58:31.222 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 240 ms
+2025-06-17 11:03:40.345 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:03:40.349 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:03:40.359 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:03:40.364 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:03:40.409 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:08:41.490 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:08:41.513 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30682 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:08:41.514 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:08:41.514 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:08:41.983 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:08:42.059 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 71 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:08:42.316 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:08:42.322 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:08:42.323 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:08:42.323 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:08:42.349 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:08:42.349 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 819 ms
+2025-06-17 11:08:42.410 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:08:43.851 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@45e11627
+2025-06-17 11:08:43.854 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:08:43.894 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:08:43.930 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:08:43.946 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:08:44.095 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:08:44.524 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:08:44.972 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:08:44.973 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:08:45.269 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:08:45.644 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:08:46.055 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:08:46.064 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:08:46.073 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.797 seconds (process running for 10.372)
+2025-06-17 11:08:46.395 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 11:08:46.395 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 11:08:46.396 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-06-17 11:08:46.828 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 145 ms
+2025-06-17 11:09:16.314 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:09:16.317 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:09:16.322 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:09:16.325 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:09:16.364 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:09:24.091 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:09:24.111 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30729 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:09:24.111 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:09:24.112 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:09:24.573 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:09:24.658 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:09:24.910 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:09:24.918 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:09:24.919 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:09:24.919 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:09:24.949 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:09:24.949 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 817 ms
+2025-06-17 11:09:25.030 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:09:26.242 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@ec5f944
+2025-06-17 11:09:26.244 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:09:26.285 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:09:26.315 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:09:26.331 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:09:26.465 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:09:26.881 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:09:27.929 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:09:27.932 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:09:28.295 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:09:28.663 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:09:29.002 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:09:29.015 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:09:29.029 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 5.131 seconds (process running for 10.461)
+2025-06-17 11:09:30.415 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:09:30.419 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:09:30.424 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:09:30.425 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:09:31.183 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:09:38.736 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:09:38.756 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30758 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:09:38.756 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:09:38.756 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:09:39.177 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:09:39.254 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 72 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:09:39.492 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:09:39.499 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:09:39.500 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:09:39.500 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:09:39.525 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:09:39.525 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 753 ms
+2025-06-17 11:09:39.586 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:09:40.783 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@5b4954b2
+2025-06-17 11:09:40.786 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:09:40.827 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:09:40.859 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:09:40.873 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:09:40.999 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:09:41.416 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:09:41.992 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:09:41.993 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:09:42.270 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:09:42.656 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:09:42.980 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:09:42.985 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:09:42.993 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.454 seconds (process running for 9.761)
+2025-06-17 11:11:05.553 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 11:11:05.554 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 11:11:05.557 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-06-17 11:11:05.623 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 오늘 점심 메뉴로 어떤 것이 좋을까요?
+Vote Description: 한식
+Voting Results (percentages):
+40
+
+Tail Question: 점심 메뉴 선택에 대해 어떻게 생각하시나요?
+Tail Responses:
+한식이 가장 좋을 것 같아요
+
+Please return the result in the following format:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-17 11:11:08.204 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: What's for lunch today?
+Vote Description: Korean food
+Voting Results (percentages):
+40
+
+Tail Question: How do you feel about your lunch menu choices?
+Tail Responses:
+I think Korean food would be best
+
+Please return the result in the following format:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-17 11:11:29.119 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: Guide Title:  
+What's for Lunch Today?
+
+Guide Content:  
+
+How did we determine your lunch choice today? It seems that 40% of participants preferred Korean food. This could be due to the variety of flavors and diverse cuisines available, which might appeal to a wide range of tastes.  
+
+Why do you think Korean food is such a popular choice for lunch?
+2025-06-17 11:11:29.978 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 가이드 제목:  
+오늘 점심은 뭐 먹지?
+
+가이드 내용:  
+
+오늘 점심 메뉴를 어떻게 결정했나요? 참가자의 40% 가 한국 음식을 선호하는 것 같습니다. 이는 다양한 맛과 다양한 요리가 제공되어 다양한 취향에 어필할 수 있기 때문일 수 있습니다.  
+
+한국 음식이 점심 메뉴로 인기 있는 이유는 무엇이라고 생각하시나요?
+2025-06-17 11:11:29.978 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: - The extensive menu options include a wide variety of dishes, from simple stir-fried vegetables to complex dishes like bibimbap or kimchi, catering to different dietary preferences and口味 preferences.  
+- Korean cuisine often incorporates traditional flavors and ingredients, which might appeal to those who value quality and authenticity in their meals.
+2025-06-17 11:11:30.645 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: - 다양한 메뉴 옵션에는 간단한 야채 볶음부터 비빔밥이나 김치와 같은 복잡한 요리까지 다양한 식단과 선호도에 맞는 다양한 요리가 포함됩니다口味.  
+- 한국 음식에는 종종 전통적인 맛과 재료가 포함되어 있어 식사에서 품질과 진정성을 중요하게 생각하는 사람들에게 어필할 수 있습니다.
+2025-06-17 11:11:30.645 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: Common Mistakes on Lunch Today:  
+- Forgo trying anything new if you're not into the trend. Many people are looking for quick, satisfying meals.  
+- Order too much food or spend an excessive amount of money without considering individual preferences.  
+
+In summary, Korean food is a great choice when you're seeking something hearty and satisfying.
+2025-06-17 11:11:31.393 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 오늘 점심에 자주 하는 실수:  
+- 트렌드에 얽매이지 않는다면 새로운 시도를 그만두세요. 많은 사람들이 빠르고 만족스러운 식사를 찾고 있습니다.  
+- 개인의 취향을 고려하지 않고 음식을 너무 많이 주문하거나 과도한 금액을 지출합니다.  
+
+요약하자면, 한국 음식은 정성스럽고 만족스러운 것을 찾고 있을 때 훌륭한 선택입니다.
+2025-06-17 11:11:31.394 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: However, it's important to consider your personal taste and dietary restrictions before deciding on your lunch.
+2025-06-17 11:11:31.948 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 그러나 점심을 결정하기 전에 개인의 취향과 식이 제한을 고려하는 것이 중요합니다.
+2025-06-17 11:11:31.967 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: AI 응답 포맷이 예상과 다릅니다.] with root cause
+java.lang.RuntimeException: AI 응답 포맷이 예상과 다릅니다.
+	at pluto.upik.shared.ai.service.AIService.generateGuide(AIService.java:156)
+	at pluto.upik.shared.ai.resolver.AIController.generateGuide(AIController.java:41)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-06-17 11:13:18.672 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:13:18.680 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:13:18.704 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:13:18.707 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:13:18.745 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:13:33.895 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:13:33.918 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30820 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:13:33.919 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:13:33.919 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:13:34.351 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:13:34.422 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:13:34.671 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:13:34.677 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:13:34.678 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:13:34.678 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:13:34.702 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:13:34.703 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 767 ms
+2025-06-17 11:13:34.764 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:13:35.952 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@266da047
+2025-06-17 11:13:35.956 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:13:36.003 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:13:36.041 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:13:36.057 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:13:36.203 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:13:36.635 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:13:37.081 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:13:37.082 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:13:37.361 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:13:37.703 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:13:38.020 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:13:38.026 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:13:38.033 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.346 seconds (process running for 9.713)
+2025-06-17 11:14:33.234 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:14:33.239 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:14:33.247 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:14:33.251 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:14:33.295 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:14:40.125 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:14:40.146 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30835 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:14:40.146 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:14:40.146 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:14:40.552 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:14:40.626 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:14:40.859 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:14:40.865 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:14:40.866 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:14:40.866 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:14:40.892 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:14:40.892 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 730 ms
+2025-06-17 11:14:40.962 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:14:42.166 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@1c2dd89b
+2025-06-17 11:14:42.168 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:14:42.207 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:14:42.237 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:14:42.252 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:14:42.383 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:14:42.809 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:14:43.238 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:14:43.239 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:14:43.504 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:14:43.865 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:14:44.190 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:14:44.195 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:14:44.202 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.257 seconds (process running for 9.735)
+2025-06-17 11:14:47.152 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 11:14:47.153 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 11:14:47.156 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-06-17 11:14:47.252 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 오늘 점심 메뉴로 어떤 것이 좋을까요?
+Vote Description: 한식
+Voting Results (percentages):
+40
+
+Tail Question: 점심 메뉴 선택에 대해 어떻게 생각하시나요?
+Tail Responses:
+한식이 가장 좋을 것 같아요
+
+Please return the result in the following format:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-17 11:14:49.447 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: What's for lunch today?
+Vote Description: Korean food
+Voting Results (percentages):
+40
+
+Tail Question: How do you feel about your lunch menu choices?
+Tail Responses:
+I think Korean food would be best
+
+Please return the result in the following format:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-17 11:15:07.177 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: Guide Title:  
+&lt;<title> What's for Lunch Today? - Korean Food Guide & Tipping Off to How People Choose Their Meals</title>  
+
+Guide Content:  
+&lt;The guide provides an overview of Korea's popular Korean food options, including its reputation for high-quality, flavorful dishes. Below are key details and considerations when deciding on your lunch today:</y
+2025-06-17 11:15:07.991 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 가이드 제목:  
+&lt;<title> 오늘 점심 메뉴는 무엇인가요? - 한국 음식 가이드 & 사람들이 식사를 선택하는 방법에 대한 팁</title>  
+
+가이드 콘텐츠:  
+&lt; 이 가이드는 고품질의 맛 좋은 요리에 대한 명성을 포함하여 한국의 인기 있는 한국 음식 옵션에 대한 개요를 제공합니다. 오늘 점심을 결정할 때 주요 세부 사항과 고려 사항은 다음과 같습니다. &lt;/y
+2025-06-17 11:15:07.992 [http-nio-8080-exec-1] DEBUG p.upik.shared.ai.service.AIService - result가이드 제목:  
+&lt;<title> 오늘 점심 메뉴는 무엇인가요? - 한국 음식 가이드 & 사람들이 식사를 선택하는 방법에 대한 팁</title>  
+
+가이드 콘텐츠:  
+&lt; 이 가이드는 고품질의 맛 좋은 요리에 대한 명성을 포함하여 한국의 인기 있는 한국 음식 옵션에 대한 개요를 제공합니다. 오늘 점심을 결정할 때 주요 세부 사항과 고려 사항은 다음과 같습니다. &lt;/y
+2025-06-17 11:15:08.004 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: AI 응답 포맷이 예상과 다릅니다.] with root cause
+java.lang.RuntimeException: AI 응답 포맷이 예상과 다릅니다.
+	at pluto.upik.shared.ai.service.AIService.generateGuide(AIService.java:157)
+	at pluto.upik.shared.ai.resolver.AIController.generateGuide(AIController.java:41)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-06-17 11:16:51.641 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:16:51.644 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:16:51.650 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:16:51.660 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:16:51.699 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:16:59.151 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:16:59.173 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30870 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:16:59.173 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:16:59.173 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:16:59.651 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:16:59.722 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:17:00.119 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:17:00.126 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:17:00.127 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:17:00.127 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:17:00.157 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:17:00.158 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 964 ms
+2025-06-17 11:17:00.229 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:17:01.450 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@266da047
+2025-06-17 11:17:01.454 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:17:01.499 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:17:01.535 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:17:01.550 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:17:01.711 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:17:02.140 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:17:02.585 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:17:02.586 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:17:02.863 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:17:03.216 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:17:03.525 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:17:03.530 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:17:03.538 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.622 seconds (process running for 9.997)
+2025-06-17 11:17:22.969 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 11:17:22.970 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 11:17:22.973 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-06-17 11:17:23.038 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 오늘 점심 메뉴로 어떤 것이 좋을까요?
+Vote Description: 한식
+Voting Results (percentages):
+40
+
+Tail Question: 점심 메뉴 선택에 대해 어떻게 생각하시나요?
+Tail Responses:
+한식이 가장 좋을 것 같아요
+
+Please return the result in the following format:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-17 11:17:25.542 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: What's for lunch today?
+Vote Description: Korean food
+Voting Results (percentages):
+40
+
+Tail Question: How do you feel about your lunch menu choices?
+Tail Responses:
+I think Korean food would be best
+
+Please return the result in the following format:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-17 11:17:43.907 [http-nio-8080-exec-1] DEBUG p.upik.shared.ai.service.AIService - result**Guide Title:**  
+What's for lunch today?  
+
+**Guide Content:**  
+
+### Key Points:  
+1. **Korean cuisine**: A diverse dish that originated in South Korea, combining flavors from various cuisines like Chinese, Japanese, and Thai.  
+2. **Ingredients**: Korean food is rich in vegetables, lean proteins, healthy fats, and complex carbohydrates.  
+3. **Dishes under different categories**:  
+   - **Main Courses**: Ham, grilled meat (such as pork or chicken), and rice or steamed vegetables with a savory sauce.  
+   - **Side Dishes**: Sides like rice, soup, kimchi, yogurt, stuffed food (often with vegetables), and sides that complement the main course.  
+   - **Snacks**: A variety of fruits, cookies, and small baked goods.  
+   - **Desserts**: Salads, cakes, and desserts from Japanese or Indian cuisine often serve as side dishes.  
+
+### Voting Results:  
+40% voted positively about Korean food as their lunch choice.  
+
+### Interesting Facts About Korean Food:  
+- Korean food is more nutritious than Western diets because of its focus on local ingredients.  
+- Korean cuisine is influenced by Chinese, Japanese, and Thai cuisines in significant ways.  
+- Some Korean restaurants have popular dishes like garbi, kimchi, and kimpi (a type of fried rice).  
+
+This guide provides a comprehensive overview of Korean food, including what it is, common ingredients, examples of dishes, positive voting results, interesting facts, and restaurant recommendations.
+2025-06-17 11:20:41.038 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:20:41.044 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:20:41.055 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:20:41.063 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:20:41.102 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:20:48.484 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:20:48.506 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30972 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:20:48.506 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:20:48.506 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:20:48.945 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:20:49.017 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 67 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:20:49.262 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:20:49.268 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:20:49.269 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:20:49.269 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:20:49.294 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:20:49.295 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 772 ms
+2025-06-17 11:20:49.358 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:20:50.562 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@5ef2cbe6
+2025-06-17 11:20:50.564 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:20:50.595 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:20:50.627 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:20:50.644 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:20:50.801 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:20:51.212 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:20:51.673 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:20:51.675 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:20:51.974 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:20:52.367 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:20:52.690 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:20:52.696 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:20:52.704 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.427 seconds (process running for 9.843)
+2025-06-17 11:21:19.961 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:21:19.964 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:21:19.970 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:21:19.973 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:21:20.009 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:21:27.372 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:21:27.417 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 30987 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:21:27.417 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:21:27.418 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:21:27.967 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:21:28.045 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 71 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:21:28.299 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:21:28.306 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:21:28.307 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:21:28.307 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:21:28.332 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:21:28.332 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 878 ms
+2025-06-17 11:21:28.394 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:21:29.576 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@68b7bdcb
+2025-06-17 11:21:29.579 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:21:29.630 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:21:29.663 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:21:29.680 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:21:29.832 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:21:30.250 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:21:30.693 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:21:30.694 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:21:30.967 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:21:31.419 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:21:31.752 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:21:31.757 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:21:31.765 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.652 seconds (process running for 9.962)
+2025-06-17 11:22:14.000 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:22:14.004 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:22:14.010 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:22:14.014 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:22:14.055 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:22:21.574 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:22:21.598 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 31006 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:22:21.599 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:22:21.599 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:22:22.031 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:22:22.106 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 71 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:22:22.342 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:22:22.348 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:22:22.349 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:22:22.349 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:22:22.373 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:22:22.373 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 757 ms
+2025-06-17 11:22:22.437 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:22:23.660 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@2c6927f0
+2025-06-17 11:22:23.664 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:22:23.709 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:22:23.742 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:22:23.756 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:22:23.889 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:22:24.320 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:22:24.750 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:22:24.751 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:22:25.007 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:22:25.357 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:22:25.669 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:22:25.674 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:22:25.681 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.345 seconds (process running for 9.681)
+2025-06-17 11:22:33.990 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 11:22:33.991 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 11:22:33.994 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-06-17 11:22:34.429 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 161 ms
+2025-06-17 11:23:57.696 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:23:57.699 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:23:57.705 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:23:57.708 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:23:57.747 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:24:04.960 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:24:04.979 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 31065 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:24:04.979 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:24:04.980 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:24:05.381 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:24:05.449 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 64 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:24:05.686 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:24:05.692 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:24:05.693 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:24:05.693 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:24:05.718 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:24:05.718 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 723 ms
+2025-06-17 11:24:05.778 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:24:07.031 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@d84418a
+2025-06-17 11:24:07.034 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:24:07.072 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:24:07.107 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:24:07.138 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:24:07.284 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:24:07.721 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:24:08.395 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:24:08.398 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:24:08.704 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:24:09.111 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:24:09.445 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:24:09.453 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:24:09.461 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.686 seconds (process running for 10.022)
+2025-06-17 11:24:10.007 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 11:24:10.007 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 11:24:10.009 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-06-17 11:24:10.405 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 149 ms
+2025-06-17 11:24:59.381 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 부산소프트웨어마이스터고등학교에서 뭘 공부해야하나요
+Option with the highest votes : C언어
+Voting Results (percentages):
+70%
+
+Tail Question: 왜 그걸 공부해야하나요?
+Tail Responses:
+왜냐면 C언어가 근본이니까
+
+Please return the result in the following format:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-17 11:25:02.149 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: What should I study
+at Busan Software Meister High School Option with the highest votes: C Language
+Voting Results (percentages):
+70%
+
+Tail Question: Why should I study it?
+Tail Responses:
+Please return
+
+the result in the following format:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-17 11:25:24.390 [http-nio-8080-exec-1] DEBUG p.upik.shared.ai.service.AIService - result**Guide Title:**
+
+What Should You Study at Busan Software Meister High School?
+
+**Guide Content:**
+
+Studying C Language at Busan Software Meister High School is an excellent choice if you're passionate about software development, computer science, or any field that requires strong problem-solving skills. With a 70% vote for this option, it stands out as one of the top choices.
+
+C Language is not only a fundamental component of programming but also plays a crucial role in developing efficient and robust software applications. Here's why you should consider studying C Language:
+
+1. **Foundational to Software Development:**
+   - C is widely used in high-level programming, which underpins many software development tools and technologies.
+   - You'll gain skills that are essential for creating scalable and maintainable software.
+
+2. **Practical Applications:**
+   - Whether you're building applications on the web or working with databases, understanding C Language will give you a competitive edge.
+   - It's used in areas like game development, user interface design, and backend programming.
+
+3. **Career Opportunities:**
+   - With skills in C Programming, you can work as a software developer, systems programmer, or even contribute to research and innovation in tech fields.
+   - Your knowledge will be valuable in industries ranging from finance to healthcare.
+
+4. **Additional Benefits:**
+   - If you're interested in more advanced topics like data structures and algorithms, studying C Language now will give you a solid foundation for those areas.
+   - You can also explore other programming languages if you wish to broaden your skill set.
+
+5. **Future Opportunities:**
+   - Emphasizing C Language at Busan Software Meister High School can help you build a strong technical skill set that prepares you for future challenges in technology and innovation.
+
+In conclusion, studying C Language is not just about learning a programming language—it's about developing critical thinking, problem-solving, and analytical skills. With this guidance, you'll be well-prepared to make a significant impact in the field of software development.
+2025-06-17 11:25:24.392 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **
+
+What Should You Study at Busan Software Meister High School?
+
+**
+2025-06-17 11:25:24.996 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: **
+
+부산소프트웨어마이스터고등학교에서 무엇을 공부해야 할까요?
+
+**
+2025-06-17 11:25:24.997 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **
+
+Studying C Language at Busan Software Meister High School is an excellent choice if you're passionate about software development, computer science, or any field that requires strong problem-solving skills. With a 70% vote for this option, it stands out as one of the top choices.
+
+C Language is not only a fundamental component of programming but also plays a crucial role in developing efficient and robust software applications.
+2025-06-17 11:25:26.003 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: **
+
+부산 소프트웨어 마이스터 고등학교에서 C 언어를 공부하는 것은 소프트웨어 개발, 컴퓨터 과학 또는 강력한 문제 해결 기술이 필요한 분야에 열정을 가지고 있다면 탁월한 선택입니다. 이 옵션에 대한 70% 의 투표로 최고의 선택 중 하나로 돋보입니다.
+
+C 언어는 프로그래밍의 기본 구성 요소일 뿐만 아니라 효율적이고 강력한 소프트웨어 응용 프로그램을 개발하는 데 중요한 역할을 합니다.
+2025-06-17 11:25:26.003 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: Here's why you should consider studying C Language:
+
+1. **Foundational to Software Development:**
+   - C is widely used in high-level programming, which underpins many software development tools and technologies.
+   - You'll gain skills that are essential for creating scalable and maintainable software.
+
+2.
+2025-06-17 11:25:26.650 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: C 언어 공부를 고려해야 하는 이유는 다음과 같습니다.
+
+1. * * 소프트웨어 개발의 기초: * *
+   - C는 많은 소프트웨어 개발 도구와 기술을 뒷받침하는 고급 프로그래밍에 널리 사용됩니다.
+   - 확장 가능하고 유지 보수 가능한 소프트웨어를 만드는 데 필수적인 기술을 습득하게 됩니다.
+
+2.
+2025-06-17 11:25:26.651 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Practical Applications:**
+   - Whether you're building applications on the web or working with databases, understanding C Language will give you a competitive edge.
+   - It's used in areas like game development, user interface design, and backend programming.
+
+3. **Career Opportunities:**
+   - With skills in C Programming, you can work as a software developer, systems programmer, or even contribute to research and innovation in tech fields.
+2025-06-17 11:25:27.418 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 실용적인 응용 프로그램: * *
+   - 웹에서 애플리케이션을 구축하든 데이터베이스로 작업하든 C 언어를 이해하면 경쟁 우위를 확보할 수 있습니다.
+   - 게임 개발, 사용자 인터페이스 디자인, 백엔드 프로그래밍 등의 분야에서 사용됩니다.
+
+3. * * 커리어 기회: * *
+   - C 프로그래밍 기술을 통해 소프트웨어 개발자, 시스템 프로그래머로 일하거나 기술 분야의 연구 및 혁신에 기여할 수 있습니다.
+2025-06-17 11:25:27.419 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: - Your knowledge will be valuable in industries ranging from finance to healthcare.
+
+4. **Additional Benefits:**
+   - If you're interested in more advanced topics like data structures and algorithms, studying C Language now will give you a solid foundation for those areas.
+   - You can also explore other programming languages if you wish to broaden your skill set.
+
+5.
+2025-06-17 11:25:28.164 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: - 귀하의 지식은 금융에서 의료에 이르기까지 다양한 산업 분야에서 가치가 있습니다.
+
+4. * * 추가 혜택: * *
+   - 데이터 구조 및 알고리즘과 같은 고급 주제에 관심이 있다면 지금 C 언어를 공부하면 해당 영역에 대한 탄탄한 기반을 얻을 수 있습니다.
+   - 스킬 세트를 넓히고 싶다면 다른 프로그래밍 언어를 탐색할 수도 있습니다.
+
+5.
+2025-06-17 11:25:28.164 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: **Future Opportunities:**
+   - Emphasizing C Language at Busan Software Meister High School can help you build a strong technical skill set that prepares you for future challenges in technology and innovation.
+
+In conclusion, studying C Language is not just about learning a programming language—it's about developing critical thinking, problem-solving, and analytical skills.
+2025-06-17 11:25:28.777 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: * * 향후 기회: * *
+   - 부산소프트웨어마이스터고등학교에서 C언어를 강조하면 기술과 혁신에 대한 미래의 도전에 대비할 수 있는 강력한 기술 세트를 구축하는 데 도움이 될 수 있습니다.
+
+결론적으로, C 언어를 공부하는 것은 프로그래밍 언어를 배우는 것뿐만 아니라 비판적 사고, 문제 해결 및 분석 기술을 개발하는 것입니다.
+2025-06-17 11:25:28.778 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: With this guidance, you'll be well-prepared to make a significant impact in the field of software development.
+2025-06-17 11:25:29.361 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 이 지침을 통해 소프트웨어 개발 분야에서 중요한 영향을 미칠 수 있도록 잘 준비할 수 있습니다.
+2025-06-17 11:28:16.031 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:28:16.037 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:28:16.066 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:28:16.069 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:28:16.112 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:28:23.408 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:28:23.432 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 31102 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:28:23.432 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:28:23.432 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:28:24.021 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:28:24.193 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 166 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:28:24.582 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:28:24.589 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:28:24.589 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:28:24.589 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:28:24.614 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:28:24.614 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1164 ms
+2025-06-17 11:28:24.688 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:28:25.892 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@5ef2cbe6
+2025-06-17 11:28:25.896 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:28:25.957 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:28:25.994 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:28:26.010 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:28:26.174 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:28:26.593 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:28:27.081 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:28:27.082 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:28:27.373 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:28:27.898 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:28:28.234 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:28:28.242 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:28:28.255 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 5.065 seconds (process running for 10.466)
+2025-06-17 11:28:31.816 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 11:28:31.817 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 11:28:31.817 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-06-17 11:28:32.174 [http-nio-8080-exec-8] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 148 ms
+2025-06-17 11:29:07.008 [http-nio-8080-exec-9] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 사감쌤 머리카락 몇개?
+Option with the highest votes : 1개
+Voting Results (percentages):
+100%
+
+Tail Question: 왜 그렇게 생각하셨나요?
+Tail Responses:
+가발 벗는거 봄
+
+This guide type :
+유희용 질문
+
+Please return the result in the following format:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-17 11:29:09.154 [http-nio-8080-exec-9] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: How many sergeant-at-arms hairs?
+Option with the highest votes: 1
+Voting Results (percentages):
+100%
+
+Tail Question: Why did you think so?
+Tail Responses:
+Taking off your wig Spring
+
+This guide type:
+Playful question
+
+Please return the result in the following format:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-17 11:29:21.568 [http-nio-8080-exec-9] DEBUG p.upik.shared.ai.service.AIService - resultGuide Title: How many sergeant-at-arms hairs?
+
+Guide Content:
+&lt;How many sergeant-at-arms hairs do you think? &gt;
+
+ guide results:  
+100% vote for "Spring."  
+
+Tail Question: Why did you think so?  
+Tail Response: Taking off your wig  
+
+This guide can help explain why the answer was chosen, providing insights into voting preferences.
+2025-06-17 11:29:21.572 [http-nio-8080-exec-9] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: How many sergeant-at-arms hairs?
+2025-06-17 11:29:22.449 [http-nio-8080-exec-9] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 사찰의 머리카락은 몇 개입니까?
+2025-06-17 11:29:22.449 [http-nio-8080-exec-9] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: &lt;How many sergeant-at-arms hairs do you think? &gt;
+
+ guide results:  
+100% vote for "Spring."  
+
+Tail Question: Why did you think so?  
+Tail Response: Taking off your wig  
+
+This guide can help explain why the answer was chosen, providing insights into voting preferences.
+2025-06-17 11:29:23.179 [http-nio-8080-exec-9] DEBUG p.u.s.t.service.TranslationService - 번역 완료: &lt; 사찰 머리카락이 몇 개라고 생각하십니까? &gt;
+
+ 가이드 결과:  
+"봄" 에 대한 100% 투표.  
+
+꼬리 질문: 왜 그렇게 생각하셨나요?  
+꼬리 반응: 가발 벗기  
+
+이 가이드는 투표 선호도에 대한 통찰력을 제공하여 답변이 선택된 이유를 설명하는 데 도움이 될 수 있습니다.
+2025-06-17 11:29:56.368 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 사감선생님 머리카락 몇개?
+Option with the highest votes : 1개
+Voting Results (percentages):
+100%
+
+Tail Question: 왜 그렇게 생각하셨나요?
+Tail Responses:
+가발 벗는거 봄
+
+This guide type :
+안진지  질문
+
+Please return the result in the following format:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-17 11:29:58.115 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: How many hairs do you have?
+Option with the highest votes: 1
+Voting Results (percentages):
+100%
+
+Tail Question: Why did you think so?
+Tail Responses:
+Taking off your wig Spring
+
+This guide type:
+Anjinji question
+
+Please return the result in the following format:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-17 11:30:13.143 [http-nio-8080-exec-3] DEBUG p.upik.shared.ai.service.AIService - resultGuide Title:
+How Many Hairs Do You Have?
+
+Guide Content:
+&lt;<title> How Many Hairs Do You Have?</title>
+&lt; guide text: This guide explores the question of how many hairs one has on their head. It examines various reasons behind voting, including hygiene concerns and personal preferences.</guide_text>
+
+ guiding content:
+
+ guides a person to consider how many hairs they have in their head. The vote is overwhelmingly in favor of taking off their wig (100%), but there's also discussion about possible reasons for this choice, such as hygiene or preference for a cleaner look. 
+
+ guide text: While the highest voted response is taking off their wig, it's worth considering alternatives like cutting hair naturally to enhance appearance without risking damage to the scalp.
+
+ guides a person to explore the options available when they choose to take off their wig, including natural hair cuts and other personal preferences.
+2025-06-17 11:30:13.145 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: How Many Hairs Do You Have?
+2025-06-17 11:30:13.984 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 머리카락이 몇 개인가요?
+2025-06-17 11:30:13.985 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: &lt;<title> How Many Hairs Do You Have?</title>
+&lt; guide text: This guide explores the question of how many hairs one has on their head. It examines various reasons behind voting, including hygiene concerns and personal preferences.</guide_text>
+
+ guiding content:
+
+ guides a person to consider how many hairs they have in their head.
+2025-06-17 11:30:14.728 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: &lt; 머리카락이<title> 몇 개인가요?</title>
+&lt; GUIDE TEXT: 이 가이드는 머리에 머리카락이 몇 개인지에 대한 질문을 탐구합니다. 위생 문제 및 개인 취향을 포함하여 투표의 다양한 이유를 검토합니다</guide_text>.
+
+안내 내용:
+
+ 머리에 머리카락이 몇 개 있는지 고려하도록 안내합니다.
+2025-06-17 11:30:14.728 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: The vote is overwhelmingly in favor of taking off their wig (100%), but there's also discussion about possible reasons for this choice, such as hygiene or preference for a cleaner look. 
+
+ guide text: While the highest voted response is taking off their wig, it's worth considering alternatives like cutting hair naturally to enhance appearance without risking damage to the scalp.
+2025-06-17 11:30:15.522 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 가발을 벗는 것에 대한 찬성 (100%) 이 압도적으로 높지만, 위생이나 더 깔끔한 룩을 선호하는 것과 같은 가능한 이유에 대한 논의도 있습니다. 
+
+ 가이드 텍스트: 가장 높은 투표를 받은 응답은 가발을 벗는 것이지만, 두피 손상을 초래하지 않으면서 외모를 개선하기 위해 자연스럽게 머리를 자르는 것과 같은 대안을 고려해 볼 가치가 있습니다.
+2025-06-17 11:30:15.523 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: guides a person to explore the options available when they choose to take off their wig, including natural hair cuts and other personal preferences.
+2025-06-17 11:30:16.119 [http-nio-8080-exec-3] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 자연스러운 헤어 컷 및 기타 개인 취향을 포함하여 가발을 벗을 때 사용할 수 있는 옵션을 살펴볼 수 있도록 안내합니다.
+2025-06-17 11:30:48.724 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:30:48.727 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:30:48.739 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:30:48.743 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:30:48.784 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-17 11:30:56.829 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-06-17 11:30:56.854 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 31142 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-06-17 11:30:56.854 [main] DEBUG pluto.upik.UpikApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-17 11:30:56.855 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-17 11:30:57.404 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 11:30:57.478 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 5 JPA repository interfaces.
+2025-06-17 11:30:57.746 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-17 11:30:57.754 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:30:57.755 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 11:30:57.755 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-17 11:30:57.782 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 11:30:57.782 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 909 ms
+2025-06-17 11:30:57.849 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-17 11:30:59.057 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@266da047
+2025-06-17 11:30:59.060 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-17 11:30:59.109 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 11:30:59.143 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-17 11:30:59.159 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 11:30:59.309 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 11:30:59.752 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 10.11.11
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-17 11:31:00.220 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 11:31:00.222 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:31:00.516 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 11:31:00.866 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-17 11:31:01.192 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-17 11:31:01.197 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-17 11:31:01.205 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.586 seconds (process running for 9.984)
+2025-06-17 11:31:04.074 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-17 11:31:04.074 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-17 11:31:04.075 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-06-17 11:31:04.130 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 한국어를 영어로 번역: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: 윤도훈은 머리카락 몇개?
+Option with the highest votes : 1개
+Voting Results (percentages):
+100%
+
+Tail Question: 왜 그렇게 생각하셨나요?
+Tail Responses:
+가발 벗는거 봄
+
+Write it like this :
+안진지  질문
+
+Please return the result in the following format:
+Guide Title:
+<<title>>
+
+Guide Content:
+<<content>>
+2025-06-17 11:31:06.222 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: Please generate a guide title and guide content for the following vote and responses. The guide should be clear, informative, and in-depth.
+
+Vote Title: How many hairs does Yoon Dohoon have?
+Option with the highest votes: 1
+Voting Results (percentages):
+100%
+
+Tail Question: Why did you think so?
+Tail Responses:
+Taking off your wig Spring
+
+Write it like this:
+Ask
+
+the result in the following format:
+Guide Title:
+&lt;<title> &gt;
+
+Guide Content:
+&lt;<content> &gt;
+2025-06-17 11:31:21.731 [http-nio-8080-exec-1] DEBUG p.upik.shared.ai.service.AIService - resultGuide Title: How Many Hairs Does Yoon Dohoon Have?
+
+Guide Content:
+&lt;<title>How Many Hairs Does Yoon Dohoon Have?</title>
+&lt;<content&gt;  
+The question "How many hairs does Yoon Dohoon have?" was voted on with high participation. Taking off your wig, which you wear as a show of style and fashion, might be one reason some people thought about Yoon Dohoon, but this is just speculation. In reality, the content of the vote would depend on how many hairs are present in his hair, making this question intriguing for those curious about fashion, beauty, or personal interests.  
+</content>
+2025-06-17 11:31:21.733 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: How Many Hairs Does Yoon Dohoon Have?
+2025-06-17 11:31:22.417 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 윤도훈은 머리카락이 몇 개야?
+2025-06-17 11:31:22.418 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: &lt;<title>How Many Hairs Does Yoon Dohoon Have?</title>
+&lt;<content&gt;  
+The question "How many hairs does Yoon Dohoon have?" was voted on with high participation. Taking off your wig, which you wear as a show of style and fashion, might be one reason some people thought about Yoon Dohoon, but this is just speculation.
+2025-06-17 11:31:23.244 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: &lt; <title>윤도훈은 머리카락이 몇 개입니까?</title>
+&lt; &lt; content &gt;  
+"윤도훈은 머리카락이 몇 개입니까?" 라는 질문이 높은 참여로 투표되었습니다. 스타일과 패션의 쇼로 착용하는 가발을 벗는 것은 일부 사람들이 윤도훈에 대해 생각하는 이유 중 하나일 수 있지만, 이것은 추측일 뿐입니다.
+2025-06-17 11:31:23.245 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 영어를 한국어로 번역: In reality, the content of the vote would depend on how many hairs are present in his hair, making this question intriguing for those curious about fashion, beauty, or personal interests.  
+</content>
+2025-06-17 11:31:24.211 [http-nio-8080-exec-1] DEBUG p.u.s.t.service.TranslationService - 번역 완료: 실제로 투표의 내용은 그의 머리카락에 몇 개의 머리카락이 있는지 여부에 따라 달라지므로 패션, 미용 또는 개인적 이익에 대해 궁금한 사람들에게 흥미로운 질문이 될 것입니다.  
+</content>
+2025-06-17 11:32:32.623 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-17 11:32:32.632 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-17 11:32:32.638 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 11:32:32.642 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-17 11:32:32.681 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

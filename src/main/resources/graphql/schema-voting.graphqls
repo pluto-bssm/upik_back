@@ -1,0 +1,27 @@
+# VoteResponse 관련 - 새로 추가
+type VoteResponseMutation {
+    createVoteResponse(input: CreateVoteResponseInput!): VoteResponsePayload!
+}
+
+type VoteResponseQuery {
+    getVoteResponseCount(voteId: ID!): Int!
+    getOptionResponseCount(optionId: ID!): Int!
+    hasUserVoted(voteId: ID!): Boolean!
+}
+
+# Input Types - 새로 추가
+input CreateVoteResponseInput {
+    voteId: ID!
+    optionId: ID!
+}
+
+# Payload Types - 새로 추가
+type VoteResponsePayload {
+    id: ID!
+    userId: ID!
+    voteId: ID!
+    optionId: ID!
+    optionContent: String!
+    voteTitle: String!
+    createdAt: String!
+}
