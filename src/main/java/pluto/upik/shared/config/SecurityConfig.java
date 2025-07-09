@@ -4,6 +4,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -36,6 +37,9 @@ public class SecurityConfig {
     private final JWTUtil jwtUtil;
     private final AuthService authService;
 
+    @Value("security.cors.front-url")
+    private String frontUrl;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, UserRepository userRepository) throws Exception {
 
@@ -46,10 +50,8 @@ public class SecurityConfig {
                 CorsConfiguration configuration = new CorsConfiguration();
                 // ★★★ 프론트엔드 URL들 추가 ★★★
                 configuration.setAllowedOrigins(Arrays.asList(
-                        "<http://localhost:3000>",    // React 기본 포트
-                        "<http://localhost:5173>",    // Vite React 포트
-                        "<http://localhost:8080>",    // Vue.js 기본 포트
-                        "<https://yourdomain.com>"    // 실제 배포 도메인
+                        "<"+frontUrl+">",
+                        "<http://localhost:8080>"
                 ));
                 configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
                 configuration.setAllowCredentials(true);

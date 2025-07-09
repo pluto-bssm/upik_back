@@ -16,13 +16,6 @@ public class CustomOAuth2User implements OAuth2User {
     private final UserRepository userRepository;
     private User user; // ★★★ final 제거 ★★★
 
-    // ★★★ 기존 OAuth2 로그인용 생성자 ★★★
-    public CustomOAuth2User(UserDTO userDTO, UserRepository userRepository, User user) {
-        this.userDTO = userDTO;
-        this.userRepository = userRepository;
-        this.user = user;
-    }
-
     // JWT 토큰용 생성자
     public CustomOAuth2User(UserDTO userDTO, UserRepository userRepository) {
         this.userDTO = userDTO;

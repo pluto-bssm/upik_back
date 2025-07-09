@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,9 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     private final JWTUtil jwtUtil;
     private final UserRepository userRepository;
+
+    @Value("oauth2.success.redirect-url")
+    private String redirectUrl;
 
     @Override
     @Transactional
@@ -68,7 +72,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
         // 쿠키 설정 및 리다이렉트
         response.addCookie(createCookie("Authorization", accessToken));
-        response.sendRedirect("http://localhost:5173/");
+        response.sendRedirect(redirectUrl);
 
         log.info("OAuth2 로그인 완료: {}", username);
     }
