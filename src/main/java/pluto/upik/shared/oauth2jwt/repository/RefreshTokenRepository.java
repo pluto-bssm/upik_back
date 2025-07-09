@@ -8,15 +8,20 @@ import pluto.upik.shared.oauth2jwt.entity.RefreshToken;
 import pluto.upik.shared.oauth2jwt.entity.User;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface RefreshTokenRepository extends JpaRepository<RefreshToken, String> {
+public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID> {
 
     boolean existsByToken(String token);
 
     @Modifying
     @Transactional
     void deleteByToken(String token);
+
+    @Modifying
+    @Transactional
+    void deleteByUser(User user);
 
     Optional<RefreshToken> findByUser(User user);
 }

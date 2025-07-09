@@ -10,10 +10,7 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pluto.upik.shared.oauth2jwt.dto.CustomOAuth2User;
 import pluto.upik.shared.oauth2jwt.jwt.JWTUtil;
 import pluto.upik.shared.oauth2jwt.repository.RefreshTokenRepository;
@@ -31,87 +28,78 @@ public class AuthController {
     private final RefreshTokenRepository refreshTokenRepository;
     private final AuthService authService;
 
-    // ★★★ 기존 reissue 메서드 유지 ★★★
+    // ✅ 인증 상태 확인 엔드포인트 추가
+    @GetMapping("/status")
+    public ResponseEntity<?> getAuthStatus() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth == null || !auth.isAuthenticated() || "anonymousUser".equals(auth.getPrincipal())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("authenticated", false, "code", "UNAUTHORIZED"));
+        }
+
+        try {
+            CustomOAuth2User user = (CustomOAuth2User) auth.getPrincipal();
+            return ResponseEntity.ok(Map.of(
+                    "authenticated", true,
+                    "username", user.getUsername(),
+                    "role", user.getAuthorities().iterator().next().getAuthority(),
+                    "code", "AUTHENTICATED"
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("authenticated", false, "code", "INVALID_TOKEN"));
+        }
+    }
+
+    // AuthController.java - reissue 메서드 수정
     @PostMapping("/reissue")
-    public ResponseEntity<?> reissue(@CookieValue("refreshToken") String refreshToken, HttpServletResponse response) {
-        // 1. Refresh Token 유효성 검증
+    public ResponseEntity<?> reissue(
+            @CookieValue(value = "refreshToken", required = false) String refreshToken,
+            HttpServletResponse response) {
+
+        if (refreshToken == null || refreshToken.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("error", "Refresh token is required", "code", "MISSING_REFRESH_TOKEN"));
+        }
+
         try {
             if (jwtUtil.isExpired(refreshToken) || !"refresh".equals(jwtUtil.getCategory(refreshToken))) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                         .body(Map.of("error", "Invalid or expired refresh token", "code", "INVALID_REFRESH_TOKEN"));
             }
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Map.of("error", "Invalid refresh token format", "code", "INVALID_TOKEN_FORMAT"));
-        }
 
-        // 2. DB에 저장된 토큰인지 확인
-        if (!refreshTokenRepository.existsByToken(refreshToken)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Map.of("error", "Refresh token not found", "code", "TOKEN_NOT_FOUND"));
-        }
-
-        // 3. 새로운 Access Token 생성
-        String username = jwtUtil.getUsername(refreshToken);
-        String role = jwtUtil.getRole(refreshToken);
-        String newAccessToken = jwtUtil.createAccessToken(username, role);
-
-        // 4. 새로운 Access Token을 쿠키에 담아 응답
-        response.addHeader("Set-Cookie", createCookie("Authorization", newAccessToken).toString());
-
-        return ResponseEntity.ok(Map.of("message", "Access token reissued successfully"));
-    }
-
-    // ★★★ 일반 로그아웃 (토큰만 삭제) ★★★
-    @PostMapping("/logout")
-    public ResponseEntity<?> logout(
-            HttpServletRequest request,
-            @CookieValue(value = "refreshToken", required = false) String refreshToken,
-            HttpServletResponse response) {
-
-        try {
-            // 1. 현재 사용자 정보 로깅
-            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            if (auth != null && auth.isAuthenticated() && !"anonymousUser".equals(auth.getPrincipal())) {
-                try {
-                    CustomOAuth2User user = (CustomOAuth2User) auth.getPrincipal();
-                    log.info("User logout: {}", user.getUsername());
-                } catch (Exception e) {
-                    log.debug("Failed to get user info during logout: {}", e.getMessage());
-                }
+            if (!refreshTokenRepository.existsByToken(refreshToken)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Refresh token not found", "code", "TOKEN_NOT_FOUND"));
             }
 
-            // 2. DB에서 Refresh Token 삭제
-            if (refreshToken != null && !refreshToken.isEmpty()) {
-                authService.deleteRefreshTokenByToken(refreshToken);
-            }
+            String username = jwtUtil.getUsername(refreshToken);
+            String role = jwtUtil.getRole(refreshToken);
+            String newAccessToken = jwtUtil.createJwt("access", username, role, 900000L); // 15분
 
-            // 3. 클라이언트의 모든 관련 쿠키들을 만료시킴
-            response.addHeader("Set-Cookie", createExpiredCookie("Authorization"));
-            response.addHeader("Set-Cookie", createExpiredCookie("refreshToken"));
+            // ✅ JavaScript에서 접근 가능한 쿠키 설정
+            ResponseCookie cookie = ResponseCookie.from("Authorization", newAccessToken)
+                    .path("/")
+                    .maxAge(15 * 60) // 15분
+                    .httpOnly(false) // ✅ JavaScript 접근 허용
+                    .secure(false) // 개발환경
+                    .sameSite("Lax")
+                    .build();
 
-            // 4. 서버 세션 무효화
-            HttpSession session = request.getSession(false);
-            if (session != null) {
-                session.invalidate();
-            }
-
-            // 5. SecurityContext 클리어
-            SecurityContextHolder.clearContext();
+            response.addHeader("Set-Cookie", cookie.toString());
 
             return ResponseEntity.ok(Map.of(
-                    "message", "로그아웃 되었습니다",
-                    "code", "LOGOUT_SUCCESS"
+                    "message", "Access token reissued successfully",
+                    "code", "REISSUE_SUCCESS"
             ));
 
         } catch (Exception e) {
-            log.error("Logout failed: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "로그아웃 처리 중 오류가 발생했습니다", "code", "LOGOUT_FAILED"));
+            log.error("Token reissue failed: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("error", "Token reissue failed", "code", "REISSUE_FAILED"));
         }
     }
-
-    // AuthController.java의 withdraw 메서드 개선
 
     @PostMapping("/withdraw")
     public ResponseEntity<?> withdrawAccount(
