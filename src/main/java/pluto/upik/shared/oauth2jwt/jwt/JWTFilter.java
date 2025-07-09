@@ -17,6 +17,7 @@ import pluto.upik.shared.oauth2jwt.dto.UserDTO;
 import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Slf4j
 @Component
@@ -96,14 +97,15 @@ public class JWTFilter extends OncePerRequestFilter {
     }
 
     /**
-     * ★★★ 쿠키에서 accessToken 추출 ★★★
+     * ★★★ 쿠키에서 Authorization 토큰 추출 ★★★
      */
     private String extractTokenFromCookie(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if ("accessToken".equals(cookie.getName())) {
+                // ★★★ "Authorization" 쿠키에서 토큰 추출 ★★★
+                if ("Authorization".equals(cookie.getName())) {
                     return cookie.getValue();
                 }
             }
@@ -133,14 +135,26 @@ public class JWTFilter extends OncePerRequestFilter {
             String role = jwtUtil.getRole(accessToken);
 
             if (username == null || role == null) {
-                log.debug("Username or role or name is null in token");
+                log.debug("Username or role is null in token");
                 return false;
             }
 
-            // UserDTO 생성 및 인증 객체 설정
+            // ★★★ DB에서 name 안전하게 조회 ★★★
+            String name = username; // 기본값
+            try {
+                Optional<String> nameOpt = userRepository.findNameByUsername(username);
+                if (nameOpt.isPresent() && !nameOpt.get().trim().isEmpty()) {
+                    name = nameOpt.get();
+                }
+            } catch (Exception e) {
+                log.warn("DB에서 name 조회 실패: {}", e.getMessage());
+            }
+
+            // UserDTO 생성
             UserDTO userDTO = new UserDTO();
             userDTO.setUsername(username);
             userDTO.setRole(role);
+            userDTO.setName(name); // name 설정
 
             CustomOAuth2User customOAuth2User = new CustomOAuth2User(userDTO, userRepository);
             Authentication authToken = new UsernamePasswordAuthenticationToken(
@@ -151,7 +165,7 @@ public class JWTFilter extends OncePerRequestFilter {
 
             SecurityContextHolder.getContext().setAuthentication(authToken);
 
-            log.debug("Authentication set for user: {} with role: {}", username, role);
+            log.debug("Authentication set for user: {} with role: {} name: {}", username, role, name);
             return true;
 
         } catch (Exception e) {

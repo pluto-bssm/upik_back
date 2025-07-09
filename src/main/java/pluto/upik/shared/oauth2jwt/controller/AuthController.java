@@ -44,7 +44,7 @@ public class AuthController {
         // 3. 새로운 Access Token 생성
         String username = jwtUtil.getUsername(refreshToken);
         String role = jwtUtil.getRole(refreshToken);
-        String newAccessToken = jwtUtil.createJwt("access", username, role);
+        String newAccessToken = jwtUtil.createAccessToken(username, role);
 
         // 4. 새로운 Access Token을 쿠키에 담아 응답 (개선된 createCookie 사용)
         response.addHeader("Set-Cookie", createCookie("Authorization", newAccessToken).toString());

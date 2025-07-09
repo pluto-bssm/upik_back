@@ -125,15 +125,14 @@ public class JWTUtil {
     }
 
     /**
-     * ★★★ 토큰 생성 (기존과 동일) ★★★
+     * ★★★ CustomSuccessHandler용 createJwt 메서드 (기존 호환성) ★★★
      */
-    public String createJwt(String category, String username, String role) {
+    public String createJwt(String category, String username, String role, long expirationTime) {
         long now = System.currentTimeMillis();
-        long expirationTime = "access".equals(category) ? accessTokenExpirationTime : refreshTokenExpirationTime;
 
         try {
             return Jwts.builder()
-                    .claim("category", category) // 토큰 종류 (access, refresh)
+                    .claim("category", category)
                     .claim("username", username)
                     .claim("role", role)
                     .setIssuedAt(new Date(now))
@@ -145,6 +144,21 @@ public class JWTUtil {
             throw new RuntimeException("JWT 토큰 생성 실패", e);
         }
     }
+
+    /**
+     * ★★★ Access Token 생성 (편의 메서드) ★★★
+     */
+    public String createAccessToken(String username, String role) {
+        return createJwt("access", username, role,  accessTokenExpirationTime);
+    }
+
+    /**
+     * ★★★ Refresh Token 생성 (편의 메서드) ★★★
+     */
+    public String createRefreshToken(String username, String role) {
+        return createJwt("refresh", username, role,  refreshTokenExpirationTime);
+    }
+
 
     /**
      * ★★★ 전체 토큰 유효성 검증 (추가) ★★★
