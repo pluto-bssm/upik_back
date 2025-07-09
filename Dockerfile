@@ -4,11 +4,15 @@ FROM eclipse-temurin:21-jdk AS build
 # 2. 작업 디렉토리 설정
 WORKDIR /app
 
-# 3. Gradle 프로젝트 소스 복사
-COPY . .
+# 3. Gradle Wrapper 및 종속성 캐싱
+COPY gradlew gradlew
+COPY gradle gradle
+COPY build.gradle settings.gradle ./
+RUN ./gradlew dependencies --no-daemon
 
-# 4. Gradle로 프로젝트 빌드
-RUN ./gradlew clean build -x test
+# 4. 프로젝트 소스 복사 및 빌드
+COPY . .
+RUN ./gradlew clean build -x test --no-daemon
 
 # 5. 실제 실행에 사용할 경량 JRE 이미지
 FROM eclipse-temurin:21-jre
