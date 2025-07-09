@@ -71,7 +71,7 @@ public class SecurityConfig {
         // 허용할 헤더
         configuration.setAllowedHeaders(List.of("*"));
         // 인증 정보 포함 허용
-        configuration.setAllowCredentials(true);
+        configuration.setAllowCredentials(false/*true*/);
         // preflight 요청 캐시 시간 (초)
         configuration.setMaxAge(3600L);
 
