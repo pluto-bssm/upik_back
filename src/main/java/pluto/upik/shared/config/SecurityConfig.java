@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import pluto.upik.shared.oauth2jwt.jwt.JWTFilter;
 import pluto.upik.shared.oauth2jwt.jwt.JWTUtil;
 import pluto.upik.shared.oauth2jwt.oauth2.CustomSuccessHandler;
+import pluto.upik.shared.oauth2jwt.repository.RefreshTokenRepository;
 import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 import pluto.upik.shared.oauth2jwt.service.AuthService;
 import pluto.upik.shared.oauth2jwt.service.CustomOAuth2UserService;
@@ -36,6 +37,7 @@ public class SecurityConfig {
     private final CustomSuccessHandler customSuccessHandler;
     private final JWTUtil jwtUtil;
     private final AuthService authService;
+    private final RefreshTokenRepository refreshTokenRepository;
 
     @Value("security.cors.front-url")
     private String frontUrl;
@@ -48,7 +50,7 @@ public class SecurityConfig {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration configuration = new CorsConfiguration();
-                // ★★★ 프론트엔드 URL들 추가 ★★★
+                // ★★★ 프론트엔드 URL 추가 ★★★
                 configuration.setAllowedOrigins(Arrays.asList(
                         "<"+frontUrl+">",
                         "<http://localhost:8080>"
@@ -133,7 +135,7 @@ public class SecurityConfig {
         );
 
         // 7. JWT 필터 추가
-        http.addFilterBefore(new JWTFilter(jwtUtil, userRepository), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new JWTFilter(jwtUtil, userRepository, refreshTokenRepository), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

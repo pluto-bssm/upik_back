@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import pluto.upik.shared.oauth2jwt.dto.CustomOAuth2User;
 import pluto.upik.shared.oauth2jwt.dto.UserDTO;
+import pluto.upik.shared.oauth2jwt.repository.RefreshTokenRepository;
 import pluto.upik.shared.oauth2jwt.repository.UserRepository;
 
 import java.io.IOException;
@@ -26,45 +28,89 @@ public class JWTFilter extends OncePerRequestFilter {
 
     private final JWTUtil jwtUtil;
     private final UserRepository userRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        // ★★★ 1. OAuth2 및 정적 리소스 경로는 JWT 검증 스킵 ★★★
+        // ★★★ 1. 스킵할 경로 체크 ★★★
         String requestURI = request.getRequestURI();
         if (shouldSkipFilter(requestURI)) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // ★★★ 2. Authorization 헤더에서 토큰 추출 (우선순위) ★★★
-        String accessToken = extractTokenFromHeader(request);
-
-        // ★★★ 3. 헤더에 없으면 쿠키에서 추출 ★★★
+        // ★★★ 2. Access Token 추출 ★★★
+        String accessToken = extractTokenFromCookie(request);
         if (accessToken == null) {
-            accessToken = extractTokenFromCookie(request);
+            accessToken = extractTokenFromHeader(request);
         }
 
-        // ★★★ 4. 토큰이 없으면 다음 필터로 ★★★
-        if (accessToken == null) {
-            log.debug("No access token found in request to: {}", requestURI);
-            filterChain.doFilter(request, response);
-            return;
-        }
-
-        // ★★★ 5. 토큰 검증 및 인증 설정 ★★★
-        try {
-            if (validateAndSetAuthentication(accessToken)) {
-                log.debug("Authentication set successfully for request: {}", requestURI);
+        // ★★★ 3. Access Token 처리 ★★★
+        if (accessToken != null) {
+            if (jwtUtil.isExpired(accessToken)) {
+                // ★★★ 만료된 경우 Refresh Token으로 갱신 시도 ★★★
+                if (handleExpiredAccessToken(request, response)) {
+                    log.debug("Access token refreshed successfully for: {}", requestURI);
+                } else {
+                    log.debug("Failed to refresh access token for: {}", requestURI);
+                }
             } else {
-                log.debug("Token validation failed for request: {}", requestURI);
+                // ★★★ 유효한 토큰으로 인증 설정 ★★★
+                if (validateAndSetAuthentication(accessToken)) {
+                    log.debug("Authentication set successfully for: {}", requestURI);
+                }
             }
-        } catch (Exception e) {
-            log.warn("JWT processing error for request {}: {}", requestURI, e.getMessage());
-            // 에러가 발생해도 다음 필터로 진행 (인증 실패로 처리됨)
+        } else {
+            log.debug("No access token found for: {}", requestURI);
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    /**
+     * ★★★ 만료된 Access Token 처리 ★★★
+     */
+    private boolean handleExpiredAccessToken(HttpServletRequest request, HttpServletResponse response) {
+        String refreshToken = extractRefreshTokenFromCookie(request);
+
+        if (refreshToken == null) {
+            log.debug("No refresh token found");
+            return false;
+        }
+
+        // Refresh Token 검증
+        if (jwtUtil.isExpired(refreshToken)) {
+            log.debug("Refresh token is expired");
+            return false;
+        }
+
+        if (!"refresh".equals(jwtUtil.getCategory(refreshToken))) {
+            log.debug("Token is not a refresh token");
+            return false;
+        }
+
+        if (!refreshTokenRepository.existsByToken(refreshToken)) {
+            log.debug("Refresh token not found in database");
+            return false;
+        }
+
+        try {
+            // 새 Access Token 발급
+            String username = jwtUtil.getUsername(refreshToken);
+            String role = jwtUtil.getRole(refreshToken);
+            String newAccessToken = jwtUtil.createAccessToken(username, role);
+
+            // 새 토큰을 쿠키로 설정
+            response.addHeader("Set-Cookie", createCookie("Authorization", newAccessToken));
+
+            // 새 토큰으로 인증 설정
+            return validateAndSetAuthentication(newAccessToken);
+
+        } catch (Exception e) {
+            log.warn("Failed to refresh access token: {}", e.getMessage());
+            return false;
+        }
     }
 
     /**
@@ -90,7 +136,7 @@ public class JWTFilter extends OncePerRequestFilter {
         String authorizationHeader = request.getHeader("Authorization");
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            return authorizationHeader.substring(7); // "Bearer " 제거
+            return authorizationHeader.substring(7);
         }
 
         return null;
@@ -104,7 +150,6 @@ public class JWTFilter extends OncePerRequestFilter {
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                // ★★★ "Authorization" 쿠키에서 토큰 추출 ★★★
                 if ("Authorization".equals(cookie.getName())) {
                     return cookie.getValue();
                 }
@@ -115,16 +160,41 @@ public class JWTFilter extends OncePerRequestFilter {
     }
 
     /**
+     * ★★★ Refresh Token 쿠키 추출 ★★★
+     */
+    private String extractRefreshTokenFromCookie(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("refreshToken".equals(cookie.getName())) {
+                    return cookie.getValue();
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * ★★★ 쿠키 생성 헬퍼 메서드 ★★★
+     */
+    private String createCookie(String key, String value) {
+        return ResponseCookie.from(key, value)
+                .path("/")
+                .maxAge(24 * 60 * 60) // 1일
+                .httpOnly(true)
+                .secure(false) // 개발환경
+                .build()
+                .toString();
+    }
+
+    /**
      * ★★★ 토큰 검증 및 인증 설정 ★★★
      */
     private boolean validateAndSetAuthentication(String accessToken) {
         try {
-            // 토큰 만료 및 카테고리 검증
-            if (jwtUtil.isExpired(accessToken)) {
-                log.debug("Access token is expired");
-                return false;
-            }
-
+            // 토큰 카테고리 검증
             if (!"access".equals(jwtUtil.getCategory(accessToken))) {
                 log.debug("Token is not an access token");
                 return false;
@@ -139,7 +209,7 @@ public class JWTFilter extends OncePerRequestFilter {
                 return false;
             }
 
-            // ★★★ DB에서 name 안전하게 조회 ★★★
+            // DB에서 name 안전하게 조회
             String name = username; // 기본값
             try {
                 Optional<String> nameOpt = userRepository.findNameByUsername(username);
@@ -154,7 +224,7 @@ public class JWTFilter extends OncePerRequestFilter {
             UserDTO userDTO = new UserDTO();
             userDTO.setUsername(username);
             userDTO.setRole(role);
-            userDTO.setName(name); // name 설정
+            userDTO.setName(name);
 
             CustomOAuth2User customOAuth2User = new CustomOAuth2User(userDTO, userRepository);
             Authentication authToken = new UsernamePasswordAuthenticationToken(
