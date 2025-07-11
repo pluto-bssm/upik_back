@@ -1,0 +1,262 @@
+2025-07-09 08:33:20.488 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 40400 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-07-09 08:33:20.489 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-09 08:33:20.972 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-09 08:33:21.052 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 76 ms. Found 9 JPA repository interfaces.
+2025-07-09 08:33:21.344 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-09 08:33:21.354 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-09 08:33:21.355 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-09 08:33:21.355 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-07-09 08:33:21.385 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-09 08:33:21.385 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 879 ms
+2025-07-09 08:33:21.464 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-09 08:33:21.469 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to instantiate [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean]: Factory method 'entityManagerFactory' threw exception with message: Driver org.mariadb.jdbc.Driver claims to not accept jdbcUrl, ${DB_URL}
+2025-07-09 08:33:21.471 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-07-09 08:33:21.478 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-09 08:33:21.487 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to instantiate [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean]: Factory method 'entityManagerFactory' threw exception with message: Driver org.mariadb.jdbc.Driver claims to not accept jdbcUrl, ${DB_URL}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:970)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
+	at pluto.upik.UpikApplication.main(UpikApplication.java:16)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean]: Factory method 'entityManagerFactory' threw exception with message: Driver org.mariadb.jdbc.Driver claims to not accept jdbcUrl, ${DB_URL}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 18 common frames omitted
+Caused by: java.lang.RuntimeException: Driver org.mariadb.jdbc.Driver claims to not accept jdbcUrl, ${DB_URL}
+	at com.zaxxer.hikari.util.DriverDataSource.<init>(DriverDataSource.java:111)
+	at com.zaxxer.hikari.pool.PoolBase.initializeDataSource(PoolBase.java:331)
+	at com.zaxxer.hikari.pool.PoolBase.<init>(PoolBase.java:116)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:94)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:166)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateDefaultDdlAutoProvider.getDefaultDdlAuto(HibernateDefaultDdlAutoProvider.java:42)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.lambda$getVendorProperties$1(HibernateJpaConfiguration.java:149)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings.getDdlAuto(HibernateSettings.java:41)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineDdlAuto(HibernateProperties.java:120)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.getAdditionalProperties(HibernateProperties.java:89)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineHibernateProperties(HibernateProperties.java:82)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.getVendorProperties(HibernateJpaConfiguration.java:150)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.buildJpaProperties(JpaBaseConfiguration.java:131)
+	at org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder$Builder.build(EntityManagerFactoryBuilder.java:304)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.entityManagerFactory(JpaBaseConfiguration.java:146)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171)
+	... 21 common frames omitted
+2025-07-10 20:03:14.104 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 75142 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-07-10 20:03:14.105 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-10 20:03:14.582 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-10 20:03:14.663 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 76 ms. Found 9 JPA repository interfaces.
+2025-07-10 20:03:14.940 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-10 20:03:14.946 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:03:14.947 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-10 20:03:14.947 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-07-10 20:03:14.972 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-10 20:03:14.972 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 850 ms
+2025-07-10 20:03:15.040 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-10 20:03:46.456 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-10 20:03:46.471 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-10 20:04:06.424 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 75194 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-07-10 20:04:06.425 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-10 20:04:06.885 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-10 20:04:06.964 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 9 JPA repository interfaces.
+2025-07-10 20:04:07.242 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-10 20:04:07.248 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:04:07.249 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-10 20:04:07.249 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-07-10 20:04:07.277 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-10 20:04:07.277 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 836 ms
+2025-07-10 20:04:07.342 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-10 20:04:38.738 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-10 20:04:38.752 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-10 20:04:53.674 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 75238 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-07-10 20:04:53.675 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-10 20:04:54.151 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-10 20:04:54.235 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79 ms. Found 9 JPA repository interfaces.
+2025-07-10 20:04:54.511 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-10 20:04:54.518 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:04:54.518 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-10 20:04:54.518 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-07-10 20:04:54.547 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-10 20:04:54.547 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 855 ms
+2025-07-10 20:04:54.613 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-10 20:04:55.756 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@2a120c88
+2025-07-10 20:04:55.759 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-10 20:04:56.000 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-10 20:04:56.892 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-10 20:04:57.003 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-10 20:04:57.710 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-10 20:04:57.930 [main] INFO  o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder - Loaded 8 resource(s) in the GraphQL schema.
+2025-07-10 20:04:58.022 [main] INFO  o.s.b.a.g.GraphQlAutoConfiguration - GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {Mutation.reportMutation=ReportRootResolver#reportMutation[0 args]}
+	Unmapped arguments: {}
+	Skipped types: [GuideQuery, KeywordGuideQuery, VoteResponseQuery, OptionGeneratorQuery, VoteResponseMutation]
+2025-07-10 20:04:58.035 [main] INFO  o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration - GraphQL endpoint HTTP POST /graphql
+2025-07-10 20:04:58.240 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:04:58.246 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-10 20:04:58.254 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.813 seconds (process running for 10.568)
+2025-07-10 20:05:07.684 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-10 20:05:07.684 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-10 20:05:07.688 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-07-10 20:05:49.295 [http-nio-8080-exec-6] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 요청: 제목=저녁밥, 개수=3
+2025-07-10 20:05:49.296 [http-nio-8080-exec-6] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 시작 - 요청 개수: 3, 제목: 저녁밥
+2025-07-10 20:06:06.853 [http-nio-8080-exec-6] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 프로세스 완료 - 제목: 저녁밥, 총 소요시간: 17557ms, 생성된 선택지 개수: 3/3
+2025-07-10 20:06:06.856 [http-nio-8080-exec-6] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 완료 - 요청 개수: 3, 성공 여부: true, 제목: 저녁밥, 생성된 선택지 개수: 3
+2025-07-10 20:06:06.856 [http-nio-8080-exec-6] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 완료: 제목=저녁밥, 개수=3, 성공=true
+2025-07-10 20:10:24.222 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-10 20:10:24.254 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-10 20:10:24.348 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-10 20:10:24.385 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-10 20:10:24.433 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-10 20:14:18.775 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 76843 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-07-10 20:14:18.776 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-10 20:14:19.243 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-10 20:14:19.323 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 75 ms. Found 9 JPA repository interfaces.
+2025-07-10 20:14:19.597 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-10 20:14:19.604 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:14:19.605 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-10 20:14:19.605 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-07-10 20:14:19.634 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-10 20:14:19.634 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 842 ms
+2025-07-10 20:14:19.699 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-10 20:14:20.991 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@708dfe10
+2025-07-10 20:14:20.993 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-10 20:14:21.232 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-10 20:14:22.153 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-10 20:14:22.270 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-10 20:14:23.046 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-10 20:14:23.275 [main] INFO  o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder - Loaded 8 resource(s) in the GraphQL schema.
+2025-07-10 20:14:23.377 [main] INFO  o.s.b.a.g.GraphQlAutoConfiguration - GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {Mutation.reportMutation=ReportRootResolver#reportMutation[0 args]}
+	Unmapped arguments: {}
+	Skipped types: [GuideQuery, KeywordGuideQuery, VoteResponseQuery, OptionGeneratorQuery, VoteResponseMutation]
+2025-07-10 20:14:23.390 [main] INFO  o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration - GraphQL endpoint HTTP POST /graphql
+2025-07-10 20:14:23.612 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:14:23.622 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-10 20:14:23.631 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 5.086 seconds (process running for 10.373)
+2025-07-10 20:14:27.828 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-10 20:14:27.828 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-10 20:14:27.832 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-07-10 20:14:30.406 [http-nio-8080-exec-4] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 요청: 제목=저녁밥을 추천해주세요, 개수=3
+2025-07-10 20:14:30.407 [http-nio-8080-exec-4] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 시작 - 요청 개수: 3, 제목: 저녁밥을 추천해주세요
+2025-07-10 20:14:58.245 [http-nio-8080-exec-4] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 프로세스 완료 - 제목: 저녁밥을 추천해주세요, 총 소요시간: 27838ms, 생성된 선택지 개수: 3/3
+2025-07-10 20:14:58.246 [http-nio-8080-exec-4] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 완료 - 요청 개수: 3, 성공 여부: true, 제목: 저녁밥을 추천해주세요, 생성된 선택지 개수: 3
+2025-07-10 20:14:58.247 [http-nio-8080-exec-4] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 완료: 제목=저녁밥을 추천해주세요, 개수=3, 성공=true
+2025-07-10 20:15:32.906 [http-nio-8080-exec-9] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 요청: 제목=저녁밥을 추천해주세요, 개수=3
+2025-07-10 20:15:32.906 [http-nio-8080-exec-9] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 시작 - 요청 개수: 3, 제목: 저녁밥을 추천해주세요
+2025-07-10 20:16:10.883 [http-nio-8080-exec-9] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 프로세스 완료 - 제목: 저녁밥을 추천해주세요, 총 소요시간: 37977ms, 생성된 선택지 개수: 3/3
+2025-07-10 20:16:10.884 [http-nio-8080-exec-9] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 완료 - 요청 개수: 3, 성공 여부: true, 제목: 저녁밥을 추천해주세요, 생성된 선택지 개수: 3
+2025-07-10 20:16:10.884 [http-nio-8080-exec-9] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 완료: 제목=저녁밥을 추천해주세요, 개수=3, 성공=true
+2025-07-10 20:20:04.584 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-10 20:20:04.589 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-10 20:20:04.639 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-10 20:20:04.653 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-10 20:20:04.699 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-10 20:20:17.014 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 76982 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-07-10 20:20:17.015 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-10 20:20:17.479 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-10 20:20:17.557 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 9 JPA repository interfaces.
+2025-07-10 20:20:17.829 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-10 20:20:17.835 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:20:17.836 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-10 20:20:17.836 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-07-10 20:20:17.862 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-10 20:20:17.862 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 831 ms
+2025-07-10 20:20:17.927 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-10 20:20:19.067 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@2a120c88
+2025-07-10 20:20:19.070 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-10 20:20:19.308 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-10 20:20:20.210 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-10 20:20:20.318 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-10 20:20:21.023 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-10 20:20:21.241 [main] INFO  o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder - Loaded 8 resource(s) in the GraphQL schema.
+2025-07-10 20:20:21.336 [main] INFO  o.s.b.a.g.GraphQlAutoConfiguration - GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {Mutation.reportMutation=ReportRootResolver#reportMutation[0 args]}
+	Unmapped arguments: {}
+	Skipped types: [GuideQuery, KeywordGuideQuery, VoteResponseQuery, OptionGeneratorQuery, VoteResponseMutation]
+2025-07-10 20:20:21.347 [main] INFO  o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration - GraphQL endpoint HTTP POST /graphql
+2025-07-10 20:20:21.553 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:20:21.559 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-10 20:20:21.568 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 4.788 seconds (process running for 10.579)
+2025-07-10 20:20:27.247 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-10 20:20:27.247 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-10 20:20:27.259 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 12 ms
+2025-07-10 20:20:29.552 [http-nio-8080-exec-7] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 요청: 제목=저녁밥을 추천해주세요, 개수=3
+2025-07-10 20:20:29.553 [http-nio-8080-exec-7] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 시작 - 요청 개수: 3, 제목: 저녁밥을 추천해주세요
+2025-07-10 20:21:00.850 [http-nio-8080-exec-7] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 프로세스 완료 - 제목: 저녁밥을 추천해주세요, 총 소요시간: 31297ms, 생성된 선택지 개수: 3/3
+2025-07-10 20:21:00.852 [http-nio-8080-exec-7] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 완료 - 요청 개수: 3, 성공 여부: true, 제목: 저녁밥을 추천해주세요, 생성된 선택지 개수: 3
+2025-07-10 20:21:00.852 [http-nio-8080-exec-7] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 완료: 제목=저녁밥을 추천해주세요, 개수=3, 성공=true
+2025-07-10 20:23:34.247 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-10 20:23:34.252 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-10 20:23:34.296 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-10 20:23:34.307 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-07-10 20:23:34.363 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-07-10 20:23:46.803 [main] INFO  pluto.upik.UpikApplication - Starting UpikApplication using Java 21.0.4 with PID 77122 (/Users/upik/build/classes/java/main started by heodongun in /Users/upik)
+2025-07-10 20:23:46.803 [main] INFO  pluto.upik.UpikApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-10 20:23:47.304 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-10 20:23:47.387 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 78 ms. Found 9 JPA repository interfaces.
+2025-07-10 20:23:47.668 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-10 20:23:47.675 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:23:47.676 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-10 20:23:47.676 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-07-10 20:23:47.705 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-10 20:23:47.706 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 885 ms
+2025-07-10 20:23:47.787 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-07-10 20:23:48.946 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@708dfe10
+2025-07-10 20:23:48.949 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-07-10 20:23:49.203 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-10 20:23:50.189 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-10 20:23:50.299 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-10 20:23:51.150 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-10 20:23:51.478 [main] INFO  o.s.g.e.DefaultSchemaResourceGraphQlSourceBuilder - Loaded 8 resource(s) in the GraphQL schema.
+2025-07-10 20:23:51.588 [main] INFO  o.s.b.a.g.GraphQlAutoConfiguration - GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {Mutation.reportMutation=ReportRootResolver#reportMutation[0 args]}
+	Unmapped arguments: {}
+	Skipped types: [GuideQuery, KeywordGuideQuery, VoteResponseQuery, OptionGeneratorQuery, VoteResponseMutation]
+2025-07-10 20:23:51.605 [main] INFO  o.s.b.a.g.s.GraphQlWebMvcAutoConfiguration - GraphQL endpoint HTTP POST /graphql
+2025-07-10 20:23:51.864 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-10 20:23:51.912 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-10 20:23:51.940 [main] INFO  pluto.upik.UpikApplication - Started UpikApplication in 5.409 seconds (process running for 11.053)
+2025-07-10 20:23:58.725 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-10 20:23:58.725 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-07-10 20:23:58.729 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-07-10 20:23:59.725 [http-nio-8080-exec-4] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 요청: 제목=저녁밥을 추천해주세요, 개수=3
+2025-07-10 20:23:59.726 [http-nio-8080-exec-4] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 시작 - 요청 개수: 3, 제목: 저녁밥을 추천해주세요
+2025-07-10 20:24:12.602 [http-nio-8080-exec-4] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 프로세스 완료 - 제목: 저녁밥을 추천해주세요, 총 소요시간: 12876ms, 생성된 선택지 개수: 3/3
+2025-07-10 20:24:12.605 [http-nio-8080-exec-4] INFO  p.u.d.o.s.OptionGeneratorServiceImpl - 선택지 생성 완료 - 요청 개수: 3, 성공 여부: true, 제목: 저녁밥을 추천해주세요, 생성된 선택지 개수: 3
+2025-07-10 20:24:12.605 [http-nio-8080-exec-4] INFO  p.u.d.o.r.OptionGeneratorQueryResolver - GraphQL 쿼리 - 선택지 생성 완료: 제목=저녁밥을 추천해주세요, 개수=3, 성공=true
+2025-07-10 21:37:31.424 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h6m42s319ms).
+2025-07-10 22:49:20.335 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h11m48s917ms).
+2025-07-10 23:06:29.964 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@2e9ceb1c ((conn=11675) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
+2025-07-10 23:24:28.553 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@635ff24d ((conn=11678) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
+2025-07-10 23:32:59.598 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@7e2a803d ((conn=11677) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
+2025-07-10 23:33:07.943 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@74fc0d87 ((conn=11676) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
+2025-07-10 23:41:58.607 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@6dc858e5 ((conn=11680) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
+2025-07-10 23:42:03.610 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@5168433e ((conn=11674) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
+2025-07-10 23:42:03.610 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52m43s276ms).
+2025-07-10 23:42:51.481 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@4f2914ef ((conn=11679) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
+2025-07-10 23:42:52.126 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@6009629f ((conn=11672) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
+2025-07-10 23:58:21.581 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection org.mariadb.jdbc.Connection@43930ab ((conn=11673) Connection.setNetworkTimeout cannot be called on a closed connection). Possibly consider using a shorter maxLifetime value.
