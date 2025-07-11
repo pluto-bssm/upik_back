@@ -160,62 +160,25 @@ public class OptionGeneratorServiceImpl implements OptionGeneratorServiceInterfa
      */
     private String buildPrompt(String title, int count) {
         return String.format(
-                "You are a professional poll option generator. Your task is to generate exactly %d high-quality, specific options for a poll with the title: \"%s\".\n\n" +
+                "You are a poll option generator.\n" +
+                        "Generate exactly %d short and distinct options for the poll titled: \"%s\"\n\n" +
 
-                        "📋 CRITICAL REQUIREMENTS:\n\n" +
+                        "Rules:\n" +
+                        "- Each option: 1~10 characters long (including spaces)\n" +
+                        "- No explanations, no sentences, no extra text\n" +
+                        "- Only specific, popular, diverse answers\n" +
+                        "- Use nouns only (e.g., 'Pizza', 'Seoul')\n\n" +
 
-                        "1. LENGTH CONSTRAINT (STRICTLY ENFORCED):\n" +
-                        "   - Each option must be between 1-10 characters in length\n" +
-                        "   - Count every character including spaces, but aim for single words when possible\n" +
-                        "   - Examples of GOOD length: 'Seoul', 'Tokyo', 'Paris', 'Pizza', 'Chicken'\n" +
-                        "   - Examples of BAD length: 'New York City' (12 chars - too long), 'Los Angeles California' (too long)\n" +
-                        "   - If you need to use place names longer than 10 chars, use abbreviations: 'NYC' instead of 'New York City'\n\n" +
-
-                        "2. CONTENT QUALITY RULES:\n" +
-                        "   - Each option must be a DIRECT, CONCRETE ANSWER to the poll title\n" +
-                        "   - NO questions, NO explanations, NO descriptions, NO additional text\n" +
-                        "   - Use SPECIFIC names, places, items, brands, or concepts\n" +
-                        "   - Avoid vague terms like 'Other', 'Etc', 'Various', 'Different'\n" +
-                        "   - Make options diverse and representative of popular choices\n\n" +
-
-                        "3. CATEGORY-SPECIFIC EXAMPLES:\n" +
-                        "   🏙️ Travel/Places: 'Seoul', 'Tokyo', 'Paris', 'London', 'NYC', 'LA', 'Miami'\n" +
-                        "   🍕 Food/Cuisine: 'Pizza', 'Burger', 'Sushi', 'Pasta', 'Tacos', 'Ramen'\n" +
-                        "   🎬 Movies/Shows: 'Marvel', 'Disney', 'Netflix', 'Action', 'Comedy', 'Drama'\n" +
-                        "   🎵 Music: 'Pop', 'Rock', 'Jazz', 'Hip Hop', 'Classical', 'K-Pop'\n" +
-                        "   🏃 Sports: 'Soccer', 'Baseball', 'Tennis', 'Golf', 'Swimming', 'Running'\n" +
-                        "   🎨 Hobbies: 'Reading', 'Gaming', 'Cooking', 'Drawing', 'Music', 'Sports'\n" +
-                        "   🎓 Academic: 'Math', 'Science', 'History', 'English', 'Art', 'PE'\n\n" +
-
-                        "4. FORMATTING REQUIREMENTS:\n" +
-                        "   - Use EXACTLY this format: '1. [option]'\n" +
-                        "   - Each option on a new line\n" +
-                        "   - NO quotation marks around options\n" +
-                        "   - NO additional punctuation or symbols\n" +
-                        "   - NO explanatory text before or after the list\n\n" +
-
-                        "5. LANGUAGE AND STYLE:\n" +
-                        "   - Use simple, commonly understood terms\n" +
-                        "   - Prefer nouns over phrases\n" +
-                        "   - Use title case for proper nouns (Paris, not paris)\n" +
-                        "   - For brands/names, use official spelling\n\n" +
-
-                        "6. QUALITY CHECKS:\n" +
-                        "   - Ensure all %d options are unique and distinct\n" +
-                        "   - Verify each option directly relates to the poll title\n" +
-                        "   - Double-check character count for each option (1-10 chars max)\n" +
-                        "   - Make sure options cover diverse, popular choices\n\n" +
-
-                        "RESPONSE FORMAT EXAMPLE:\n" +
-                        "1. Option1\n" +
-                        "2. Option2\n" +
-                        "3. Option3\n" +
+                        "Format:\n" +
+                        "1. Option\n" +
+                        "2. Option\n" +
                         "...\n\n" +
 
-                        "REMEMBER: NO explanations, NO additional text, ONLY the numbered list of options. Each option must be 1-10 characters and directly answer the poll question.",
-                count, title, count
+                        "Respond ONLY with the numbered list.",
+                count, title
         );
-        }
+
+    }
 
     /**
      * AI 응답에서 선택지를 추출합니다.
